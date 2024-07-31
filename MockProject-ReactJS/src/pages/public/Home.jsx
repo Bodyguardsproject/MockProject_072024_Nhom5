@@ -114,7 +114,7 @@ const Home = () => {
                     <textarea
                       id="message"
                       placeholder="Message"
-                      className="text-sm mt-1 font-medium px-2 py-2 outline-none rounded-md w-full"
+                      className="text-sm h-[80px] mt-1 font-medium px-2 py-2 outline-none rounded-md w-full"
                       {...register("message")}
                     />
                     {errors.message && (
@@ -134,6 +134,99 @@ const Home = () => {
                 </form>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <p className="flex items-center justify-center mt-12">
+        Sercurity Services
+      </p>
+      <div className="grid grid-cols-2 gap-y-[40px] px-20 mt-8">
+        {[1, 2, 3, 4].map((el, idx) => {
+          return (
+            <div key={idx} className=" w-[300px] mx-auto">
+              <div
+                className={`w-full h-[200px]  bg-no-repeat bg-cover bg-center`}
+                style={{
+                  backgroundImage: `url(https://fastguardservice.com/wp-content/uploads/2024/06/IMG_4607.jpg)`,
+                }}
+              ></div>
+              <div className=" bg-primary-color text-center px-3 py-2">
+                <p className="text-xl ">Personal security</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="mx-20 h-[0.5px] bg-gray-500 mt-12 mb-8"></div>
+      <p className="flex items-center justify-center">About Us</p>
+      <div className="px-20">
+        <div className="flex mt-8 gap-12">
+          <div className="basis-[40%]">
+            <div
+              className={`w-[80%] h-[250px]  bg-no-repeat bg-cover bg-center`}
+              style={{
+                backgroundImage: `url(https://fastguardservice.com/wp-content/uploads/2024/06/IMG_4607.jpg)`,
+              }}
+            ></div>
+          </div>
+          <div className="basis-[60%]">
+            <p className="text-base font-medium">Text</p>
+          </div>
+        </div>
+        <div className="flex mt-8 gap-12">
+          <div className="basis-[60%]">
+            <p className="text-base font-medium">Text</p>
+          </div>
+          <div className="basis-[40%]">
+            <div
+              className={`w-[80%] h-[250px]  bg-no-repeat bg-cover bg-center`}
+              style={{
+                backgroundImage: `url(https://fastguardservice.com/wp-content/uploads/2024/06/IMG_4607.jpg)`,
+              }}
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div className="mx-20 h-[0.5px] bg-gray-500 mt-12 mb-8"></div>
+      <p className="flex items-center justify-center ">Bodyguards</p>
+      <div className="px-20 flex mt-8 gap-4">
+        {[1, 2, 3].map((el, idx) => {
+          return (
+            <div key={idx} className="basis-1/3">
+              <div className="px-4 py-4 rounded-md border-gray-400 border-[1px]">
+                <div
+                  className={`w-full rounded-md h-[450px]  bg-no-repeat bg-cover bg-center`}
+                  style={{
+                    backgroundImage: `url(https://fastguardservice.com/wp-content/uploads/2024/06/IMG_4607.jpg)`,
+                  }}
+                ></div>
+                <p className="text-2xl mt-2">John Smith</p>
+                <p className="text-gray-700 font-normal text-base">
+                  Job Title: Chief Executive Officer
+                </p>
+                <p className="text-gray-500 font-normal text-base mt-1">
+                  John has over 20 years of experience in leading multinational
+                  companies and driving organizational growth.
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="mx-20 h-[0.5px] bg-gray-500 mt-12 mb-8"></div>
+      <p className="flex items-center justify-center">Jobs</p>
+      <div className="px-20">
+        <div className="flex mt-8 gap-12">
+          <div className="basis-[40%]">
+            <div
+              className={`w-[80%] h-[250px]  bg-no-repeat bg-cover bg-center`}
+              style={{
+                backgroundImage: `url(https://fastguardservice.com/wp-content/uploads/2024/06/IMG_4607.jpg)`,
+              }}
+            ></div>
+          </div>
+          <div className="basis-[60%]">
+            <p className="text-base font-medium">Text</p>
           </div>
         </div>
       </div>
