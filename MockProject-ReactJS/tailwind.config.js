@@ -6,6 +6,9 @@ export default {
       colors: {
         "primary-color": "#D2A52E",
       },
+      boxShadow: {
+        yellow: "0px 0px 9px 2px #D2A52E",
+      },
     },
     fontFamily: {
       main: ["Poppins", "sans-serif"],
