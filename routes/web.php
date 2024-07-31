@@ -15,3 +15,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::group([ 'prefix' => 'admin'], function(){
+
+Route::get('/',function(){
+    return view('admin.dashboard');
+});
+});

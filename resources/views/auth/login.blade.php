@@ -138,6 +138,7 @@
     <script src="{{ asset('site/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('site/vendor/select2/select2.min.js') }}"></script>
     <script src="{{ asset('site/vendor/tilt/tilt.jquery.min.js') }}"></script>
+
     <script>
         $('.js-tilt').tilt({
             scale: 1.1
