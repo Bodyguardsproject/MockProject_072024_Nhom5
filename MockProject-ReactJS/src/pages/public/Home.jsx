@@ -11,7 +11,7 @@ const schema = z.object({
     .regex(/^\d{10}$/, "Phone number must be exactly 10 digits"),
   message: z.string(),
 });
-const Home = () => {
+export const Home = () => {
   const {
     register,
     handleSubmit,
