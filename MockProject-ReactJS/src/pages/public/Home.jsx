@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Select } from "antd";
 import * as z from "zod";
 const schema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -11,6 +12,24 @@ const schema = z.object({
     .regex(/^\d{10}$/, "Phone number must be exactly 10 digits"),
   message: z.string(),
 });
+const servicesSecurity = [
+  {
+    label: "Personal Security",
+    url: "https://fastguardservice.com/wp-content/uploads/2023/12/Personal-Security.png",
+  },
+  {
+    label: "Event Security",
+    url: "https://fastguardservice.com/wp-content/uploads/2023/12/Event-Security.png",
+  },
+  {
+    label: "Asset Security",
+    url: "https://fastguardservice.com/wp-content/uploads/2023/12/Personal-Security.png",
+  },
+  {
+    label: "Escort Security",
+    url: "https://fastguardservice.com/wp-content/uploads/2024/01/Untitled-design-1-jpg.webp",
+  },
+];
 const Home = () => {
   const {
     register,
@@ -20,28 +39,33 @@ const Home = () => {
     resolver: zodResolver(schema),
   });
   const onSubmit = (data) => {
-    console.log(data);
+    //console.log(data);
+  };
+  const handleChangeServiceType = (value) => {
+    //console.log(`selected ${value}`);
   };
   return (
     <div className="">
       <div
-        className={`h-[500px] relative w-full bg-no-repeat bg-cover bg-center`}
+        className={`block relative w-full bg-no-repeat bg-cover bg-center`}
         style={{
           backgroundImage: `url(https://fastguardservice.com/wp-content/uploads/2024/06/IMG_4607.jpg)`,
         }}
       >
-        <div className="bg-black/50 w-full h-full absolute top-0 px-[10%]">
-          <div className="flex gap-4">
-            <div className="basis-[70%] ">
+        <div className="bg-black/50 pb-6  w-full h-full top-0 px-[5%]">
+          <div className="flex gap-4 flex-col md:flex-row">
+            <div className="basis-[65%] ">
               <div className="flex mt-20 items-center justify-center flex-col">
-                <h1 className="text-white text-4xl">Security Guard Services</h1>
-                <h2 className="bg-primary-color text-5xl px-2 py-1 rounded-sm my-4">
+                <h1 className="text-white text-3xl md:text-4xl">
+                  Security Guard Services
+                </h1>
+                <h2 className="bg-primary-color text-4xl md:text-5xl px-2 py-1 rounded-sm my-4">
                   FAST GUARD SERVICE
                 </h2>
-                <h1 className="text-primary-color text-4xl">
+                <h1 className="text-primary-color text-3xl md:text-4xl">
                   Security Guard Company
                 </h1>
-                <p className="text-white text-lg mt-4">
+                <p className="text-white text-base md:text-lg mt-4">
                   Fast Guard Service A national Security Guard Company offering
                   top-tier security solutions Nationwide, including armed and
                   unarmed guards, event security, fire watch, and High-Risk
@@ -52,7 +76,7 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className="basis-[30%]">
+            <div className="basis-[35%]">
               <div className="px-2 mt-10 py-2 rounded-lg shadow-yellow bg-black/40">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
@@ -98,18 +122,40 @@ const Home = () => {
                     )}
                   </div>
                   <div>
-                    <input
-                      id="phoneNumber"
-                      placeholder="Phone Number"
-                      className="text-sm font-medium px-2 py-2 outline-none rounded-md w-full"
-                      {...register("phoneNumber")}
-                    />
+                    <div className=" mt-1 flex items-center px-2 py-2 rounded-md  bg-white">
+                      <div
+                        className={`h-[15px] rounded-sm relative w-[30px] bg-no-repeat bg-cover bg-center`}
+                        style={{
+                          backgroundImage: `url(https://cdn-icons-png.flaticon.com/256/940/940207.png)`,
+                        }}
+                      ></div>
+                      <input
+                        id="phoneNumber"
+                        placeholder="Phone Number"
+                        className="text-sm px-2 font-medium outline-none rounded-md w-full"
+                        {...register("phoneNumber")}
+                      />
+                    </div>
                     {errors.phoneNumber && (
                       <p className="text-sm text-red-500 font-medium">
                         {errors.phoneNumber.message}
                       </p>
                     )}
                   </div>
+                  <Select
+                    placeholder={"- Select service -"}
+                    onChange={handleChangeServiceType}
+                    className="w-full mt-1"
+                    options={[
+                      {
+                        value: "Personal Security",
+                        label: "Personal Security",
+                      },
+                      { value: "Event Security", label: "Event Security" },
+                      { value: "Asset Security", label: "Asset Security" },
+                      { value: "Escort Security", label: "Escort Security" },
+                    ]}
+                  />
                   <div>
                     <textarea
                       id="message"
@@ -123,6 +169,7 @@ const Home = () => {
                       </p>
                     )}
                   </div>
+
                   <div className="flex items-center justify-center">
                     <button
                       type="submit"
@@ -137,27 +184,27 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <p className="flex items-center justify-center mt-12">
+      <p className="text-center flex items-center justify-center mt-12">
         Sercurity Services
       </p>
-      <div className="grid grid-cols-2 gap-y-[40px] px-20 mt-8">
-        {[1, 2, 3, 4].map((el, idx) => {
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-[40px] px-5 md:px-20 mt-8">
+        {servicesSecurity.map((el, idx) => {
           return (
             <div key={idx} className=" w-[300px] mx-auto">
               <div
                 className={`w-full h-[200px]  bg-no-repeat bg-cover bg-center`}
                 style={{
-                  backgroundImage: `url(https://fastguardservice.com/wp-content/uploads/2024/06/IMG_4607.jpg)`,
+                  backgroundImage: `url(${el.url})`,
                 }}
               ></div>
               <div className=" bg-primary-color text-center px-3 py-2">
-                <p className="text-xl ">Personal security</p>
+                <p className="text-xl ">{el.label}</p>
               </div>
             </div>
           );
         })}
       </div>
-      <div className="mx-20 h-[0.5px] bg-gray-500 mt-12 mb-8"></div>
+      <div className="mx-5 md:mx-20 h-[0.5px] bg-gray-500 mt-12 mb-8"></div>
       <p className="flex items-center justify-center">About Us</p>
       <div className="px-20">
         <div className="flex mt-8 gap-12">
@@ -189,7 +236,7 @@ const Home = () => {
       </div>
       <div className="mx-20 h-[0.5px] bg-gray-500 mt-12 mb-8"></div>
       <p className="flex items-center justify-center ">Bodyguards</p>
-      <div className="px-20 flex mt-8 gap-4">
+      <div className="px-5 md:px-20 flex-col md:flex-row flex mt-8 gap-4">
         {[1, 2, 3].map((el, idx) => {
           return (
             <div key={idx} className="basis-1/3">
