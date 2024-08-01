@@ -4,7 +4,7 @@ import imageServices2 from "../../assets/servicesImage2.png";
 import imageServices3 from "../../assets/servicesImage3.png";
 import imageServices4 from "../../assets/servicesImage4.png";
 
-const Services = () => {
+export const Services = () => {
   return (
     <div className="bg-white-500 w-full">
       <div className="w-full h-[230px] relative flex justify-center items-center">
@@ -25,7 +25,9 @@ const Services = () => {
               alt=""
               className="w-[400px] h-[297px] object-contain rounded-xl "
             />
-            <p className="bg-primary-color text-xl w-full absolute bottom-0 p-2 text-black-500 font-bold flex items-center justify-center">Personal security</p>
+            <p className="bg-primary-color text-xl w-full absolute bottom-0 p-2 text-black-500 font-bold flex items-center justify-center">
+              Personal security
+            </p>
           </div>
           <p className="w-[400px] text-xl ">
             Elite bodyguards providing 24/7 protection for individuals in all
@@ -39,7 +41,9 @@ const Services = () => {
               alt=""
               className="w-[400px] h-[297px] object-contain rounded "
             />
-            <p className="bg-primary-color text-xl w-full absolute bottom-0 p-2 text-black-500 font-bold flex items-center justify-center">Event security</p>
+            <p className="bg-primary-color text-xl w-full absolute bottom-0 p-2 text-black-500 font-bold flex items-center justify-center">
+              Event security
+            </p>
           </div>
           <p className="w-[400px] text-xl ">
             Elite bodyguards providing 24/7 protection for individuals in all
@@ -53,7 +57,9 @@ const Services = () => {
               alt=""
               className="w-[400px] h-[297px] object-contain rounded "
             />
-            <p className="bg-primary-color text-xl w-full absolute bottom-0 p-2 text-black-500 font-bold flex items-center justify-center">Asset security</p>
+            <p className="bg-primary-color text-xl w-full absolute bottom-0 p-2 text-black-500 font-bold flex items-center justify-center">
+              Asset security
+            </p>
           </div>
           <p className="w-[400px] text-xl ">
             Elite bodyguards providing 24/7 protection for individuals in all
@@ -67,7 +73,9 @@ const Services = () => {
               alt=""
               className="w-[400px] h-[297px] object-contain  rounded"
             />
-            <p className="bg-primary-color text-xl w-full absolute bottom-0 p-2 text-black-500 font-bold flex items-center justify-center">Escort serivce</p>
+            <p className="bg-primary-color text-xl w-full absolute bottom-0 p-2 text-black-500 font-bold flex items-center justify-center">
+              Escort serivce
+            </p>
           </div>
           <p className="w-[400px] text-xl ">
             Elite bodyguards providing 24/7 protection for individuals in all
