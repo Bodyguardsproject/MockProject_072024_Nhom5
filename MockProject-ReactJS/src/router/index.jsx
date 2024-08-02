@@ -1,6 +1,13 @@
-import { CustomerLayout } from "../components/layouts";
+import { AuthLayout, CustomerLayout } from "../components/layouts";
 import { PATH } from "../constant";
-import { Home, Services } from "../pages/public";
+import {
+  Home,
+  Services,
+  Login,
+  Register,
+  ForgotPassword,
+  ResetPassword,
+} from "../pages/public";
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
 export const router = [
   {
@@ -21,18 +28,26 @@ export const router = [
       },
     ],
   },
-  // {
-  //   path: "/auth",
-  //   element: <AuthLayout />,
-  //   children: [
-  //     {
-  //       path: PATH.LOGIN,
-  //       element: <Login />,
-  //     },
-  //     {
-  //       path: PATH.register,
-  //       element: <Register />,
-  //     },
-  //   ],
-  // },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: [
+      {
+        path: PATH.LOGIN,
+        element: <Login />,
+      },
+      {
+        path: PATH.REGISTER,
+        element: <Register />,
+      },
+      {
+        path: PATH.FORGOTPASSWORD,
+        element: <ForgotPassword />,
+      },
+      {
+        path: PATH.RESETPASSWORD,
+        element: <ResetPassword />,
+      },
+    ],
+  },
 ];
