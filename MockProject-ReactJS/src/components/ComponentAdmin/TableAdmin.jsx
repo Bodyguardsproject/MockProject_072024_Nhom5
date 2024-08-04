@@ -1,5 +1,5 @@
-import React from "react";
 import { Space, Table, Tag } from "antd";
+import { Link } from "react-router-dom";
 const columns = [
   {
     title: "Name",
@@ -113,11 +113,19 @@ const data = [
     tags: ["cool", "teacher"],
   },
 ];
-export const Login = () => {
+export const TableAdmin = () => {
   return (
     <div className="overflow-auto">
-      <Table className="overflow-auto" columns={columns} dataSource={data} />
+      <Table
+        className="overflow-auto"
+        columns={columns}
+        dataSource={data}
+        scroll={{
+          y: 240,
+        }}
+      />
     </div>
   );
 };
-export default Login;
+
+export default TableAdmin;

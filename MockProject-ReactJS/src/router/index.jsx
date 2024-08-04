@@ -1,6 +1,7 @@
 import { CustomerLayout } from "../components/layouts";
 import { PATH } from "../constant";
 import { Home, Services } from "../pages/public";
+import { AdminHome ,} from "../pages/private";
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
 export const router = [
   {
@@ -21,18 +22,10 @@ export const router = [
       },
     ],
   },
-  // {
-  //   path: "/auth",
-  //   element: <AuthLayout />,
-  //   children: [
-  //     {
-  //       path: PATH.LOGIN,
-  //       element: <Login />,
-  //     },
-  //     {
-  //       path: PATH.register,
-  //       element: <Register />,
-  //     },
-  //   ],
-  // },
+  {
+    path: "/admin",
+    element: <AdminHome />,
+    
+  },
+ 
 ];

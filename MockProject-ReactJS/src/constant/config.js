@@ -4,4 +4,5 @@ export const PATH = {
   BODYGUARDS: "bodyguards",
   LOGIN: "login",
   SERVICES: "services",
+  ADMIN:"admin",
 };
