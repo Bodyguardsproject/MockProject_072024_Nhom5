@@ -8,7 +8,6 @@ import {
   ForgotPassword,
   ResetPassword,
 } from "../pages/public";
-import { Home, Services } from "../pages/public";
 import { AdminHome ,} from "../pages/private";
 
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
