@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+
 import { BiMessageRoundedDots } from "react-icons/bi";
 import { Drawer } from "antd";
 import { IoMenu } from "react-icons/io5";
-import styled from "styled-components";
 import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router-dom";
+
+import { PATH } from "../../constant";
 const MenuMobile = () => {
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
@@ -12,7 +15,7 @@ const MenuMobile = () => {
   const onClose = () => {
     setOpen(false);
   };
-
+  PATH;
   return (
     <header>
       <div className=" bg-black h-[30px]"></div>
@@ -48,11 +51,21 @@ const MenuMobile = () => {
         }
       >
         <div className=" flex flex-col gap-3 font-semibold">
-          <p className=" text-primary-color">HOME</p>
-          <p className="text-primary-color">SERVICES</p>
-          <p className="text-primary-color">ABOUT US</p>
-          <p className="text-primary-color">BODYGUARDS</p>
-          <p className="text-primary-color">JOBS</p>
+          <Link to={PATH.HOME} className=" !text-primary-color">
+            HOME
+          </Link>
+          <Link to={PATH.SERVICES} className="!text-primary-color">
+            SERVICES
+          </Link>
+          <Link to={PATH.ABOUT_US} className="!text-primary-color">
+            ABOUT US
+          </Link>
+          <Link to={PATH.BODYGUARDS} className="!text-primary-color">
+            BODYGUARDS
+          </Link>
+          <Link to={PATH.JOBS} className="!text-primary-color">
+            JOBS
+          </Link>
         </div>
       </Drawer>
     </header>

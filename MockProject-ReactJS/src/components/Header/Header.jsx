@@ -1,13 +1,14 @@
 import React from "react";
 import logo from "../../assets/logo.jpg";
 import { Link } from "react-router-dom";
-const options = [ 
+import { PATH } from "../../constant";
+const options = [
   { name: "Home", path: "/" },
   { name: "Services", path: "/services" },
-  { name: "About Us",  },
-  { name: "BodyGuards",  },
-  { name: "Jobs",  },
-  { name: "Quote",  }
+  { name: "About Us", path: PATH.ABOUT_US },
+  { name: "BodyGuards", path: PATH.BODYGUARDS },
+  { name: "Jobs", path: PATH.JOBS },
+  { name: "Quote" },
 ];
 export default function Header() {
   return (
@@ -21,7 +22,7 @@ export default function Header() {
           return (
             <Link
               key={option.name}
-              to={option.path}
+              to={option?.path}
               className="px-4 py-2 hover:bg-black hover:text-primary-color transition-all cursor-pointer"
             >
               {option.name}
