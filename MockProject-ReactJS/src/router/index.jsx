@@ -8,6 +8,9 @@ import {
   ForgotPassword,
   ResetPassword,
 } from "../pages/public";
+import { Home, Services } from "../pages/public";
+import { AdminHome ,} from "../pages/private";
+
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
 export const router = [
   {
@@ -29,6 +32,7 @@ export const router = [
     ],
   },
   {
+
     path: "/auth",
     element: <AuthLayout />,
     children: [
@@ -50,4 +54,10 @@ export const router = [
       },
     ],
   },
+  {
+    path: "/admin",
+    element: <AdminHome />,
+    
+  },
+ 
 ];
