@@ -7,9 +7,10 @@ import {
   Register,
   ForgotPassword,
   ResetPassword,
+  AboutUs,
+  Jobspage,
 } from "../pages/public";
-import { Home, Services } from "../pages/public";
-import { AdminHome ,} from "../pages/private";
+import { AdminHome } from "../pages/private";
 
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
 export const router = [
@@ -29,10 +30,17 @@ export const router = [
         path: PATH.SERVICES,
         element: <Services />,
       },
+      {
+        path: PATH.ABOUT_US,
+        element: <AboutUs />,
+      },
+      {
+        path: PATH.JOBS,
+        element: <Jobspage />,
+      },
     ],
   },
   {
-
     path: "/auth",
     element: <AuthLayout />,
     children: [
@@ -57,7 +65,5 @@ export const router = [
   {
     path: "/admin",
     element: <AdminHome />,
-    
   },
- 
 ];
