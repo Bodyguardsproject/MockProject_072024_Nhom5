@@ -6,8 +6,9 @@ export const PATH = {
   SERVICES: "services",
   REGISTER: "register",
   FORGOTPASSWORD: "forgotpassword",
-  RESETPASSWORD: "resetpassword",
+  RESETPASSWORD: "resetpassword", 
   ABOUT_US: "about-us",
   JOBS: "jobs",
   ADMIN: "admin",
+
 };
