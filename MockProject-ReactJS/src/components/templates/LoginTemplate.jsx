@@ -4,7 +4,7 @@ import { FaFacebook } from "react-icons/fa";
 import { Checkbox, Divider, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 
-export const LoginTemplate = () => {
+export const LoginTemplate = () => { 
   const navigate = useNavigate();
   const onFinish = (values) => {
     console.log("Success:", values);

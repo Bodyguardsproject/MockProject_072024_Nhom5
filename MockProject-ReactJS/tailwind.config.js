@@ -1,6 +1,8 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
+const flowbite = require("flowbite-react/tailwind");
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", flowbite.content(),],
   theme: {
     extend: {
       colors: {
@@ -14,10 +16,16 @@ export default {
       boxShadow: {
         yellow: "0px 0px 9px 2px #D2A52E",
       },
+      padding: {
+        "padding-left": "0.75rem",
+        "padding-right": "0.75rem"
+      },
     },
     fontFamily: {
       main: ["Poppins", "sans-serif"],
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin'),
+  ],
 };

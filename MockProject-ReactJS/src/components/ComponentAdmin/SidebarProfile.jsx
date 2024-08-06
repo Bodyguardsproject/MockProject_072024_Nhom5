@@ -3,7 +3,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
 export const SidebarProfile = () => {
   return (
-    <div className="flex gap-4 items-center">
+    <div className="flex gap-4 items-center mt-6">
       <Space direction="vertical" size={16}>
         <Space wrap size={16}>
           <Avatar size="large" icon={<UserOutlined />} />
