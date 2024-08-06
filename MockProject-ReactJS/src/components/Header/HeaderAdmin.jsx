@@ -9,9 +9,9 @@ import { Avatar, Space } from "antd";
 import { Input } from "antd";
 export const HeaderAdmin = () => {
   return (
-    <div className=" sticky top-0 right-0 bg-white z-10 p-2 shadow-md">
+    <div className=" bg-white z-10 p-2 shadow-md">
       <div className="p-2 flex justify-end gap-4 items-center">
-        <div className="w-40 bg-background-button h-9 rounded-lg flex justify-center items-center">
+        <div className="w-40 bg-background-button h-9 rounded-lg flex justify-center items-center cursor-pointer">
           <GrLogout />
           <span>Login</span>
         </div>
