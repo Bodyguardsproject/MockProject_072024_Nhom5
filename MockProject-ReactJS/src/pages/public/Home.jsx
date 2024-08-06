@@ -30,7 +30,7 @@ const servicesSecurity = [
     url: "https://fastguardservice.com/wp-content/uploads/2024/01/Untitled-design-1-jpg.webp",
   },
 ];
-const Home = () => {
+export const Home = () => {
   const {
     register,
     handleSubmit,
@@ -122,7 +122,7 @@ const Home = () => {
                     )}
                   </div>
                   <div>
-                    <div className=" mt-1 flex items-center px-2 py-2 rounded-md  bg-white">
+                    <div className=" flex items-center px-2 py-2 rounded-md  bg-white">
                       <div
                         className={`h-[15px] rounded-sm relative w-[30px] bg-no-repeat bg-cover bg-center`}
                         style={{
