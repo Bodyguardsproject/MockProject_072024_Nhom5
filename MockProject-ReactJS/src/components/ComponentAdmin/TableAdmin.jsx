@@ -1,90 +1,71 @@
-import { Space, Table, Tag } from "antd";
-import { useState, useEffect } from "react";
+"use client";
 
-// Định nghĩa cột cho bảng
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
-  {
-    title: "Tags",
-    key: "tags",
-    dataIndex: "tags",
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? "geekblue" : "green";
-          if (tag === "loser") {
-            color = "volcano";
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
+import { Table } from "flowbite-react";
 
-export const TableAdmin = () => {
-  const [data, setData] = useState([]);
-
-  // Hàm lấy dữ liệu từ API
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/admin/data'); // Thay thế với endpoint API của bạn
-        const result = await response.json();
-        if (response.ok) {
-          setData(result); // Cập nhật dữ liệu dựa trên cấu trúc phản hồi của API
-        } else {
-          console.error('Lấy dữ liệu thất bại:', result.message);
-        }
-      } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+export function TableAdmin() {
   return (
-    <div className="overflow-auto">
-      <Table
-        className="overflow-auto"
-        columns={columns}
-        dataSource={data}
-        scroll={{
-          y: 240,
-        }}
-      />
+    <div className="overflow-x-auto">
+      <Table>
+        <Table.Head>
+          <Table.HeadCell>Section Title</Table.HeadCell>
+          <Table.HeadCell>Employee Name</Table.HeadCell>
+          <Table.HeadCell>Email</Table.HeadCell>
+          <Table.HeadCell>Role</Table.HeadCell>
+          <Table.HeadCell>Action</Table.HeadCell>
+        </Table.Head>
+        <Table.Body className="divide-y">
+          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+              {'Apple MacBook Pro 17"'}
+            </Table.Cell>
+            <Table.Cell>Sliver</Table.Cell>
+            <Table.Cell>Laptop</Table.Cell>
+            <Table.Cell>$2999</Table.Cell>
+            <Table.Cell>
+              <a
+                href="#"
+                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+              >
+                Edit
+              </a>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+              Microsoft Surface Pro
+            </Table.Cell>
+            <Table.Cell>White</Table.Cell>
+            <Table.Cell>Laptop PC</Table.Cell>
+            <Table.Cell>$1999</Table.Cell>
+            <Table.Cell>
+              <a
+                href="#"
+                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+              >
+                Edit
+              </a>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+              Magic Mouse 2
+            </Table.Cell>
+            <Table.Cell>Black</Table.Cell>
+            <Table.Cell>Accessories</Table.Cell>
+            <Table.Cell>$99</Table.Cell>
+            <Table.Cell>
+              <a
+                href="#"
+                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+              >
+                Edit
+              </a>
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
     </div>
   );
-};
+}
 
 export default TableAdmin;
