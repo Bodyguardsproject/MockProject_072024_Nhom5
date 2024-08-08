@@ -184,7 +184,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      <p className="text-center flex items-center justify-center mt-12">
+      <p className="text-center text-3xl font-bold flex items-center justify-center mt-12">
         Sercurity Services
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-[40px] px-5 md:px-20 mt-8">
@@ -205,7 +205,9 @@ export const Home = () => {
         })}
       </div>
       <div className="mx-5 md:mx-20 h-[0.5px] bg-gray-500 mt-12 mb-8"></div>
-      <p className="flex items-center justify-center">About Us</p>
+      <p className="flex items-center justify-center text-3xl font-bold">
+        About Us
+      </p>
       <div className="px-20">
         <div className="flex mt-8 gap-12">
           <div className="basis-[40%]">
@@ -235,7 +237,9 @@ export const Home = () => {
         </div>
       </div>
       <div className="mx-20 h-[0.5px] bg-gray-500 mt-12 mb-8"></div>
-      <p className="flex items-center justify-center ">Bodyguards</p>
+      <p className="flex items-center justify-center text-3xl font-bold">
+        Bodyguards
+      </p>
       <div className="px-5 md:px-20 flex-col md:flex-row flex mt-8 gap-4">
         {[1, 2, 3].map((el, idx) => {
           return (
@@ -261,7 +265,9 @@ export const Home = () => {
         })}
       </div>
       <div className="mx-20 h-[0.5px] bg-gray-500 mt-12 mb-8"></div>
-      <p className="flex items-center justify-center">Jobs</p>
+      <p className="flex items-center justify-center text-3xl font-bold">
+        Jobs
+      </p>
       <div className="px-20">
         <div className="flex mt-8 gap-12">
           <div className="basis-[40%]">
