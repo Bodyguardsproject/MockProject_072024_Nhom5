@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Select } from "antd";
 import * as z from "zod";
+
+const { Option } = Select;
 const schema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
@@ -12,21 +14,25 @@ const schema = z.object({
     .regex(/^\d{10}$/, "Phone number must be exactly 10 digits"),
   message: z.string(),
 });
-const servicesSecurity = [
+const securityServices = [
   {
+    value: "Personal Security",
     label: "Personal Security",
     url: "https://fastguardservice.com/wp-content/uploads/2023/12/Personal-Security.png",
   },
   {
     label: "Event Security",
+    value: "Event Security",
     url: "https://fastguardservice.com/wp-content/uploads/2023/12/Event-Security.png",
   },
   {
     label: "Asset Security",
+    value: "Asset Security",
     url: "https://fastguardservice.com/wp-content/uploads/2023/12/Personal-Security.png",
   },
   {
     label: "Escort Security",
+    value: "Escort Security",
     url: "https://fastguardservice.com/wp-content/uploads/2024/01/Untitled-design-1-jpg.webp",
   },
 ];
@@ -145,16 +151,24 @@ export const Home = () => {
                   <Select
                     placeholder={"- Select service -"}
                     onChange={handleChangeServiceType}
-                    className="w-full mt-1"
-                    options={[
-                      {
-                        value: "Personal Security",
-                        label: "Personal Security",
-                      },
-                      { value: "Event Security", label: "Event Security" },
-                      { value: "Asset Security", label: "Asset Security" },
-                      { value: "Escort Security", label: "Escort Security" },
-                    ]}
+                    className="w-full mt-1 !font-bold"
+                    dropdownRender={() => (
+                      <div>
+                        {securityServices.map((el, id) => {
+                          return (
+                            <Option key={id} label={el.label}>
+                              <div className="demo-option-label-item">
+                                <span role="img" aria-label="China">
+                                  🇨🇳
+                                </span>
+                                China (中国)
+                              </div>
+                            </Option>
+                          );
+                        })}
+                      </div>
+                    )}
+                    options={securityServices}
                   />
                   <div>
                     <textarea
@@ -188,7 +202,7 @@ export const Home = () => {
         Sercurity Services
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-[40px] px-5 md:px-20 mt-8">
-        {servicesSecurity.map((el, idx) => {
+        {securityServices.map((el, idx) => {
           return (
             <div key={idx} className=" w-[300px] mx-auto">
               <div
