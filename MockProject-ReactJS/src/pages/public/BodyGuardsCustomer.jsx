@@ -1,9 +1,9 @@
-import { BodyGuards } from "../../components/templates";
+import { BodyGuardsTemplate } from "../../components/templates";
 
 export const BodyGuardsCustomerPage = () => {
   return (
     <>
-      <BodyGuards />
+      <BodyGuardsTemplate />
     </>
   );
 };

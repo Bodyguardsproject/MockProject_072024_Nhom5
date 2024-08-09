@@ -42,7 +42,7 @@ export const CustomerLayout = () => {
           </li>
         </ul>
       </div>
-      <div className="max-w-7xl m-auto">
+      <div className="m-auto">
         <Outlet />
       </div>
       <Footer />

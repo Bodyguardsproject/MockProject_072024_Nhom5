@@ -1,6 +1,6 @@
 import React from "react";
 
-export const BodyGuards = () => {
+export const BodyGuardsTemplate = () => {
   const dataBodyGuards = [
     {
       name: "Nguyen Van B",
@@ -29,10 +29,10 @@ export const BodyGuards = () => {
   ];
 
   return (
-    <section id="content">
+    <div id="content " className=" max-w-7xl m-auto">
       {dataBodyGuards.map((info, index) => {
         return (
-          <div key={index} className=" mt-5">
+          <div key={index} className=" mt-5 p-5">
             <div className=" grid grid-cols-2 gap-10">
               <div className=" flex flex-col justify-start py-5 rounded-lg">
                 <img
@@ -52,8 +52,6 @@ export const BodyGuards = () => {
           </div>
         );
       })}
-    </section>
+    </div>
   );
 };
-
-export default BodyGuards;
