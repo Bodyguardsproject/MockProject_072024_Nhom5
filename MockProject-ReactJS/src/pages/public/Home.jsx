@@ -1,19 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Select } from "antd";
 import * as z from "zod";
-
-const { Option } = Select;
-const schema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  phoneNumber: z
-    .string()
-    .regex(/^\d{10}$/, "Phone number must be exactly 10 digits"),
-  message: z.string(),
-});
+import { HiChevronDown } from "react-icons/hi2";
 const securityServices = [
   {
     value: "Personal Security",
@@ -23,12 +12,12 @@ const securityServices = [
   {
     label: "Event Security",
     value: "Event Security",
-    url: "https://fastguardservice.com/wp-content/uploads/2023/12/Event-Security.png",
+    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm_r_HBGhX4U3xZVaq3cN2XFNL453qQdKCmw&s",
   },
   {
     label: "Asset Security",
     value: "Asset Security",
-    url: "https://fastguardservice.com/wp-content/uploads/2023/12/Personal-Security.png",
+    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAGJkXmsogC784QDtnk2QQ8ZAivUoFP2ggog&s",
   },
   {
     label: "Escort Security",
@@ -36,22 +25,51 @@ const securityServices = [
     url: "https://fastguardservice.com/wp-content/uploads/2024/01/Untitled-design-1-jpg.webp",
   },
 ];
+const schema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Invalid email address"),
+  service: z.enum(
+    [
+      "Personal Security",
+      "Event Security",
+      "Asset Security",
+      "Escort Security",
+    ],
+    {
+      required_error: "You must select a service",
+    }
+  ),
+  phoneNumber: z
+    .string()
+    .regex(/^\d{10}$/, "Phone number must be exactly 10 digits"),
+  message: z.string(),
+});
+
 export const Home = () => {
   const {
     register,
     handleSubmit,
+    trigger,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
   });
+  const [showServices, setShowServices] = useState(false);
+  const [service, setService] = useState("");
   const onSubmit = (data) => {
-    //console.log(data);
-  };
-  const handleChangeServiceType = (value) => {
-    //console.log(`selected ${value}`);
+    console.log(data);
   };
   return (
-    <div className="">
+    <div
+      onClick={(e) => {
+        if (!e.target.closest(".dropdown")) {
+          setShowServices(false);
+        }
+      }}
+      className=""
+    >
       <div
         className={`block relative w-full bg-no-repeat bg-cover bg-center`}
         style={{
@@ -148,28 +166,45 @@ export const Home = () => {
                       </p>
                     )}
                   </div>
-                  <Select
-                    placeholder={"- Select service -"}
-                    onChange={handleChangeServiceType}
-                    className="w-full mt-1 !font-bold"
-                    dropdownRender={() => (
-                      <div>
-                        {securityServices.map((el, id) => {
-                          return (
-                            <Option key={id} label={el.label}>
-                              <div className="demo-option-label-item">
-                                <span role="img" aria-label="China">
-                                  🇨🇳
-                                </span>
-                                China (中国)
+                  <div>
+                    <div
+                      onClick={() => setShowServices((prev) => !prev)}
+                      className="dropdown cursor-pointer flex relative items-center px-2 py-2 rounded-md  bg-white"
+                    >
+                      <input
+                        id="service"
+                        readOnly
+                        value={service}
+                        placeholder="- Select services -"
+                        className="dropdown text-sm cursor-pointer font-medium outline-none w-full"
+                      />
+                      <HiChevronDown />
+                      {showServices && (
+                        <div className="animate-fadeIn absolute w-full rounded-md overflow-hidden bg-white left-0 top-[110%]">
+                          {securityServices.map((el, idx) => {
+                            return (
+                              <div
+                                onClick={() => {
+                                  setValue("service", el.label);
+                                  setService(el.label);
+                                  trigger("service");
+                                }}
+                                className="px-2 text-sm font-semibold py-2 hover:bg-gray-200 cursor-pointer"
+                                key={idx}
+                              >
+                                {el.label}
                               </div>
-                            </Option>
-                          );
-                        })}
-                      </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                    {errors.service && (
+                      <p className="text-sm text-red-500 font-medium">
+                        {errors.service.message}
+                      </p>
                     )}
-                    options={securityServices}
-                  />
+                  </div>
                   <div>
                     <textarea
                       id="message"
@@ -222,31 +257,31 @@ export const Home = () => {
       <p className="flex items-center justify-center text-3xl font-bold">
         About Us
       </p>
-      <div className="px-20">
-        <div className="flex mt-8 gap-12">
-          <div className="basis-[40%]">
+      <div className="px-5 md:px-20">
+        <div className="flex-col md:flex-row flex mt-8 gap-12">
+          <div className="md:basis-[40%]">
             <div
-              className={`w-[80%] h-[250px]  bg-no-repeat bg-cover bg-center`}
+              className={`rounded-md w-full md:w-[80%] h-[250px]  bg-no-repeat bg-cover bg-center`}
               style={{
                 backgroundImage: `url(https://fastguardservice.com/wp-content/uploads/2024/06/IMG_4607.jpg)`,
               }}
             ></div>
           </div>
-          <div className="basis-[60%]">
+          <div className="md:basis-[60%]">
             <p className="text-base font-medium">Text</p>
           </div>
         </div>
-        <div className="flex mt-8 gap-12">
-          <div className="basis-[60%]">
-            <p className="text-base font-medium">Text</p>
-          </div>
-          <div className="basis-[40%]">
+        <div className="flex-col md:flex-row flex mt-8 gap-12">
+          <div className="md:basis-[40%]">
             <div
-              className={`w-[80%] h-[250px]  bg-no-repeat bg-cover bg-center`}
+              className={`rounded-md w-full md:w-[80%] h-[250px]  bg-no-repeat bg-cover bg-center`}
               style={{
                 backgroundImage: `url(https://fastguardservice.com/wp-content/uploads/2024/06/IMG_4607.jpg)`,
               }}
             ></div>
+          </div>
+          <div className="md:basis-[60%]">
+            <p className="text-base font-medium">Text</p>
           </div>
         </div>
       </div>
@@ -282,17 +317,17 @@ export const Home = () => {
       <p className="flex items-center justify-center text-3xl font-bold">
         Jobs
       </p>
-      <div className="px-20">
-        <div className="flex mt-8 gap-12">
-          <div className="basis-[40%]">
+      <div className="px-5 md:px-20 mb-6">
+        <div className="flex-col md:flex-row flex mt-8 gap-12">
+          <div className="md:basis-[40%]">
             <div
-              className={`w-[80%] h-[250px]  bg-no-repeat bg-cover bg-center`}
+              className={`rounded-md w-full md:w-[80%] h-[250px]  bg-no-repeat bg-cover bg-center`}
               style={{
                 backgroundImage: `url(https://fastguardservice.com/wp-content/uploads/2024/06/IMG_4607.jpg)`,
               }}
             ></div>
           </div>
-          <div className="basis-[60%]">
+          <div className="md:basis-[60%]">
             <p className="text-base font-medium">Text</p>
           </div>
         </div>
