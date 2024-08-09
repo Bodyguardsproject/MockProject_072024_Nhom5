@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import HeaderAdmin from "../../components/Header/HeaderAdmin";
 import logo from "../../assets/logo.jpg";
-import { SidebarAdmin,SidebarProfile } from "../../components/ComponentAdmin/index";
+import { SidebarAdmin, } from "../../components/ComponentAdmin/index";
 import { useLocation } from "react-router-dom";
 import {
   AdminAccounts,
   AdminContract,
+  AdminCustomers,
   AdminDashBoard,
+  AdminEquipment,
   AdminFeedbacks,
   AdminQuotes,
   AdminRecruitment,
   AdminSchedule,
   AdminServices,
-  AdminSettings,
   AdminTraining,
 } from "./index";
 
@@ -32,24 +33,27 @@ export const AdminHome = () => {
 <div className="w-full h-screen flex flex-col md:flex-row">
   <div className="w-[258px]   flex-none ">
     <div className="flex flex-col h-full">
-      <img src={logo} alt="logo" className="object-cover w-full " />
+      <img src={logo} alt="logo" className="object-cover w-full h-[100px] " />
       <SidebarAdmin />
     </div>
   </div>
-  <div className="flex-1 flex flex-col bg-white ">
+  <div className="flex-1 flex flex-col ">
     <HeaderAdmin />
     <div className="flex-1 overflow-auto">
       {tab === "dash" && <AdminDashBoard />}
       {tab === "services" && <AdminServices />}
       {tab === "accounts" && <AdminAccounts />}
+      {tab === "customers" && <AdminCustomers />}
       {tab === "quotes" && <AdminQuotes />}
       {tab === "training" && <AdminTraining />}
       {tab === "contract" && <AdminContract />}
       {tab === "schedule" && <AdminSchedule />}
       {tab === "feedbacks" && <AdminFeedbacks />}
       {tab === "recruitment" && <AdminRecruitment />}
-      {tab === "settings" && <AdminSettings />}
+      {tab === "equipment" && <AdminEquipment />}
+    
     </div>
+
   </div>
 </div>
 
