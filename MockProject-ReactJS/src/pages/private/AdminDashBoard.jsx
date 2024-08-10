@@ -11,14 +11,7 @@ import { CgExport } from "react-icons/cg";
 export const AdminDashBoard = () => {
   return (
     <div className="">
-      <div className="p-4 flex justify-between items-center">
-        <span className="tex-2xl font-bold">Employees</span>
-        <div className="flex justify-center items-center gap-2 bg-background-button p-2 rounded-lg cursor-pointer">
-          <AiOutlineUserAdd />
-          Add Employee
-        </div>
-      </div>
-      <TableAdmin />
+     
       <div className="p-4 flex gap-6 items-center">
         <span className="tex-2xl font-bold">Revenue Report Over Time</span>
         <div className="flex justify-center items-center gap-4 cursor-pointer">

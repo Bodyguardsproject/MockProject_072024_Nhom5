@@ -20,19 +20,25 @@ export const TableBodyguard = () => {
             <Table.Cell>Sliver</Table.Cell>
             <Table.Cell>Sliver</Table.Cell>
            
-            <Table.Cell className='flex gap-4'>
-              <a
-                href="#"
-                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+            <Table.Cell className="flex gap-4">
+              <span
+                onClick={() => {
+                  // setShowModal(true);
+                  
+                }}
+                className="font-medium bg-background-button text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
                 Edit
-              </a>
-              <a
-                href="#"
-                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+              </span>
+              <span
+                onClick={() => {
+                  // setShowModal(true);
+                  
+                }}
+                className="font-medium bg-background-button-second normal-case text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
                 Delete
-              </a>
+              </span>
             </Table.Cell>
           </Table.Row>
           <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -42,19 +48,25 @@ export const TableBodyguard = () => {
             <Table.Cell>White</Table.Cell>
             <Table.Cell>White</Table.Cell>
            
-            <Table.Cell className='flex gap-4'>
-              <a
-                href="#"
-                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+            <Table.Cell className="flex gap-4">
+              <span
+                onClick={() => {
+                  // setShowModal(true);
+                  
+                }}
+                className="font-medium bg-background-button text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
                 Edit
-              </a>
-              <a
-                href="#"
-                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+              </span>
+              <span
+                onClick={() => {
+                  // setShowModal(true);
+                  
+                }}
+                className="font-medium bg-background-button-second normal-case text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
                 Delete
-              </a>
+              </span>
             </Table.Cell>
           </Table.Row>
           <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -65,19 +77,25 @@ export const TableBodyguard = () => {
             <Table.Cell>Black</Table.Cell>
             
            
-            <Table.Cell className='flex gap-4'>
-              <a
-                href="#"
-                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+            <Table.Cell className="flex gap-4">
+              <span
+                onClick={() => {
+                  // setShowModal(true);
+                  
+                }}
+                className="font-medium bg-background-button text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
                 Edit
-              </a>
-              <a
-                href="#"
-                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+              </span>
+              <span
+                onClick={() => {
+                  // setShowModal(true);
+                  
+                }}
+                className="font-medium bg-background-button-second normal-case text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
                 Delete
-              </a>
+              </span>
             </Table.Cell>
           </Table.Row>
         </Table.Body>
