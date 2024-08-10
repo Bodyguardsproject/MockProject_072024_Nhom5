@@ -67,11 +67,6 @@ export const router = [
     path: "/admin",
     element: <AdminHome />,
 
-    children: [
-      {
-        path: PATH.CREATEACCOUNT,
-        element: <CreateAcount />,
-      },
-    ]
+   
   },
 ];

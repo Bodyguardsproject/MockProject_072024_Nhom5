@@ -1,17 +1,16 @@
-"use client";
-
+import React from 'react'
 import { Table } from "flowbite-react";
-
-export function TableAdmin() {
+export const TableCustomer = () => {
   return (
     <div className="overflow-x-auto">
       <Table>
         <Table.Head>
-          <Table.HeadCell>Section Title</Table.HeadCell>
-          <Table.HeadCell>Employee Name</Table.HeadCell>
-          <Table.HeadCell>Email</Table.HeadCell>
-          <Table.HeadCell>Role</Table.HeadCell>
-          <Table.HeadCell>Action</Table.HeadCell>
+          <Table.HeadCell>Customer Name</Table.HeadCell>
+          <Table.HeadCell>Address</Table.HeadCell>
+          <Table.HeadCell>Types</Table.HeadCell>
+          <Table.HeadCell>Number of Contract</Table.HeadCell>
+          <Table.HeadCell>Total amount</Table.HeadCell>
+          
         </Table.Head>
         <Table.Body className="divide-y">
           <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -21,18 +20,8 @@ export function TableAdmin() {
             <Table.Cell>Sliver</Table.Cell>
             <Table.Cell>Laptop</Table.Cell>
             <Table.Cell>$2999</Table.Cell>
-            <Table.Cell className="flex gap-4">
-              <span
-                onClick={() => {
-                  // setShowModal(true);
-                  
-                }}
-                className="font-medium bg-background-button text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
-              >
-                Edit
-              </span>
-            
-            </Table.Cell>
+            <Table.Cell>$2999</Table.Cell>
+           
           </Table.Row>
           <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
@@ -41,14 +30,8 @@ export function TableAdmin() {
             <Table.Cell>White</Table.Cell>
             <Table.Cell>Laptop PC</Table.Cell>
             <Table.Cell>$1999</Table.Cell>
-            <Table.Cell>
-              <a
-                href="#"
-                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-              >
-                Edit
-              </a>
-            </Table.Cell>
+            <Table.Cell>$2999</Table.Cell>
+            
           </Table.Row>
           <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
@@ -57,19 +40,13 @@ export function TableAdmin() {
             <Table.Cell>Black</Table.Cell>
             <Table.Cell>Accessories</Table.Cell>
             <Table.Cell>$99</Table.Cell>
-            <Table.Cell>
-              <a
-                href="#"
-                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-              >
-                Edit
-              </a>
-            </Table.Cell>
+            <Table.Cell>$2999</Table.Cell>
+            
           </Table.Row>
         </Table.Body>
       </Table>
     </div>
-  );
+  )
 }
 
-export default TableAdmin;
+export default TableCustomer
