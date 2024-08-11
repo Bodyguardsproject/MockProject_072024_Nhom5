@@ -1,3 +1,7 @@
+
+export * from "./TableContract";
+export * from "./TableTraining";
+
 export * from "./SidebarAdmin"
 export * from "./SidebarProfile"
 export * from "./TableAdmin"
@@ -14,3 +18,4 @@ export * from "./TableQuotes"
 export * from "./TableRecruitment"
 export * from "./TableEquipment"
 export * from "./EditAccount"
+
