@@ -10,9 +10,9 @@ import {
   AboutUs,
   Jobspage,
 } from "../pages/public";
-import { AdminHome } from "../pages/private";
 
-
+import { AdminHome ,} from "../pages/private";
+import {CreateAcount} from "../components/ComponentAdmin/index"
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
 export const router = [
   {
@@ -66,5 +66,7 @@ export const router = [
   {
     path: "/admin",
     element: <AdminHome />,
+
+   
   },
 ];
