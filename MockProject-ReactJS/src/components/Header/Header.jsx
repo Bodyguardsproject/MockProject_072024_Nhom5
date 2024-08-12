@@ -9,14 +9,16 @@ const options = [
   { name: "BodyGuards", path: PATH.BODYGUARDS },
   { name: "Jobs", path: PATH.JOBS },
   { name: "Quote" },
+  { name: "Login", path: `/auth/${PATH.LOGIN}` },
 ];
 export default function Header() {
   return (
     <div className="h-[60px] bg-primary-color flex items-center justify-between">
-      <div
+      <Link
+        to={"/"}
         className={`h-full w-[200px] bg-no-repeat bg-contain `}
         style={{ backgroundImage: `url(${logo})` }}
-      ></div>
+      ></Link>
       <div className="flex justify-between items-center">
         {options.map((option, id) => {
           return (
