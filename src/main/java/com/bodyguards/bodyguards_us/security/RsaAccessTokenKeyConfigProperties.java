@@ -4,15 +4,9 @@
  *  @created 8/12/2024 10:22 AM
  * */
 
-
 package com.bodyguards.bodyguards_us.security;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import java.security.interfaces.RSAPrivateKey;
-import java.security.interfaces.RSAPublicKey;
-
-
 @ConfigurationProperties(prefix = "jwt.key.access-token")
-public record RsaAccessTokenKeyConfigProperties(RSAPublicKey publicKey, RSAPrivateKey privateKey, Long expireIn) {
-}
+public record RsaAccessTokenKeyConfigProperties(String publicKey, String privateKey, Long expireIn) {}

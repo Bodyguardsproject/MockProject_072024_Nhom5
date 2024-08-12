@@ -4,7 +4,6 @@
  *  @created 8/12/2024 9:58 AM
  * */
 
-
 package com.bodyguards.bodyguards_us.security;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,19 +17,15 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 @Component
 public class CustomAccessDeniedException implements AccessDeniedHandler {
 
-    private final HandlerExceptionResolver resolver;
+	private final HandlerExceptionResolver resolver;
 
-    public CustomAccessDeniedException(
-            @Qualifier("handlerExceptionResolver") HandlerExceptionResolver resolver
-    ) {
-        this.resolver = resolver;
-    }
+	public CustomAccessDeniedException(@Qualifier("handlerExceptionResolver") HandlerExceptionResolver resolver) {
+		this.resolver = resolver;
+	}
 
-    @Override
-    public void handle(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            AccessDeniedException accessDeniedException) {
-        resolver.resolveException(request, response, null, accessDeniedException);
-    }
+	@Override
+	public void handle(
+			HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) {
+		resolver.resolveException(request, response, null, accessDeniedException);
+	}
 }

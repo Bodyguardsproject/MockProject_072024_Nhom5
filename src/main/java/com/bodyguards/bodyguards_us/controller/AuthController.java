@@ -4,7 +4,6 @@
  *  @created 8/12/2024 11:28 AM
  * */
 
-
 package com.bodyguards.bodyguards_us.controller;
 
 import com.bodyguards.bodyguards_us.dto.ApiResponse;
@@ -25,29 +24,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
-    private final AuthService authService;
+	private final AuthService authService;
 
-    @PostMapping("/register")
-    public ResponseEntity<ApiResponse<?>> register(
-            @RequestBody() @Valid CreateAccountRequest request
-    ) {
-        ApiResponse<?> response = ApiResponse.success(authService.register(request));
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
+	@PostMapping("/register")
+	public ResponseEntity<ApiResponse<?>> register(@RequestBody() @Valid CreateAccountRequest request) {
+		ApiResponse<?> response = ApiResponse.success(authService.register(request));
+		return new ResponseEntity<>(response, HttpStatus.CREATED);
+	}
 
-    @PostMapping("/login")
-    public ResponseEntity<ApiResponse<?>> login(
-            @RequestBody() @Valid LoginRequest request
-    ) {
-        ApiResponse<?> response = ApiResponse.success(authService.login(request));
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
+	@PostMapping("/login")
+	public ResponseEntity<ApiResponse<?>> login(@RequestBody() @Valid LoginRequest request) {
+		ApiResponse<?> response = ApiResponse.success(authService.login(request));
+		return new ResponseEntity<>(response, HttpStatus.CREATED);
+	}
 
-    @PostMapping("refresh-token")
-    public ResponseEntity<ApiResponse<?>> login(
-            @RequestBody() @Valid RefreshTokenRequest request
-    ) {
-        ApiResponse<?> response = ApiResponse.success(authService.refreshToken(request));
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
+	@PostMapping("refresh-token")
+	public ResponseEntity<ApiResponse<?>> login(@RequestBody() @Valid RefreshTokenRequest request) {
+		ApiResponse<?> response = ApiResponse.success(authService.refreshToken(request));
+		return new ResponseEntity<>(response, HttpStatus.CREATED);
+	}
 }

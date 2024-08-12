@@ -4,7 +4,6 @@
  *  @created 8/12/2024 11:43 AM
  * */
 
-
 package com.bodyguards.bodyguards_us.dto;
 
 import lombok.AllArgsConstructor;
@@ -17,8 +16,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserResponse {
-    private Long id;
-    private String email;
-    private String fullName;
-    private String phone;
+	private Long id;
+	private String email;
+	private String fullName;
+	private String phone;
 }

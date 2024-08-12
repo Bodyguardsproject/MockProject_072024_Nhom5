@@ -4,7 +4,6 @@
  *  @created 8/12/2024 10:18 AM
  * */
 
-
 package com.bodyguards.bodyguards_us.security;
 
 import lombok.NonNull;
@@ -21,12 +20,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class JwtAuthenticationConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
-    private final UserDetailsService userDetailsService;
+	private final UserDetailsService userDetailsService;
 
-    @Override
-    public AbstractAuthenticationToken convert(@NonNull Jwt jwt) {
-        String email = jwt.getClaim("email");
-        UserDetails user = userDetailsService.loadUserByUsername(email);
-        return new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-    }
+	@Override
+	public AbstractAuthenticationToken convert(@NonNull Jwt jwt) {
+		String email = jwt.getClaim("email");
+		UserDetails user = userDetailsService.loadUserByUsername(email);
+		return new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+	}
 }
