@@ -9,7 +9,10 @@ package com.bodyguards.bodyguards_us.service;
 
 import com.bodyguards.bodyguards_us.dto.AuthenticationResponse;
 import com.bodyguards.bodyguards_us.dto.CreateAccountRequest;
+import com.bodyguards.bodyguards_us.dto.LoginRequest;
 
 public interface AuthService {
     AuthenticationResponse register(CreateAccountRequest request);
+
+    AuthenticationResponse login(LoginRequest request);
 }

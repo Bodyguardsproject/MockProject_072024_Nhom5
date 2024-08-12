@@ -7,6 +7,7 @@
 
 package com.bodyguards.bodyguards_us.config;
 
+import com.bodyguards.bodyguards_us.enums.UserRole;
 import com.bodyguards.bodyguards_us.security.JwtAuthenticationConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -42,6 +43,8 @@ public class SecurityConfig {
                 .sessionManagement(config -> config.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(handler -> handler
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/test/admin").hasRole(UserRole.ADMIN.toString())
+                        .requestMatchers("/test/bodyguard").hasRole(UserRole.BODYGUARD.toString())
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth -> oauth

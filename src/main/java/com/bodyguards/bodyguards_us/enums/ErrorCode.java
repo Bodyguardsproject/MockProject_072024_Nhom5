@@ -18,7 +18,8 @@ public enum ErrorCode {
     UNAUTHORIZED_ERROR(1004, "Unauthorized", HttpStatus.UNAUTHORIZED),
     REQUEST_VALIDATION_FAILED(1004, "Request validation failed", HttpStatus.BAD_REQUEST),
     RESOURCE_NOT_FOUND(1005, "Resources not found", HttpStatus.NOT_FOUND),
-    
+    USER_ALREADY_EXISTED(1006, "User already existed", HttpStatus.CONFLICT),
+    INVALID_USERNAME_OR_PASSWORD(1007, "Invalid username or password", HttpStatus.BAD_REQUEST),
     ;
     private final String message;
     private final HttpStatus status;

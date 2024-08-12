@@ -8,7 +8,7 @@ spring:
     database: postgresql
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -25,4 +25,4 @@ jwt:
       expireIn: 120 # hour == 5 days
 admin:
   email: admin@gmail.com
-  password: 12345678
+  password: ABCabc123@

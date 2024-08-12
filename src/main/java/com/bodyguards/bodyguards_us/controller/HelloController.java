@@ -14,11 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/test")
 public class HelloController {
-	@GetMapping
-	public ResponseEntity<ApiResponse<?>> hello() {
-		ApiResponse<?> response = ApiResponse.success("Hello world");
-		return new ResponseEntity<>(response, HttpStatus.OK);
-	}
+    @GetMapping("admin")
+    public ResponseEntity<ApiResponse<?>> helloAdmin() {
+        ApiResponse<?> response = ApiResponse.success("Hello admin");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("bodyguard")
+    public ResponseEntity<ApiResponse<?>> helloBodyguard() {
+        ApiResponse<?> response = ApiResponse.success("Hello Bodyguard");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 }

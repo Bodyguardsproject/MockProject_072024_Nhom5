@@ -18,5 +18,6 @@ public interface UserMapper {
     User createAccountRequestToUser(CreateAccountRequest createAccountRequest);
 
     @Mapping(target = "fullName", expression = "java(user.getFirstName() + \" \" + user.getLastName())")
+    @Mapping(target = "id", source = "idUser")
     UserResponse userToUserResponse(User user);
 }

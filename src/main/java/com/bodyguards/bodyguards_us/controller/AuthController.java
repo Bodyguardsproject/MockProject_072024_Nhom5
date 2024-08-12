@@ -9,6 +9,7 @@ package com.bodyguards.bodyguards_us.controller;
 
 import com.bodyguards.bodyguards_us.dto.ApiResponse;
 import com.bodyguards.bodyguards_us.dto.CreateAccountRequest;
+import com.bodyguards.bodyguards_us.dto.LoginRequest;
 import com.bodyguards.bodyguards_us.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,14 @@ public class AuthController {
             @RequestBody() @Valid CreateAccountRequest request
     ) {
         ApiResponse<?> response = ApiResponse.success(authService.register(request));
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<ApiResponse<?>> login(
+            @RequestBody() @Valid LoginRequest request
+    ) {
+        ApiResponse<?> response = ApiResponse.success(authService.login(request));
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }

@@ -30,7 +30,7 @@ public class User extends BaseEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "tbl_user_has_role",
             joinColumns = @JoinColumn(name = "id_role"),
@@ -67,7 +67,7 @@ public class User extends BaseEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName().toString())).toList();
+        return roles.stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName().toString())).toList();
     }
 
     @Override
