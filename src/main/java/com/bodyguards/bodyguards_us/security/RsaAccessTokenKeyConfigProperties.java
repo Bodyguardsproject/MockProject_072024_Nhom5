@@ -12,9 +12,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
-@ConfigurationProperties(prefix = "jwt.key.access-token")
-public record RsaAccessTokenKeyConfigProperties(
-        RSAPublicKey publicKey, RSAPrivateKey privateKey, Long expireIn
-) {
 
+@ConfigurationProperties(prefix = "jwt.key.access-token")
+public record RsaAccessTokenKeyConfigProperties(RSAPublicKey publicKey, RSAPrivateKey privateKey, Long expireIn) {
 }

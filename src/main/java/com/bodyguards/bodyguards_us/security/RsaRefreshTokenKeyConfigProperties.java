@@ -13,8 +13,6 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
 @ConfigurationProperties(prefix = "jwt.key.refresh-token")
-public record RsaRefreshTokenKeyConfigProperties(
-        RSAPublicKey publicKey, RSAPrivateKey privateKey, Long expireIn
-) {
-
+public record RsaRefreshTokenKeyConfigProperties(RSAPublicKey publicKey, RSAPrivateKey privateKey, Long expireIn) {
 }
+

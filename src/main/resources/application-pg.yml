@@ -1,15 +1,28 @@
 spring:
   datasource:
-    url: jdbc:postgresql://roundhouse.proxy.rlwy.net:59717/railway
+    url: jdbc:postgresql://monorail.proxy.rlwy.net:15256/railway
     username: postgres
-    password: luuPocvuuxLiXjBMikraJNdSnfNwGfRN
+    password: YTRqBsjTUBjmOlhFHifqdOkaldkqUTgn
     driver-class-name: org.postgresql.Driver
   jpa:
     database: postgresql
     generate-ddl: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
         show_sql: true
+jwt:
+  key:
+    access-token:
+      private-key: classpath:certs/access_token/private-key.pem
+      public-key: classpath:certs/access_token/public-key.pem
+      expireIn: 2 # hour
+    refresh-token:
+      private-key: classpath:certs/refresh_token/private-key.pem
+      public-key: classpath:certs/refresh_token/public-key.pem
+      expireIn: 120 # hour == 5 days
+admin:
+  email: admin@gmail.com
+  password: 12345678

@@ -9,7 +9,7 @@ server:
 
 spring:
   profiles:
-    active: dev
+    active: pg
     default: dev
   application:
     name: bodyguards-us
@@ -27,7 +27,6 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
-
 jwt:
   key:
     access-token:
@@ -38,3 +37,6 @@ jwt:
       private-key: ${REFRESH_TOKEN_PUBLIC_KEY_PATH}
       public-key: ${REFRESH_TOKEN_PRIVATE_KEY_PATH}
       expireIn: 120 # hour == 5 days
+admin:
+  email: ${ADMIN_EMAIL}
+  password: ${ADMIN_PASSWORD}
