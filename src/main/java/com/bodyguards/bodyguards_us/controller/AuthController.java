@@ -10,6 +10,7 @@ package com.bodyguards.bodyguards_us.controller;
 import com.bodyguards.bodyguards_us.dto.ApiResponse;
 import com.bodyguards.bodyguards_us.dto.CreateAccountRequest;
 import com.bodyguards.bodyguards_us.dto.LoginRequest;
+import com.bodyguards.bodyguards_us.dto.RefreshTokenRequest;
 import com.bodyguards.bodyguards_us.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +40,14 @@ public class AuthController {
             @RequestBody() @Valid LoginRequest request
     ) {
         ApiResponse<?> response = ApiResponse.success(authService.login(request));
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @PostMapping("refresh-token")
+    public ResponseEntity<ApiResponse<?>> login(
+            @RequestBody() @Valid RefreshTokenRequest request
+    ) {
+        ApiResponse<?> response = ApiResponse.success(authService.refreshToken(request));
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }

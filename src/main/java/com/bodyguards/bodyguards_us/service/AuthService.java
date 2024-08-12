@@ -7,12 +7,12 @@
 package com.bodyguards.bodyguards_us.service;
 
 
-import com.bodyguards.bodyguards_us.dto.AuthenticationResponse;
-import com.bodyguards.bodyguards_us.dto.CreateAccountRequest;
-import com.bodyguards.bodyguards_us.dto.LoginRequest;
+import com.bodyguards.bodyguards_us.dto.*;
 
 public interface AuthService {
     AuthenticationResponse register(CreateAccountRequest request);
 
     AuthenticationResponse login(LoginRequest request);
+
+    TokenResponse refreshToken(RefreshTokenRequest request);
 }

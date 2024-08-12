@@ -80,4 +80,9 @@ public class AuthServiceImpl implements AuthService {
                 .user(userResponse)
                 .build();
     }
+
+    @Override
+    public TokenResponse refreshToken(RefreshTokenRequest request) {
+        return jwtService.refreshToken(request.getRefreshToken());
+    }
 }
