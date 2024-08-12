@@ -8,8 +8,10 @@ export const PATH = {
   FORGOTPASSWORD: "forgotpassword",
 
   RESETPASSWORD: "resetpassword",
-  ADMIN:"admin",
-  CREATEACCOUNT:"create-account",
+  ADMIN: "admin",
+  CREATEACCOUNT: "create-account",
   ABOUT_US: "about-us",
   JOBS: "jobs",
+
+  PROFILE: "profile",
 };
