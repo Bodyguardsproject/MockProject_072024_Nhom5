@@ -9,9 +9,13 @@ package com.bodyguards.bodyguards_us.entity;
 import com.bodyguards.bodyguards_us.enums.Gender;
 import com.bodyguards.bodyguards_us.enums.UserStatus;
 import jakarta.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Data
@@ -19,13 +23,13 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "tbl_user")
-public class User extends BaseEntity {
+@Table(name = "tbl_user", indexes = @Index(columnList = "email"))
+public class User extends BaseEntity implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUser;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "tbl_user_has_role",
 			joinColumns = @JoinColumn(name = "id_role"),
@@ -51,7 +55,7 @@ public class User extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 
-	@Column(length = 12)
+	@Column(length = 20)
 	private String phone;
 
 	@Column(length = 100)
@@ -59,4 +63,16 @@ public class User extends BaseEntity {
 
 	@Enumerated(EnumType.STRING)
 	private UserStatus status;
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return roles.stream()
+				.map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName().toString()))
+				.toList();
+	}
+
+	@Override
+	public String getUsername() {
+		return email;
+	}
 }

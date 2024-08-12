@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+// @EnableJpaAuditing(auditorAwareRef = "auditorAware")
 public class BodyguardsUsApplication {
 
 	public static void main(String[] args) {
