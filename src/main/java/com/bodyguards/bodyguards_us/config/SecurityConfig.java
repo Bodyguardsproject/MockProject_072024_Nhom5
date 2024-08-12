@@ -26,31 +26,38 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-	private final AccessDeniedHandler accessDeniedHandler;
-	private final AuthenticationEntryPoint authenticationEntryPoint;
-	private final JwtAuthenticationConverter jwtAuthenticationConverter;
+    private final AccessDeniedHandler accessDeniedHandler;
+    private final AuthenticationEntryPoint authenticationEntryPoint;
+    private final JwtAuthenticationConverter jwtAuthenticationConverter;
 
-	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		return http.csrf(AbstractHttpConfigurer::disable)
-				.exceptionHandling(config -> config.accessDeniedHandler(accessDeniedHandler)
-						.authenticationEntryPoint(authenticationEntryPoint))
-				.sessionManagement(config -> config.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.authorizeHttpRequests(handler -> handler.requestMatchers("/auth/**")
-						.permitAll()
-						.requestMatchers("/test/admin")
-						.hasRole(UserRole.ADMIN.toString())
-						.requestMatchers("/test/bodyguard")
-						.hasRole(UserRole.BODYGUARD.toString())
-						.anyRequest()
-						.authenticated())
-				.oauth2ResourceServer(oauth -> oauth.authenticationEntryPoint(authenticationEntryPoint)
-						.jwt(jwtConfig -> jwtConfig.jwtAuthenticationConverter(jwtAuthenticationConverter)))
-				.build();
-	}
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http.csrf(AbstractHttpConfigurer::disable)
+                .exceptionHandling(config -> config.accessDeniedHandler(accessDeniedHandler)
+                        .authenticationEntryPoint(authenticationEntryPoint))
+                .sessionManagement(config -> config.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(handler -> handler
+                        .requestMatchers(
+                                "/docs",
+                                "/v3/api-docs/**",
+                                "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/auth/**"
+                        )
+                        .permitAll()
+                        .requestMatchers("/test/admin")
+                        .hasRole(UserRole.ADMIN.toString())
+                        .requestMatchers("/test/bodyguard")
+                        .hasRole(UserRole.BODYGUARD.toString())
+                        .anyRequest()
+                        .authenticated())
+                .oauth2ResourceServer(oauth -> oauth.authenticationEntryPoint(authenticationEntryPoint)
+                        .jwt(jwtConfig -> jwtConfig.jwtAuthenticationConverter(jwtAuthenticationConverter)))
+                .build();
+    }
 
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder(10);
-	}
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(10);
+    }
 }
