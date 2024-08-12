@@ -17,6 +17,7 @@ import com.bodyguards.bodyguards_us.repository.RoleRepository;
 import com.bodyguards.bodyguards_us.repository.UserRepository;
 import com.bodyguards.bodyguards_us.service.AuthService;
 import com.bodyguards.bodyguards_us.service.JwtService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,81 +27,79 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
-    private final UserRepository userRepository;
-    private final UserMapper userMapper;
-    private final RoleRepository roleRepository;
-    private final JwtService jwtService;
-    private final PasswordEncoder passwordEncoder;
+	private final UserRepository userRepository;
+	private final UserMapper userMapper;
+	private final RoleRepository roleRepository;
+	private final JwtService jwtService;
+	private final PasswordEncoder passwordEncoder;
 
-    @Override
-    public AuthenticationResponse register(CreateAccountRequest request) {
+	@Override
+	public AuthenticationResponse register(CreateAccountRequest request) {
 
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new ApiException(ErrorCode.USER_ALREADY_EXISTED);
-        }
+		if (userRepository.existsByEmail(request.getEmail())) {
+			throw new ApiException(ErrorCode.USER_ALREADY_EXISTED);
+		}
 
-        User user = userMapper.createAccountRequestToUser(request);
+		User user = userMapper.createAccountRequestToUser(request);
 
-        Role role = roleRepository
-                .findByName(UserRole.USER)
-                .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND));
+		Role role = roleRepository
+				.findByName(UserRole.USER)
+				.orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND));
 
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRoles(List.of(role));
+		user.setPassword(passwordEncoder.encode(request.getPassword()));
+		user.setRoles(List.of(role));
 
-        User newUser = userRepository.save(user);
-        UserResponse userResponse = userMapper.userToUserResponse(newUser);
+		User newUser = userRepository.save(user);
+		UserResponse userResponse = userMapper.userToUserResponse(newUser);
 
-        TokenResponse tokenResponse = jwtService.generateTokenPair(
-                new UsernamePasswordAuthenticationToken(newUser, null, newUser.getAuthorities()));
+		TokenResponse tokenResponse = jwtService.generateTokenPair(
+				new UsernamePasswordAuthenticationToken(newUser, null, newUser.getAuthorities()));
 
-        return AuthenticationResponse.builder()
-                .tokens(tokenResponse)
-                .user(userResponse)
-                .build();
-    }
+		return AuthenticationResponse.builder()
+				.tokens(tokenResponse)
+				.user(userResponse)
+				.build();
+	}
 
-    @Bean
-    CorsConfigurationSource apiConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("*");
-        configuration.addAllowedMethod("*");
-        configuration.addAllowedHeader("*");
-        configuration.setAllowCredentials(true);
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+	@Bean
+	CorsConfigurationSource apiConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.addAllowedOrigin("*");
+		configuration.addAllowedMethod("*");
+		configuration.addAllowedHeader("*");
+		configuration.setAllowCredentials(true);
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
 
-    @Override
-    public AuthenticationResponse login(LoginRequest request) {
+	@Override
+	public AuthenticationResponse login(LoginRequest request) {
 
-        User user = userRepository
-                .findByEmail(request.getEmail())
-                .orElseThrow(() -> new ApiException(ErrorCode.INVALID_USERNAME_OR_PASSWORD));
+		User user = userRepository
+				.findByEmail(request.getEmail())
+				.orElseThrow(() -> new ApiException(ErrorCode.INVALID_USERNAME_OR_PASSWORD));
 
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new ApiException(ErrorCode.INVALID_USERNAME_OR_PASSWORD);
-        }
+		if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+			throw new ApiException(ErrorCode.INVALID_USERNAME_OR_PASSWORD);
+		}
 
-        UserResponse userResponse = userMapper.userToUserResponse(user);
+		UserResponse userResponse = userMapper.userToUserResponse(user);
 
-        TokenResponse tokenResponse = jwtService.generateTokenPair(
-                new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities()));
+		TokenResponse tokenResponse = jwtService.generateTokenPair(
+				new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities()));
 
-        return AuthenticationResponse.builder()
-                .tokens(tokenResponse)
-                .user(userResponse)
-                .build();
-    }
+		return AuthenticationResponse.builder()
+				.tokens(tokenResponse)
+				.user(userResponse)
+				.build();
+	}
 
-    @Override
-    public TokenResponse refreshToken(RefreshTokenRequest request) {
-        return jwtService.refreshToken(request.getRefreshToken());
-    }
+	@Override
+	public TokenResponse refreshToken(RefreshTokenRequest request) {
+		return jwtService.refreshToken(request.getRefreshToken());
+	}
 }

@@ -2,7 +2,7 @@
 
 ### Swagger api url:
 
-http://localhost:8080/api/docs
+http://localhost:8080/api/v1/docs
 
 ### Token key:
 
