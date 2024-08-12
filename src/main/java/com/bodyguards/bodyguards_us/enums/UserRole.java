@@ -7,6 +7,9 @@
 package com.bodyguards.bodyguards_us.enums;
 
 public enum UserRole {
-	ADMIN,
-	// ...
+    ADMIN,
+    MANAGER,
+    STAFF,
+    SUPERVISOR,
+    BODYGUARD
 }
