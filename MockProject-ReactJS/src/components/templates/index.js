@@ -9,4 +9,5 @@ export * from "./ResetPasswordTemplate";
 export * from "./BodyGuardsTemplate";
 export * from "./AboutUsTemplate";
 export * from "./JobsTemplate";
+export * from "./BodyGuardsProfileTemplate";
 //
