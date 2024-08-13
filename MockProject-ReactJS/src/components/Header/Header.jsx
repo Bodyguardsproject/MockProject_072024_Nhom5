@@ -39,7 +39,6 @@ export default function Header() {
       <Link to={"/"} className="px-2 flex  gap-2 items-center  ">
         <IoMdNotificationsOutline className="text-black text-xl hover:text-white duration-300 " />
         <span className="text-black hover:text-white duration-300">
-          {" "}
           Notification
         </span>
       </Link>

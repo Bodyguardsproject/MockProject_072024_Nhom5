@@ -10,6 +10,7 @@ import {
   Col,
   Space,
 } from "antd";
+import { useState } from "react";
 import { AiOutlineUpload } from "react-icons/ai";
 
 export const BodyGuardsProfileTemplate = () => {
@@ -30,13 +31,23 @@ export const BodyGuardsProfileTemplate = () => {
       }
     },
   };
+  const [componentDisabled, setComponentDisabled] = useState(true);
+  const onFinish = (values) => {
+    console.log("Success:", values);
+    setComponentDisabled(true);
+  };
+
   return (
-    <div className=" max-w-7xl  m-auto py-14">
+    <div className=" max-w-7xl  m-auto py-14 px-5 sm:px-0">
       <h1 className="text-2xl font-bold">My profile</h1>
       <p className="">Manage profile information to secure your account</p>
-      <div className=" grid grid-cols-3 gap-5  mt-10">
+      <div className=" grid grid-cols-1 sm:grid-cols-3 gap-5  mt-10 ">
         <div className="col-span-2 px-4 py-4 border-[1px] rounded-3xl border-gray-400">
-          <Form layout="vertical">
+          <Form
+            layout="vertical"
+            disabled={componentDisabled}
+            onFinish={onFinish}
+          >
             <Row gutter={24}>
               <Col span={12}>
                 <Form.Item
@@ -165,21 +176,39 @@ export const BodyGuardsProfileTemplate = () => {
                 </Space>
               </Radio.Group>
             </Form.Item>
-
-            <Form.Item>
-              <div className=" flex justify-end">
-                {" "}
-                <button
-                  type="submit"
-                  className="bg-primary-color font-semibold text-black py-1 px-6 rounded-lg text-[18px]  focus:bg-black duration-500"
-                >
-                  Edit
-                </button>
-              </div>
-            </Form.Item>
+            {componentDisabled === true ? (
+              <Form.Item>
+                <div className=" flex justify-end">
+                  <p
+                    className="cursor-pointer bg-primary-color font-semibold text-black py-1 px-6 rounded-lg text-[18px]  focus:bg-black duration-500"
+                    onClick={() => setComponentDisabled(false)}
+                  >
+                    Edit
+                  </p>
+                </div>
+              </Form.Item>
+            ) : (
+              <Form.Item>
+                <div className=" flex justify-end gap-5">
+                  <button
+                    type="reset"
+                    className="cursor-pointer bg-primary-color font-semibold text-black py-1 px-6 rounded-lg text-[18px]  focus:bg-black duration-500"
+                    onClick={() => setComponentDisabled(true)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="cursor-pointer bg-primary-color font-semibold text-black py-1 px-6 rounded-lg text-[18px]  focus:bg-black duration-500 focus:text-white"
+                  >
+                    Save
+                  </button>
+                </div>
+              </Form.Item>
+            )}
           </Form>
         </div>
-        <div className="p-4  border-[1px]  rounded-3xl border-gray-400 h-[300px]">
+        <div className="p-4  border-[1px]  rounded-3xl border-gray-400 h-[300px] order-first sm:order-1">
           <div className="flex items-center gap-4 pb-5">
             <img
               src="https://fastguardservice.com/wp-content/uploads/2024/06/IMG_4607.jpg"
