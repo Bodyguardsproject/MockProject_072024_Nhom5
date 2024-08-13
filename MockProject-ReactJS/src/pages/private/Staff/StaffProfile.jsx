@@ -24,12 +24,12 @@ export default function StaffProfile() {
   } = useForm({
     resolver: zodResolver(schema),
   });
-  const onSubmit = (data) => {
-    console.log(data);
-  };
   const [selected, setSelected] = useState();
   const [showDayPicker, setShowDayPicker] = useState(false);
   const [gender, setGender] = useState(1);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   const onChange = (e) => {
     setGender(e.target.value);
@@ -58,14 +58,14 @@ export default function StaffProfile() {
     <div className="px-20 py-12">
       <h1 className="text-2xl font-bold">My profile</h1>
       <p className="">Manage profile information to secure your account</p>
-      <div className="flex mt-6 gap-4">
-        <div className="basis-[70%]">
+      <div className="flex mt-6 gap-4 flex-col md:flex-row">
+        <div className="order-2 md:order-1 basis-[70%]">
           <div className="px-4 py-4 border-[1px] rounded-md border-gray-400">
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-1"
             >
-              <div className="flex gap-4">
+              <div className="flex gap-4 md:flex-row flex-col">
                 <div className="basis-[50%]">
                   <p className="text-base font-semibold mb-1 ">Name</p>
                   <input
@@ -179,7 +179,7 @@ export default function StaffProfile() {
             </form>
           </div>
         </div>
-        <div className="basis-[30%]">
+        <div className="order-1 md:order-2 basis-[30%]">
           <div className="px-4 py-4 border-[1px] rounded-md border-gray-400">
             <div className="flex items-center gap-4">
               <div
