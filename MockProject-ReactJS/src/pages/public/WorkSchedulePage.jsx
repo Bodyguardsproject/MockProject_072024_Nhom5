@@ -1,5 +1,5 @@
 import { WorkScheduleTemplate } from "../../components/templates";
 
-export const WorkSchedule = () => {
+export const WorkSchedulePage = () => {
   return <WorkScheduleTemplate />;
 };
