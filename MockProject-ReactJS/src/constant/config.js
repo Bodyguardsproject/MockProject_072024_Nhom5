@@ -13,6 +13,8 @@ export const PATH = {
   ABOUT_US: "about-us",
   JOBS: "jobs",
 
+  UPLOADCV: "uploadcv",
+
   PROFILE_STAFF: "profile/staff",
   PROFILE_BODYGUARD: "profile/bodyguard",
 

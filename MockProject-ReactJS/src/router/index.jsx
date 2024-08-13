@@ -9,6 +9,7 @@ import {
   ResetPassword,
   AboutUs,
   Jobspage,
+  UploadCVPage,
 } from "../pages/public";
 
 import { AdminHome } from "../pages/private";
@@ -41,6 +42,10 @@ export const router = [
       {
         path: PATH.JOBS,
         element: <Jobspage />,
+      },
+      {
+        path: PATH.UPLOADCV,
+        element: <UploadCVPage />,
       },
     ],
   },
