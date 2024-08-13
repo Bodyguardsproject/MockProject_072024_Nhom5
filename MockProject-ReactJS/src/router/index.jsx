@@ -10,6 +10,7 @@ import {
   AboutUs,
   Jobspage,
   UploadCVPage,
+  WorkSchedule,
 } from "../pages/public";
 
 import { AdminHome } from "../pages/private";
@@ -45,6 +46,10 @@ export const router = [
       {
         path: PATH.UPLOADCV,
         element: <UploadCVPage />,
+      },
+      {
+        path: PATH.WORKSCHEDULE,
+        element: <WorkSchedule />,
       },
     ],
   },

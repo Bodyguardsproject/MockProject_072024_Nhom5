@@ -17,4 +17,5 @@ export const PATH = {
 
   PROFILE: "profile",
   PROFILE_BODYGUARD: "profile/bodyguard",
+  WORKSCHEDULE: "workchedule",
 };

@@ -9,3 +9,4 @@ export * from "./ResetPassword";
 export * from "./AboutUs";
 export * from "./Jobs";
 export * from "./UploadCV";
+export * from "./WorkSchedule";
