@@ -10,7 +10,7 @@ import {
   AboutUs,
   Jobspage,
   UploadCVPage,
-  WorkSchedule,
+  WorkSchedulePage,
 } from "../pages/public";
 
 import { AdminHome } from "../pages/private";
@@ -49,8 +49,8 @@ export const router = [
         element: <UploadCVPage />,
       },
       {
-        path: PATH.WORKSCHEDULE,
-        element: <WorkSchedule />,
+        path: PATH.BODYGUARD_WORKSCHEDULE,
+        element: <WorkSchedulePage />,
       },
     ],
   },
