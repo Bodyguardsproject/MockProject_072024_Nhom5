@@ -14,8 +14,9 @@ import {
 import { AdminHome } from "../pages/private";
 import { CreateAcount } from "../components/ComponentAdmin/index";
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
-import Profile from "../pages/private/Menu/Profile/Profile";
+import StaffProfile from "../pages/private/Staff/StaffProfile";
 import { BodyGuardsProfileTemplate } from "../components/templates";
+import WorkSchedule from "../pages/private/Supervisor/WorkSchedule";
 export const router = [
   {
     path: "/",
@@ -74,12 +75,22 @@ export const router = [
     element: <CustomerLayout />,
     children: [
       {
-        path: PATH.PROFILE,
-        element: <Profile />,
+        path: PATH.PROFILE_STAFF,
+        element: <StaffProfile />,
       },
       {
         path: PATH.PROFILE_BODYGUARD,
         element: <BodyGuardsProfileTemplate />,
+      },
+    ],
+  },
+  {
+    path: "/supervisor",
+    element: <CustomerLayout />,
+    children: [
+      {
+        path: PATH.SUPERVISOR_WORKSCHEDULE,
+        element: <WorkSchedule />,
       },
     ],
   },
