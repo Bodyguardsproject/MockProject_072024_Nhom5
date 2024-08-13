@@ -10,4 +10,5 @@ export * from "./BodyGuardsTemplate";
 export * from "./AboutUsTemplate";
 export * from "./JobsTemplate";
 export * from "./BodyGuardsProfileTemplate";
+export * from "./UpLoadCVTemplate.jsx";
 //

@@ -13,6 +13,8 @@ export const PATH = {
   ABOUT_US: "about-us",
   JOBS: "jobs",
 
+  UPLOADCV: "uploadcv",
+
   PROFILE: "profile",
   PROFILE_BODYGUARD: "profile/bodyguard",
 };
