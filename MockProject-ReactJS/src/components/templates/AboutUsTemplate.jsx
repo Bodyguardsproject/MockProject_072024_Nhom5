@@ -65,7 +65,7 @@ export const AboutUsTemplate = () => {
         })}
       </div>
       <div className="max-w-7xl m-auto p-5 ">
-        <Divider style={{ borderColor: "rgb(82 82 91)" }}></Divider>{" "}
+        <Divider style={{ borderColor: "rgb(82 82 91)" }} />
         <h3 className="text-center underline text-3xl font-bold pb-5">
           Why choose our Services?
         </h3>

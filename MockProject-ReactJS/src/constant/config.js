@@ -16,7 +16,8 @@ export const PATH = {
   UPLOADCV: "uploadcv",
 
   PROFILE_STAFF: "profile/staff",
-  PROFILE_BODYGUARD: "profile/bodyguard",
-
+  PROFILE_BODYGUARD: "profile/bodyguard", 
+  BODYGUARD_WORKSCHEDULE: "bodyguard/workchedule",
   SUPERVISOR_WORKSCHEDULE: "workschedule",
+
 };
