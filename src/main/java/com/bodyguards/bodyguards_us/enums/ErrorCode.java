@@ -20,6 +20,11 @@ public enum ErrorCode {
 	RESOURCE_NOT_FOUND(1005, "Resources not found", HttpStatus.NOT_FOUND),
 	USER_ALREADY_EXISTED(1006, "User already existed", HttpStatus.CONFLICT),
 	INVALID_USERNAME_OR_PASSWORD(1007, "Invalid username or password", HttpStatus.BAD_REQUEST),
+	TO_MANY_RESET_PASSWORD(
+			1008,
+			"You have exceeded the maximum number of password reset attempts. Please try again tomorrow.",
+			HttpStatus.TOO_MANY_REQUESTS),
+	INVALID_RESET_PASSWORD_TOKEN(1009, "Invalid reset password token", HttpStatus.FORBIDDEN),
 	;
 	private final String message;
 	private final HttpStatus status;

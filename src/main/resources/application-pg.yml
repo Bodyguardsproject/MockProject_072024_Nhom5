@@ -1,14 +1,14 @@
 spring:
   datasource:
-    url: jdbc:postgresql://monorail.proxy.rlwy.net:15256/railway
+    url: jdbc:postgresql://roundhouse.proxy.rlwy.net:38103/railway
     username: postgres
-    password: YTRqBsjTUBjmOlhFHifqdOkaldkqUTgn
+    password: kRmGChQEapmYlwomPeLVQpBTCHuVzOfB
     driver-class-name: org.postgresql.Driver
   jpa:
     database: postgresql
     generate-ddl: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true

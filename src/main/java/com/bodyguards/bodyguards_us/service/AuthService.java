@@ -13,5 +13,9 @@ public interface AuthService {
 
 	AuthenticationResponse login(LoginRequest request);
 
+	String forgotPassword(ForgotPasswordRequest request);
+
+	String updatePassword(UpdatePasswordRequest request);
+
 	TokenResponse refreshToken(RefreshTokenRequest request);
 }
