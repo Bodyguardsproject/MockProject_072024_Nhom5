@@ -1,17 +1,17 @@
 package com.bodyguards.bodyguards_us.mapper;
 
-import com.bodyguards.bodyguards_us.dto.ServiceDTO;
+import com.bodyguards.bodyguards_us.dto.ServiceResponse;
 import com.bodyguards.bodyguards_us.entity.Services;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ServiceMapper {
 
-    public ServiceDTO toDTO(Services service) {
+    public ServiceResponse toDTO(Services service) {
         if (service == null) {
             return null;
         }
-        ServiceDTO dto = new ServiceDTO();
+        ServiceResponse dto = new ServiceResponse();
         dto.setIdService(service.getIdService());
         dto.setName(service.getName());
         dto.setImage(service.getImage());
@@ -19,7 +19,7 @@ public class ServiceMapper {
         return dto;
     }
 
-    public Services toEntity(ServiceDTO dto) {
+    public Services toEntity(ServiceResponse dto) {
         if (dto == null) {
             return null;
         }

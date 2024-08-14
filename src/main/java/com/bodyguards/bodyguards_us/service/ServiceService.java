@@ -1,6 +1,6 @@
 package com.bodyguards.bodyguards_us.service;
 
-import com.bodyguards.bodyguards_us.dto.ServiceDTO;
+import com.bodyguards.bodyguards_us.dto.ServiceResponse;
 import com.bodyguards.bodyguards_us.entity.Services;
 import com.bodyguards.bodyguards_us.mapper.ServiceMapper;
 import com.bodyguards.bodyguards_us.repository.ServiceRepository;
@@ -20,14 +20,14 @@ public class ServiceService {
     @Autowired
     private ServiceMapper serviceMapper;
 
-    public List<ServiceDTO> getAllServices() {
+    public List<ServiceResponse> getAllServices() {
         List<Services> services = serviceRepository.findAll();
         return services.stream()
                 .map(serviceMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
-    public Optional<ServiceDTO> getServiceById(Long idService) {
+    public Optional<ServiceResponse> getServiceById(Long idService) {
         return serviceRepository.findByIdService(idService)
                 .map(serviceMapper::toDTO);
     }
