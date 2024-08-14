@@ -39,7 +39,9 @@ export const BodyGuardsProfileTemplate = () => {
 
   return (
     <div className=" max-w-7xl  m-auto py-14 px-5 sm:px-0">
-      <h1 className="text-2xl font-bold">My profile</h1>
+      <h1 className="text-2xl font-bold">
+        {componentDisabled === true ? <>My profile</> : <>Edit profile</>}
+      </h1>
       <p className="">Manage profile information to secure your account</p>
       <div className=" grid grid-cols-1 sm:grid-cols-3 gap-5  mt-10 ">
         <div className="col-span-2 px-4 py-4 border-[1px] rounded-3xl border-gray-400">
