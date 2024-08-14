@@ -17,16 +17,16 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "tbl_service_detail")
 public class ServiceDetail extends BaseEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idServiceDetail;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idServiceDetail;
 
-	private String name;
+    private String name;
 
-	@Column(length = 5000)
-	private String description;
+    @Column(length = 5000)
+    private String description;
 
-	@ManyToOne
-	@JoinColumn(name = "id_service")
-	private Service service;
+    @ManyToOne
+    @JoinColumn(name = "id_service")
+    private Services services;
 }

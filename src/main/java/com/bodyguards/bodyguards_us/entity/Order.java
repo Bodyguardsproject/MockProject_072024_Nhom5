@@ -11,6 +11,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -49,11 +50,11 @@ public class Order extends BaseEntity {
 
     private Long totalAmount;
 
-    @OneToMany
-    private List<OrderDate> orderDates;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<OrderDate> orderDates;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Service service;
+    private Services services;
 
     @Enumerated(EnumType.STRING)
     @Builder.Default

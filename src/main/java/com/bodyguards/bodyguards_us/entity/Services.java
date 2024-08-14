@@ -18,7 +18,7 @@ import java.util.List;
 @Builder
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "tbl_service")
-public class Service extends BaseEntity {
+public class Services extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idService;
@@ -37,9 +37,9 @@ public class Service extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "id_service"))
     private List<Recruitment> recruitments;
 
-    @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "services", fetch = FetchType.LAZY)
     private List<ServiceDetail> serviceDetails;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "service")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "services")
     private List<Order> orders;
 }

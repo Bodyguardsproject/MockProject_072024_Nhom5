@@ -9,7 +9,7 @@ server:
 
 spring:
   profiles:
-    active: dev
+    active: pg
     default: dev
   application:
     name: bodyguards-us
