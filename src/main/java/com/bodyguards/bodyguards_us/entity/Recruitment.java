@@ -32,5 +32,5 @@ public class Recruitment extends BaseEntity {
 	private String description;
 
 	@ManyToMany
-	private List<Service> services;
+	private List<Services> services;
 }

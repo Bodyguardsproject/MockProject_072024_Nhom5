@@ -17,7 +17,7 @@ import lombok.*;
 @Builder
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "tbl_service")
-public class Service extends BaseEntity {
+public class Services extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idService;
