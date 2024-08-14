@@ -1,7 +1,7 @@
 /*
- *  OrderDate
+ *  PasswordResetRequest
  *  @author: Minhhieuano
- *  @created 8/14/2024 5:39 PM
+ *  @created 8/15/2024 12:06 AM
  * */
 
 
@@ -10,7 +10,7 @@ package com.bodyguards.bodyguards_us.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -18,10 +18,13 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "tbl_order_date")
-public class OrderDate extends BaseEntity {
+@Table(name = "tbl_password_reset_request")
+public class PasswordResetRequest extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idOrderDate;
-    private Date orderDate;
+    private Long id;
+
+    private LocalDateTime requestTime;
+
+    private Long userId;
 }
