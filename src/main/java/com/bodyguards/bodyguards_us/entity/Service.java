@@ -7,8 +7,9 @@
 package com.bodyguards.bodyguards_us.entity;
 
 import jakarta.persistence.*;
-import java.util.List;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -18,24 +19,27 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "tbl_service")
 public class Service extends BaseEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idService;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idService;
 
-	private String name;
+    private String name;
 
-	private String image;
+    private String image;
 
-	@Column(length = 5000)
-	private String description;
+    @Column(length = 5000)
+    private String description;
 
-	@ManyToMany
-	@JoinTable(
-			name = "tbl_recruitment_service",
-			joinColumns = @JoinColumn(name = "id_recruitment"),
-			inverseJoinColumns = @JoinColumn(name = "id_service"))
-	private List<Recruitment> recruitments;
+    @ManyToMany
+    @JoinTable(
+            name = "tbl_recruitment_service",
+            joinColumns = @JoinColumn(name = "id_recruitment"),
+            inverseJoinColumns = @JoinColumn(name = "id_service"))
+    private List<Recruitment> recruitments;
 
-	@OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
-	private List<ServiceDetail> serviceDetails;
+    @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
+    private List<ServiceDetail> serviceDetails;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "service")
+    private List<Order> orders;
 }

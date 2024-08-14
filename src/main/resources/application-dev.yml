@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:sqlserver://localhost:1433;trustServerCertificate=true
     username: sa
-    password: password
+    password: MVPmvp2312@
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     database: sql_server
@@ -16,12 +16,12 @@ spring:
 jwt:
   key:
     access-token:
-      private-key: D:\Workspace\java\bodyguards_us\certs\access_token\private-key.pem
-      public-key: D:\Workspace\java\bodyguards_us\certs\access_token\public-key.pem
+      private-key: D:\Workspace\java\bodyguards_us\certs\access_token\private_key.pem
+      public-key: D:\Workspace\java\bodyguards_us\certs\access_token\public_key.pem
       expireIn: 2 # hours
     refresh-token:
-      private-key: D:\Workspace\java\bodyguards_us\certs\refresh_token\private-key.pem
-      public-key: D:\Workspace\java\bodyguards_us\certs\refresh_token\public-key.pem
+      private-key: D:\Workspace\java\bodyguards_us\certs\refresh_token\private_key.pem
+      public-key: D:\Workspace\java\bodyguards_us\certs\refresh_token\public_key.pem
       expireIn: 120 # hour == 5 days
 admin:
   email: admin@gmail.com

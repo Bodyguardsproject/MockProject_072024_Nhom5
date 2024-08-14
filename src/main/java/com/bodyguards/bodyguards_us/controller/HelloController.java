@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/test")
 public class HelloController {
-	@GetMapping("admin")
-	public ResponseEntity<ApiResponse<?>> helloAdmin() {
-		ApiResponse<?> response = ApiResponse.success("Hello admin");
-		return new ResponseEntity<>(response, HttpStatus.OK);
-	}
+    @GetMapping("admin")
+    public ResponseEntity<ApiResponse<?>> helloAdmin() {
+        ApiResponse<?> response = ApiResponse.success("Hello admin");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
-	@GetMapping("bodyguard")
-	public ResponseEntity<ApiResponse<?>> helloBodyguard() {
-		ApiResponse<?> response = ApiResponse.success("Hello Bodyguard");
-		return new ResponseEntity<>(response, HttpStatus.OK);
-	}
+    @GetMapping("bodyguard")
+    public ResponseEntity<ApiResponse<?>> helloBodyguard() {
+        ApiResponse<?> response = ApiResponse.success("Hello Bodyguard");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }
