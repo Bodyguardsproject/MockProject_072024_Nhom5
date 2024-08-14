@@ -7,9 +7,8 @@
 package com.bodyguards.bodyguards_us.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.List;
+import lombok.*;
 
 @Entity
 @Data
@@ -19,19 +18,19 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "tbl_recruitment")
 public class Recruitment extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRecruitment;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idRecruitment;
 
-    private String recruitmentName;
+	private String recruitmentName;
 
-    private String status;
+	private String status;
 
-    private Integer quantity;
+	private Integer quantity;
 
-    @Column(length = 5000)
-    private String description;
+	@Column(length = 5000)
+	private String description;
 
-    @ManyToMany
-    private List<Services> services;
+	@ManyToMany
+	private List<Services> services;
 }

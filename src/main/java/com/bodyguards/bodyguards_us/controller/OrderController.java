@@ -4,7 +4,6 @@
  *  @created 8/14/2024 5:16 PM
  * */
 
-
 package com.bodyguards.bodyguards_us.controller;
 
 import com.bodyguards.bodyguards_us.dto.ApiResponse;
@@ -26,16 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class OrderController {
 
-    private final OrderService orderService;
+	private final OrderService orderService;
 
-    @PostMapping()
-    public ResponseEntity<ApiResponse<?>> createOrder(
-            @RequestBody @Valid CreateOrderRequest request,
-            @AuthenticationPrincipal User user
-    ) {
-        ApiResponse<?> response = ApiResponse.success(orderService.createOrder(request, user));
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
-
-
+	@PostMapping()
+	public ResponseEntity<ApiResponse<?>> createOrder(
+			@RequestBody @Valid CreateOrderRequest request, @AuthenticationPrincipal User user) {
+		ApiResponse<?> response = ApiResponse.success(orderService.createOrder(request, user));
+		return new ResponseEntity<>(response, HttpStatus.CREATED);
+	}
 }

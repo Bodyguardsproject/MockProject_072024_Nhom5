@@ -15,9 +15,9 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    User createAccountRequestToUser(CreateAccountRequest createAccountRequest);
+	User createAccountRequestToUser(CreateAccountRequest createAccountRequest);
 
-    @Mapping(target = "fullName", expression = "java(user.getFirstName() + \" \" + user.getLastName())")
-    @Mapping(target = "id", source = "idUser")
-    UserResponse userToUserResponse(User user);
+	@Mapping(target = "fullName", expression = "java(user.getFirstName() + \" \" + user.getLastName())")
+	@Mapping(target = "id", source = "idUser")
+	UserResponse userToUserResponse(User user);
 }

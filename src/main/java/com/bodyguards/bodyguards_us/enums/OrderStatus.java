@@ -7,7 +7,7 @@
 package com.bodyguards.bodyguards_us.enums;
 
 public enum OrderStatus {
-    IN_PROGRESS,
-    REJECT,
-    COMPLETED
+	IN_PROGRESS,
+	REJECT,
+	COMPLETED
 }

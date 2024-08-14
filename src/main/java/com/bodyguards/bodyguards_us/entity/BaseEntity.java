@@ -44,5 +44,5 @@ public class BaseEntity {
 	@Column(name = "deflag")
 	@Min(0)
 	@Max(1)
-	private int delFlag;
+	private Integer delFlag;
 }

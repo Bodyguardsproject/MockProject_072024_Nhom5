@@ -9,13 +9,13 @@ package com.bodyguards.bodyguards_us.service;
 import com.bodyguards.bodyguards_us.dto.*;
 
 public interface AuthService {
-    AuthenticationResponse register(CreateAccountRequest request);
+	AuthenticationResponse register(CreateAccountRequest request);
 
-    AuthenticationResponse login(LoginRequest request);
+	AuthenticationResponse login(LoginRequest request);
 
-    String forgotPassword(ForgotPasswordRequest request);
+	String forgotPassword(ForgotPasswordRequest request);
 
-    String updatePassword(UpdatePasswordRequest request);
+	String updatePassword(UpdatePasswordRequest request);
 
-    TokenResponse refreshToken(RefreshTokenRequest request);
+	TokenResponse refreshToken(RefreshTokenRequest request);
 }

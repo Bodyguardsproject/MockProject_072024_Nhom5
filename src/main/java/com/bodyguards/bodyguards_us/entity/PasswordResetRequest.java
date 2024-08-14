@@ -4,13 +4,11 @@
  *  @created 8/15/2024 12:06 AM
  * */
 
-
 package com.bodyguards.bodyguards_us.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDateTime;
+import lombok.*;
 
 @Entity
 @Data
@@ -20,11 +18,11 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "tbl_password_reset_request")
 public class PasswordResetRequest extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private LocalDateTime requestTime;
+	private LocalDateTime requestTime;
 
-    private Long userId;
+	private Long userId;
 }

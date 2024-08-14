@@ -10,5 +10,5 @@ import com.bodyguards.bodyguards_us.dto.CreateOrderRequest;
 import com.bodyguards.bodyguards_us.entity.User;
 
 public interface OrderService {
-    String createOrder(CreateOrderRequest request, User user);
+	String createOrder(CreateOrderRequest request, User user);
 }
