@@ -147,6 +147,12 @@ export const SidebarAdmin = () => {
               <span>Equipment</span>
             </Sidebar.Item>
           </Link>
+          <Link to="admin3">
+            {/* Sử dụng tham số tab trong URL */}
+            <Sidebar.Item active={tab === "admin2" || !tab} icon={FaToolbox}>
+              <span>Equipment</span>
+            </Sidebar.Item>
+          </Link>
           <SidebarProfile />
         </Sidebar.ItemGroup>
       </Sidebar.Items>
