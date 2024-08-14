@@ -9,11 +9,16 @@ import {
   ResetPassword,
   AboutUs,
   Jobspage,
+  UploadCVPage,
+  WorkSchedulePage,
 } from "../pages/public";
 
-import { AdminHome ,} from "../pages/private";
-import {CreateAcount} from "../components/ComponentAdmin/index"
+import { AdminHome } from "../pages/private";
+import { CreateAcount } from "../components/ComponentAdmin/index";
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
+import StaffProfile from "../pages/private/Staff/StaffProfile";
+import { BodyGuardsProfileTemplate } from "../components/templates";
+import WorkSchedule from "../pages/private/Supervisor/WorkSchedule";
 export const router = [
   {
     path: "/",
@@ -38,6 +43,14 @@ export const router = [
       {
         path: PATH.JOBS,
         element: <Jobspage />,
+      },
+      {
+        path: PATH.UPLOADCV,
+        element: <UploadCVPage />,
+      },
+      {
+        path: PATH.BODYGUARD_WORKSCHEDULE,
+        element: <WorkSchedulePage />,
       },
     ],
   },
@@ -66,7 +79,29 @@ export const router = [
   {
     path: "/admin",
     element: <AdminHome />,
-
-   
+  },
+  {
+    path: "/user",
+    element: <CustomerLayout />,
+    children: [
+      {
+        path: PATH.PROFILE_STAFF,
+        element: <StaffProfile />,
+      },
+      {
+        path: PATH.PROFILE_BODYGUARD,
+        element: <BodyGuardsProfileTemplate />,
+      },
+    ],
+  },
+  {
+    path: "/supervisor",
+    element: <CustomerLayout />,
+    children: [
+      {
+        path: PATH.SUPERVISOR_WORKSCHEDULE,
+        element: <WorkSchedule />,
+      },
+    ],
   },
 ];

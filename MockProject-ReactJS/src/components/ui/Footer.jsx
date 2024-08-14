@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 
+import images from "../../assets/logo_footer";
 const Footer = () => {
   //content footer example
   const contentHeaderFooter = [
@@ -98,16 +99,7 @@ const Footer = () => {
   };
 
   //content slick
-  const contentSlick = [
-    "./img/burlington.webp",
-    "./img/catimini.webp",
-    "./img/fendi-casa.webp",
-    "./img/toysrus.webp",
-    "./img/Sports-Authority.webp",
-    "./img/Marathon.webp",
-    "./img/logo_radisson.webp",
-    "./img/logo_polo.webp",
-  ];
+  const contentSlick = [];
   return (
     <footer>
       <div className="bg-black ">
@@ -135,7 +127,7 @@ const Footer = () => {
           </DivSlick_Styled>
           <div>
             <Slider {...settings}>
-              {contentSlick.map((content, index) => {
+              {images.map((content, index) => {
                 return (
                   <div
                     className=" cursor-pointer !flex flex-col items-center"
@@ -156,7 +148,10 @@ const Footer = () => {
       <Div_styled>
         <div className="content_footer m-auto  grid grid-rows-3 grid-flow-col gap-10 py-[25px] text-white  sm:grid-cols-3 sm:grid-flow-col sm:grid-rows-none  sm:max-w-7xl">
           <div className="flex flex-col justify-center items-center">
-            <img src="./img/logo_footer.png" alt="logo" />
+            <img
+              src="https://fastguardservice.com/wp-content/uploads/elementor/thumbs/fastguardservice-logo-qhmpgpj85xgy0q6zfmhix2q89hkzsqeklnx09dato0.png"
+              alt="logo"
+            />
             <p className="text-center text-[14px] sm:text-[16px]">
               As one of the top Security Guard Service providers in the nation,
               we provide thorough, responsive, and professional guards on call

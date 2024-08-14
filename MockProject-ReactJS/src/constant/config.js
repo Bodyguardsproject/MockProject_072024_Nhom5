@@ -8,8 +8,16 @@ export const PATH = {
   FORGOTPASSWORD: "forgotpassword",
 
   RESETPASSWORD: "resetpassword",
-  ADMIN:"admin",
-  CREATEACCOUNT:"create-account",
+  ADMIN: "admin",
+  CREATEACCOUNT: "create-account",
   ABOUT_US: "about-us",
   JOBS: "jobs",
+
+  UPLOADCV: "uploadcv",
+
+  PROFILE_STAFF: "profile/staff",
+  PROFILE_BODYGUARD: "profile/bodyguard", 
+  BODYGUARD_WORKSCHEDULE: "bodyguard/workchedule",
+  SUPERVISOR_WORKSCHEDULE: "workschedule",
+
 };
