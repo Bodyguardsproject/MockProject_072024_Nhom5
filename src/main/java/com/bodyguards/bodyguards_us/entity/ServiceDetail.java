@@ -28,5 +28,5 @@ public class ServiceDetail extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "id_service")
-	private Service service;
+	private Services service;
 }
