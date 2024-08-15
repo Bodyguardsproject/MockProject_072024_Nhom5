@@ -1,0 +1,38 @@
+package com.bodyguards.bodyguards_us.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Data
+public class EquipmentRequest {
+    @NotNull(message = "Name of Equipment is required")
+    String equipmentName;
+
+    @NotNull(message = "Type of Equipment is required")
+    String equipmentType;
+
+    String description;
+
+    @NotNull(message = "Date Add of Equipment is required")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    private Date dateAdded;
+
+    @NotNull(message = "Last Maintain of Equipment is required")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    Date lastMaintain;
+
+    @NotNull(message = "Quantity of Equipment is required")
+    @PositiveOrZero(message = "Quantity of Equipment is a positive number")
+    Integer status;
+
+    private Integer delflag;
+}

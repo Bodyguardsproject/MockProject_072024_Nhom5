@@ -17,6 +17,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ApiResponse<?>> handleGeneralException(Exception ex) {
+		ApiResponse<?> response = ApiResponse.error(999, ex.getMessage());
+		return ResponseEntity.badRequest().body(response);
+	}
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ApiResponse<?>> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
 		Map<String, Object> errors = new HashMap<>();

@@ -42,10 +42,12 @@ public class SecurityConfig {
 				.authorizeHttpRequests(handler -> handler.requestMatchers(
 								"/docs", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**", "/auth/**")
 						.permitAll()
+
 						.requestMatchers(HttpMethod.GET, "/services/**")
 						.permitAll()
 						.requestMatchers("/services/**")
 						.access(hasRole(UserRole.STAFF.toString())) // Applies to POST, PUT, PATCH, DELETE
+
 						.requestMatchers("/test/admin")
 						.hasRole(UserRole.ADMIN.toString())
 						.requestMatchers("/test/bodyguard")

@@ -34,8 +34,7 @@ public class Equipment extends BaseEntity {
 
 	private Date lastMaintain;
 
-	private Integer quantity;
+	private Integer status;
 
-	@Enumerated(EnumType.STRING)
-	private EquipmentStatus status;
+	private Integer delflag;
 }

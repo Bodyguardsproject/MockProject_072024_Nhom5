@@ -8,8 +8,8 @@ package com.bodyguards.bodyguards_us.entity;
 
 import com.bodyguards.bodyguards_us.enums.OrderStatus;
 import jakarta.persistence.*;
-import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import lombok.*;
 
 @Entity
@@ -40,15 +40,24 @@ public class Order extends BaseEntity {
 	private User supervisor;
 
 	private String levelOfProtection;
+
 	private String location;
+
 	private String travelSchedule;
+
 	private Integer numberOfSecurityGuard;
-	private Date stateDate;
-	private Date endDate;
+
 	private Long totalAmount;
 
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<OrderDate> orderDates;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Services services;
+
 	@Enumerated(EnumType.STRING)
-	private OrderStatus status;
+	@Builder.Default
+	private OrderStatus status = OrderStatus.IN_PROGRESS;
 
 	@Column(length = 1000)
 	private String note;
