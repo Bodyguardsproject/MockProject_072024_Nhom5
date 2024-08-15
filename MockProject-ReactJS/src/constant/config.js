@@ -20,4 +20,6 @@ export const PATH = {
   BODYGUARD_WORKSCHEDULE: "bodyguard/workchedule",
   BODYGUARD_TIME: "bodyguard/time",
   SUPERVISOR_WORKSCHEDULE: "workschedule",
+  SUPERVISOR_TIMEKEEPING: "timekeeping",
+  SUPERVISOR_DAYOFFREQUEST: "dayoffrequest",
 };
