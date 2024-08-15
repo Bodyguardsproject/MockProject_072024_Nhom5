@@ -15,6 +15,7 @@ export const TableAccount = () => {
           <Table.HeadCell>Update</Table.HeadCell>
           <Table.HeadCell>Permissions</Table.HeadCell>
           <Table.HeadCell>Actions</Table.HeadCell>
+          <Table.HeadCell>Actions2</Table.HeadCell>
         </Table.Head>
         <Table.Body className="divide-y">
           <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
