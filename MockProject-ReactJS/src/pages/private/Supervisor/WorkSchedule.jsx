@@ -18,7 +18,7 @@ export default function WorkSchedule() {
               <p>Add schedule</p>
             </div>
           </div>
-          <div className="overflow-y-auto w-full md:w-[70%] border-[1px] border-gray-300 mt-6 mx-auto">
+          <div className="overflow-x-auto w-full md:w-[70%] border-[1px] border-gray-300 mt-6 mx-auto">
             <div className="flex">
               <div className="basis-[10%] min-w-[50px]  bg-primary-color text-center py-2 font-semibold">
                 ID
@@ -36,8 +36,8 @@ export default function WorkSchedule() {
                 Time
               </div>
             </div>
-            <div className="">
-              {[1, 2, 3, 3, 4, 5].map((el, idx) => {
+            <div className="overflow-x-auto max-h-[700px]">
+              {[1, 2, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5].map((el, idx) => {
                 return (
                   <div key={idx} className="flex">
                     <div className="basis-[10%] min-w-[50px] text-center py-3 font-light">

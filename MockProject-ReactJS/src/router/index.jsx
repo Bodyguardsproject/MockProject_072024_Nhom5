@@ -20,6 +20,8 @@ import StaffProfile from "../pages/private/Staff/StaffProfile";
 import { BodyGuardsProfileTemplate } from "../components/templates";
 import WorkSchedule from "../pages/private/Supervisor/WorkSchedule";
 import { TimekeepingTemplate } from "../components/templates/TimekeepingTemplate";
+import TimeKeeping from "../pages/private/Supervisor/TimeKeeping";
+import DayOffRequest from "../pages/private/Supervisor/DayOffRequest";
 export const router = [
   {
     path: "/",
@@ -106,6 +108,14 @@ export const router = [
       {
         path: PATH.SUPERVISOR_WORKSCHEDULE,
         element: <WorkSchedule />,
+      },
+      {
+        path: PATH.SUPERVISOR_TIMEKEEPING,
+        element: <TimeKeeping />,
+      },
+      {
+        path: PATH.SUPERVISOR_DAYOFFREQUEST,
+        element: <DayOffRequest />,
       },
     ],
   },
