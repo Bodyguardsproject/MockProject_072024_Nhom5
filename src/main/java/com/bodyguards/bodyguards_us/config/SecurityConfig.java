@@ -22,6 +22,8 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
+import static org.springframework.security.authorization.AuthorityAuthorizationManager.hasRole;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -42,14 +44,8 @@ public class SecurityConfig {
 						.permitAll()
 						.requestMatchers(HttpMethod.GET, "/services/**")
 						.permitAll()
-						.requestMatchers(HttpMethod.POST, "/services/**")
-						.hasRole(UserRole.STAFF.toString())
-						.requestMatchers(HttpMethod.PUT, "/services/**")
-						.hasRole(UserRole.STAFF.toString())
-						.requestMatchers(HttpMethod.PATCH, "/services/**")
-						.hasRole(UserRole.STAFF.toString())
-						.requestMatchers(HttpMethod.DELETE, "/services/**")
-						.hasRole(UserRole.STAFF.toString())
+						.requestMatchers("/services/**")
+						.access(hasRole(UserRole.STAFF.toString())) // Applies to POST, PUT, PATCH, DELETE
 						.requestMatchers("/test/admin")
 						.hasRole(UserRole.ADMIN.toString())
 						.requestMatchers("/test/bodyguard")
