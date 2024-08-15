@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServiceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,9 +17,10 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::group([ 'prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    });
 
-Route::get('/',function(){
-    return view('admin.dashboard');
-});
+    Route::resource('services', ServiceController::class);
 });

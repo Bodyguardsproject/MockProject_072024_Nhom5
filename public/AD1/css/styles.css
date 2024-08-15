@@ -102,6 +102,7 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  padding-top: 10px;
 }
 
 hr {
@@ -2498,7 +2499,7 @@ textarea.form-control-lg {
 }
 
 .input-group {
-    position: relative;
+    position: absolute;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
@@ -2510,36 +2511,34 @@ textarea.form-control-lg {
 .form-control {
     border-radius: 4px 0 0 4px; /* Bo góc để biểu tượng không bị cắt */
     border: 1px solid #ced4da; /* Viền của ô input */
-    padding-left: 70px; /* Khoảng cách bên trái cho biểu tượng */
+   /* Khoảng cách bên trái cho biểu tượng */
 
 }
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .input-group .fa-search {
-    position: absolute;
-    left: 100px; /* Khoảng cách từ viền bên trái của ô input */
-    top: 50%;
-
-    color: #6c757d; /* Màu của biểu tượng */
-
-}
-.input-group i {
-    position: absolute;
-    left: 10px; /* Khoảng cách từ viền bên trái của ô input */
-    top: 50%;
-    transform: translateY(-50%);
     color: #6c757d; /* Màu của biểu tượng */
     font-size: 16px; /* Kích thước biểu tượng */
+    margin-right: 10px; /* Khoảng cách giữa biểu tượng và ô input */
 }
+
 .input-group input {
-    padding-left: 40px; /* Khoảng cách bên trái của ô input để có đủ không gian cho biểu tượng */
+    padding-left: 20px; /* Khoảng cách bên trái của ô input để có đủ không gian cho biểu tượng */
     border-radius: 4px; /* Bo góc cho ô input */
     border: 1px solid #ced4da; /* Viền của ô input */
     width: 100%; /* Chiếm toàn bộ chiều rộng có sẵn */
 }
+
 .input-group button {
     border-radius: 0 4px 4px 0; /* Bo góc cho nút bấm */
     border: 1px solid #ced4da; /* Viền của nút bấm */
     display: none; /* Ẩn nút bấm */
 }
+
 .input-group button i {
     color: #fff; /* Màu của biểu tượng trong nút bấm */
 }
@@ -3662,9 +3661,30 @@ textarea.form-control-lg {
   border-top-right-radius: 0;
 }
 
-.table-action-buttons button {
-    margin-right: 5px;
+
+
+.table-action-buttons {
+    display: flex; /* Sử dụng flexbox để căn chỉnh các nút */
+    justify-content: center; /* Canh giữa các nút trong ô */
+    gap: 10px; /* Thêm khoảng cách giữa các nút */
 }
+
+.table-action-buttons .btn {
+    /* Các thuộc tính khác có thể cần thiết để đảm bảo nút hiển thị đúng */
+}
+
+.table thead th.action-column {
+    text-align: center; /* Canh giữa chữ Action */
+    padding: 10px; /* Thêm khoảng cách bên trong để tiêu đề không bị dính vào viền cột */
+}
+
+/* Giữ nguyên căn chỉnh cho các tiêu đề khác */
+.table thead th {
+    text-align: left; /* Hoặc giữ nguyên căn chỉnh mặc định */
+    padding: 10px; /* Thêm khoảng cách bên trong nếu cần */
+}
+
+
 .btn-edit {
     background-color: #F7B500; /* Màu nền cho nút Edit */
     border-color: #F7B500; /* Màu viền cho nút Edit */
@@ -3674,6 +3694,17 @@ textarea.form-control-lg {
     background-color: #e0a800; /* Màu nền khi hover */
     border-color: #e0a800; /* Màu viền khi hover */
 }
+
+.btn-delete {
+    background-color: #f73100; /* Màu nền cho nút Edit */
+    border-color: #f70000; /* Màu viền cho nút Edit */
+    color: #fff; /* Màu chữ cho nút Edit */
+}
+.btn-delete:hover {
+    background-color: #e00f00; /* Màu nền khi hover */
+    border-color: #e00000; /* Màu viền khi hover */
+}
+
 thead th {
     background-color: #FFD24A; /* Màu nền cho dòng tiêu đề */
     color: #000; /* Màu chữ cho dòng tiêu đề */
@@ -3689,7 +3720,7 @@ thead th {
 .add-service-btn button {
 
 
-    background-color: #F7B500;
+    background-color: #00f7a5;
     border: none;
     color: #fff;
     padding: 10px 20px;
@@ -3831,7 +3862,8 @@ thead th {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-left: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
 
 }
 .logout-button i {
@@ -3884,7 +3916,7 @@ thead th {
   --bs-navbar-toggler-border-radius: 0.375rem;
   --bs-navbar-toggler-focus-width: 0.25rem;
   --bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
-  position: relative;
+  position: fixed;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -3920,6 +3952,7 @@ thead th {
 .navbar-brand img {
     height: 90px; /* Chiều cao của logo */
     margin-left: -52px;
+    position: fixed;
 }
 .navbar-brand:hover, .navbar-brand:focus {
   color: var(--bs-navbar-brand-hover-color);
@@ -6992,78 +7025,7 @@ thead th {
   z-index: 1030;
 }
 
-.sticky-top {
-  position: sticky;
-  top: 0;
-  z-index: 1020;
-}
 
-.sticky-bottom {
-  position: sticky;
-  bottom: 0;
-  z-index: 1020;
-}
-
-@media (min-width: 576px) {
-  .sticky-sm-top {
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-  }
-  .sticky-sm-bottom {
-    position: sticky;
-    bottom: 0;
-    z-index: 1020;
-  }
-}
-@media (min-width: 768px) {
-  .sticky-md-top {
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-  }
-  .sticky-md-bottom {
-    position: sticky;
-    bottom: 0;
-    z-index: 1020;
-  }
-}
-@media (min-width: 992px) {
-  .sticky-lg-top {
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-  }
-  .sticky-lg-bottom {
-    position: sticky;
-    bottom: 0;
-    z-index: 1020;
-  }
-}
-@media (min-width: 1200px) {
-  .sticky-xl-top {
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-  }
-  .sticky-xl-bottom {
-    position: sticky;
-    bottom: 0;
-    z-index: 1020;
-  }
-}
-@media (min-width: 1400px) {
-  .sticky-xxl-top {
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-  }
-  .sticky-xxl-bottom {
-    position: sticky;
-    bottom: 0;
-    z-index: 1020;
-  }
-}
 .hstack {
   display: flex;
   flex-direction: row;
@@ -11098,6 +11060,7 @@ main {
   }
 }
 .sb-nav-fixed .sb-topnav {
+    position: absolute;
   z-index: 1039;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
@@ -11143,7 +11106,8 @@ main {
 }
 
 .sb-topnav {
-  padding-left: 0;
+    position: fixed;
+padding-left: 0;
   height: 90px;
   z-index: 1039;
 

@@ -16,9 +16,8 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{{ url('admin') }}">
             <img src="{{ asset('AD1/logo.PNG') }}" alt="Logo"> <!-- Đặt đường dẫn đến logo của bạn -->
-
         </a>
         <!-- Sidebar Toggle-->
         <!-- Sidebar Toggle-->
@@ -27,7 +26,7 @@
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
-                <i class="fas fa-search"></i>
+                {{-- <i class="fas fa-search"></i> --}}
                 <input class="form-control" type="text" placeholder="Tìm kiếm..." aria-label="Search for..."
                     aria-describedby="btnNavbarSearch" />
                 <button class="btn btn-primary" id="btnNavbarSearch" type="button">Tìm kiếm</button>
@@ -74,7 +73,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="services.html">
+                        <a class="nav-link" href="{{ route('services.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-circle-o-notch"></i></div>
                             Services
                         </a>
@@ -113,68 +112,7 @@
 
             </nav>
         </div>
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4">
-                    <h1>Services</h1>
-                    <div class="add-service-btn">
-                        <button type="button">
-                            Add Services
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </div>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Service Name</th>
-                                        <th>Description</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Service 1</td>
-                                        <td>Description</td>
-                                        <td class="table-action-buttons">
-                                            <button class="btn btn-edit">Edit</button>
-                                            <button class="btn btn-edit">Edit</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Service 2</td>
-                                        <td>Description</td>
-                                        <td class="table-action-buttons">
-                                            <button class="btn btn-edit">Edit</button>
-                                            <button class="btn btn-edit">Edit</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Service 3</td>
-                                        <td>Description</td>
-                                        <td class="table-action-buttons">
-                                            <button class="btn btn-edit">Edit</button>
-                                            <button class="btn btn-edit">Edit</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Service 4</td>
-                                        <td>Description</td>
-                                        <td class="table-action-buttons">
-                                            <button class="btn btn-edit">Edit</button>
-                                            <button class="btn btn-edit">Edit</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </main>
 
-
-        </div>
         @yield('main')
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
