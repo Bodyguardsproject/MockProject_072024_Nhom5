@@ -5,10 +5,11 @@ export * from "./ForgotPassword";
 export * from "./ResetPasswordTemplate";
 //
 
-//home page
+//homepage
 export * from "./BodyGuardsTemplate";
 export * from "./AboutUsTemplate";
 export * from "./JobsTemplate";
 export * from "./BodyGuardsProfileTemplate";
 export * from "./UpLoadCVTemplate.jsx";
 //
+export * from "./WorkScheduleTemplate.jsx";

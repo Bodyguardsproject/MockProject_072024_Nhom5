@@ -10,6 +10,7 @@ import {
   AboutUs,
   Jobspage,
   UploadCVPage,
+  WorkSchedulePage,
 } from "../pages/public";
 
 import { AdminHome } from "../pages/private";
@@ -18,6 +19,7 @@ import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
 import StaffProfile from "../pages/private/Staff/StaffProfile";
 import { BodyGuardsProfileTemplate } from "../components/templates";
 import WorkSchedule from "../pages/private/Supervisor/WorkSchedule";
+import { TimekeepingTemplate } from "../components/templates/TimekeepingTemplate";
 export const router = [
   {
     path: "/",
@@ -46,6 +48,14 @@ export const router = [
       {
         path: PATH.UPLOADCV,
         element: <UploadCVPage />,
+      },
+      {
+        path: PATH.BODYGUARD_WORKSCHEDULE,
+        element: <WorkSchedulePage />,
+      },
+      {
+        path: PATH.BODYGUARD_TIME,
+        element: <TimekeepingTemplate />,
       },
     ],
   },
