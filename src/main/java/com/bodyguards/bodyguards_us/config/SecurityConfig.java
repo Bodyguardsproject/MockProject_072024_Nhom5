@@ -11,6 +11,7 @@ import com.bodyguards.bodyguards_us.security.JwtAuthenticationConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -39,7 +40,16 @@ public class SecurityConfig {
 				.authorizeHttpRequests(handler -> handler.requestMatchers(
 								"/docs", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**", "/auth/**")
 						.permitAll()
-						.requestMatchers("/services/**").authenticated()
+						.requestMatchers(HttpMethod.GET, "/services/**")
+						.permitAll()
+						.requestMatchers(HttpMethod.POST, "/services/**")
+						.hasRole(UserRole.STAFF.toString())
+						.requestMatchers(HttpMethod.PUT, "/services/**")
+						.hasRole(UserRole.STAFF.toString())
+						.requestMatchers(HttpMethod.PATCH, "/services/**")
+						.hasRole(UserRole.STAFF.toString())
+						.requestMatchers(HttpMethod.DELETE, "/services/**")
+						.hasRole(UserRole.STAFF.toString())
 						.requestMatchers("/test/admin")
 						.hasRole(UserRole.ADMIN.toString())
 						.requestMatchers("/test/bodyguard")
