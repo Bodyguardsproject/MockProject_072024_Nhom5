@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ServiceRepository extends JpaRepository<Services, Long> {
 
-	Optional<Services> findByIdService(Long idService);
+    Optional<Services> findByIdService(Long idService);
 
-	boolean existsByIdService(Long idService);
+    Optional<Services> findByName(String name);
+
+    boolean existsByIdService(Long idService);
+
 }

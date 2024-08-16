@@ -34,12 +34,17 @@ public class ServiceServiceImpl implements ServiceService {
 		return serviceRepository.findByIdService(idService).map(serviceMapper::toDTO);
 	}
 
-	@Override
-	public ServiceResponse createService(ServiceRequest serviceRequest) {
-		Services service = serviceMapper.toEntity(serviceRequest);
-		Services savedService = serviceRepository.save(service);
-		return serviceMapper.toDTO(savedService);
-	}
+  @Override
+  public ServiceResponse createService(ServiceRequest serviceRequest) {
+        //check if the service name already exists
+        if (serviceRepository.findByName(serviceRequest.getName()).isPresent()) {
+            throw new ApiException(ErrorCode.REQUEST_VALIDATION_FAILED);
+        }
+
+        Services service = serviceMapper.toEntity(serviceRequest);
+        Services savedService = serviceRepository.save(service);
+        return serviceMapper.toDTO(savedService);
+    }
 
 	@Override
 	public Optional<ServiceResponse> replaceService(Long id, ServiceRequest serviceRequest) {
