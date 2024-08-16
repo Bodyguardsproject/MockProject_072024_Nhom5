@@ -18,6 +18,12 @@ import { CustomerTemplate} from "../pages/customer"
 import {CreateAcount} from "../components/ComponentAdmin/index";
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
 import CustomerQuote from "../pages/customer/CustomerQuote";
+import { TimekeepingTemplate } from "../components/templates/TimekeepingTemplate";
+import StaffProfile from "../pages/private/Staff/StaffProfile";
+import WorkSchedule from "../pages/private/Supervisor/WorkSchedule";
+import TimeKeeping from "../pages/private/Supervisor/TimeKeeping";
+import DayOffRequest from "../pages/private/Supervisor/DayOffRequest";
+import { BodyGuardsProfileTemplate } from "../components/templates";
 export const router = [
   {
     path: "/",
@@ -103,7 +109,7 @@ export const router = [
     children: [
       {
         path: PATH.SUPERVISOR_WORKSCHEDULE,
-        element: <WorkSchedule />,
+        element: <WorkSchedule/>,
       },
       {
         path: PATH.SUPERVISOR_TIMEKEEPING,
