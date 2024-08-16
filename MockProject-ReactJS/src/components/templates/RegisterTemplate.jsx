@@ -1,18 +1,35 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import { Checkbox, Divider, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Checkbox, Divider, Form, Input, message } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 
 export const RegisterTemplate = () => {
+  //message
+  const [messageApi, contextHolder] = message.useMessage();
+  //redirect
+  const navigate = useNavigate();
+  const success = () => {
+    messageApi.open({
+      type: "success",
+      content: "Successful registration",
+    });
+  };
+
   const onFinish = (values) => {
+    success();
     console.log("Success:", values);
+    //call api
+
+    //redirect
+    navigate("/auth/login");
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
   return (
     <div className="flex flex-col justify-center items-start sm:px-28 px-10 mb-5 ">
+      {contextHolder}
       <h1 className="font-semibold text-3xl mb-5">Get Started Now</h1>
 
       <Form

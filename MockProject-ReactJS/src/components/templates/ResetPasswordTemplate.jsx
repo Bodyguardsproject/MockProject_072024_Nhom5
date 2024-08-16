@@ -1,15 +1,18 @@
 import { Divider, Form, Input } from "antd";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { PATH } from "../../constant";
 
 export const ResetPasswordTemplate = () => {
+  const navigate = useNavigate();
   const onFinish = (values) => {
     console.log("Success:", values);
+    navigate("/auth/login");
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col justify-center items-start  sm:px-28  px-10 mb-5">
       <h1 className="font-semibold text-3xl">Reset your password</h1>

@@ -6,7 +6,11 @@ import TextArea from "antd/es/input/TextArea";
 import Swal from "sweetalert2";
 
 import { getWeekDays } from "../../utils";
+import { useNavigate } from "react-router-dom";
+import { PATH } from "../../constant";
 export const WorkScheduleTemplate = () => {
+  const navigate = useNavigate();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [chooseDate, setChooseDate] = useState();
   const [chooseTimeOff, setChooseTimeOff] = useState(false);
@@ -32,7 +36,10 @@ export const WorkScheduleTemplate = () => {
         <p className="bg-black text-primary-color text-center text-xl font-semibold py-2">
           Work schedule
         </p>
-        <p className=" bg-primary-color text-center text-xl font-semibold py-2">
+        <p
+          className=" bg-primary-color text-center text-xl font-semibold py-2 cursor-pointer"
+          onClick={() => navigate(`/${PATH.BODYGUARD_TIME}`)}
+        >
           Time keeping
         </p>
       </div>

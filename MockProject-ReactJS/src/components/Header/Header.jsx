@@ -30,7 +30,10 @@ export default function Header() {
           <p>Bodyguards</p>
         </div>
       </div>
-      <Link to={"/"} className="px-2 flex  gap-2 items-center   ">
+      <Link
+        to={`/user/${PATH.PROFILE_BODYGUARD}`}
+        className="px-2 flex  gap-2 items-center   "
+      >
         <FaRegCircleUser className="text-black text-xl hover:text-white duration-300" />
         <span className="text-black hover:text-white duration-300">
           My profile
@@ -49,7 +52,10 @@ export default function Header() {
         </span>
       </Link>
       <Divider style={{ borderColor: "rgb(82 82 91)", margin: "0" }}></Divider>{" "}
-      <Link to={"/"} className="px-2 flex  gap-2 items-center ">
+      <Link
+        to={`/${PATH.BODYGUARD_WORKSCHEDULE}`}
+        className="px-2 flex  gap-2 items-center "
+      >
         <FaCalendarAlt className="text-black text-xl hover:text-white duration-300" />
 
         <span className="text-black hover:text-white duration-300">
@@ -96,7 +102,7 @@ export default function Header() {
         <Popover
           content={content}
           placement="bottomRight"
-          trigger="click"
+          trigger="hover"
           color="#E3C472"
           arrow={false}
         >
