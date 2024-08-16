@@ -30,8 +30,10 @@ export const Services = () => {
             </p>
           </div>
           <p className="w-[400px] text-xl ">
-            Elite bodyguards providing 24/7 protection for individuals in all
-            environments.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Perspiciatis tempora dolorem, corrupti quisquam sed veniam esse
+            quos, provident quidem vero optio, nobis laborum ex accusamus alias
+            quibusdam quasi iure eius.
           </p>
         </div>
         <div className="w-full flex justify-center gap-10 items-center">
@@ -46,8 +48,10 @@ export const Services = () => {
             </p>
           </div>
           <p className="w-[400px] text-xl ">
-            Elite bodyguards providing 24/7 protection for individuals in all
-            environments.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
+            consequuntur, dolores nesciunt exercitationem eligendi tenetur! Ipsa
+            expedita facilis suscipit? Aliquid doloribus perspiciatis libero,
+            laudantium tenetur nemo delectus voluptatibus. Adipisci, at.
           </p>
         </div>
         <div className="w-full flex justify-center gap-10 items-center">
@@ -62,8 +66,10 @@ export const Services = () => {
             </p>
           </div>
           <p className="w-[400px] text-xl ">
-            Elite bodyguards providing 24/7 protection for individuals in all
-            environments.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia
+            magnam omnis sint voluptates a temporibus, debitis asperiores ut sed
+            earum similique facere quasi eos nesciunt totam laudantium mollitia
+            tempore? Nemo?
           </p>
         </div>
         <div className="w-full flex justify-center gap-10 items-center">
@@ -78,8 +84,10 @@ export const Services = () => {
             </p>
           </div>
           <p className="w-[400px] text-xl ">
-            Elite bodyguards providing 24/7 protection for individuals in all
-            environments.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
+            repellat minima minus temporibus adipisci. Quia perferendis nihil
+            non ipsa enim eaque sunt quae, est, porro provident sint quam, rem
+            ea!
           </p>
         </div>
       </div>
