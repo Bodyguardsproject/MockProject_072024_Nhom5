@@ -26,3 +26,6 @@ jwt:
 admin:
   email: admin@gmail.com
   password: 12345678
+
+upload:
+  path: D:\Workspace\java\bodyguards_us\upload

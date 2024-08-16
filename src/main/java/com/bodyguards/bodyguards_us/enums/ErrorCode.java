@@ -25,8 +25,7 @@ public enum ErrorCode {
 			"You have exceeded the maximum number of password reset attempts. Please try again tomorrow.",
 			HttpStatus.TOO_MANY_REQUESTS),
 	INVALID_RESET_PASSWORD_TOKEN(1009, "Invalid reset password token", HttpStatus.FORBIDDEN),
-	EQUIPMENT_ALREADY_EXISTED(1010, "Equipment already existed", HttpStatus.BAD_REQUEST)
-	;
+	EQUIPMENT_ALREADY_EXISTED(1010, "Equipment already existed", HttpStatus.BAD_REQUEST);
 	private final String message;
 	private final HttpStatus status;
 	private final int code;
