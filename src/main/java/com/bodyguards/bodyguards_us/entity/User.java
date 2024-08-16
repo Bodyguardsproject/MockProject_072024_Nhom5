@@ -8,6 +8,7 @@ package com.bodyguards.bodyguards_us.entity;
 
 import com.bodyguards.bodyguards_us.enums.Gender;
 import com.bodyguards.bodyguards_us.enums.UserStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Collection;
 import java.util.Date;
@@ -37,6 +38,7 @@ public class User extends BaseEntity implements UserDetails {
 	private List<Role> roles;
 
 	@OneToMany(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Training> trainings;
 
 	@Column(length = 50, unique = true)
