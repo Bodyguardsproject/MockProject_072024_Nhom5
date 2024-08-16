@@ -12,8 +12,10 @@ import {
 } from "../pages/public";
 
 import { AdminHome ,} from "../pages/private";
-import {CreateAcount} from "../components/ComponentAdmin/index"
+import { CustomerTemplate} from "../pages/customer"
+import {CreateAcount} from "../components/ComponentAdmin/index";
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
+import CustomerQuote from "../pages/customer/CustomerQuote";
 export const router = [
   {
     path: "/",
@@ -68,5 +70,36 @@ export const router = [
     element: <AdminHome />,
 
    
+  },
+
+  {
+    path: "/customer",
+    element: <CustomerTemplate />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: PATH.BODYGUARDS,
+        element: <BodyGuardsCustomerPage />,
+      },
+      {
+        path: PATH.SERVICES,
+        element: <Services />,
+      },
+      {
+        path: PATH.ABOUT_US,
+        element: <AboutUs />,
+      },
+      {
+        path: PATH.JOBS,
+        element: <Jobspage />,
+      },
+      {
+        path: PATH.CUSTOMERQUOTE,
+        element: <CustomerQuote />,
+      },
+    ],  
   },
 ];

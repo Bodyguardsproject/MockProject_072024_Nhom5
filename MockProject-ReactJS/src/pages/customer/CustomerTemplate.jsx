@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
-import Header from "../Header/Header";
-import Footer from "../ui/Footer";
-import MenuMobile from "../ui/MenuMobile";
+import HeaderCustomer from "../../components/Header/HeaderCustomer";
+import Footer from "../../components/ui/Footer";
+import MenuMobile from "../../components/ui/MenuMobile";
 import { BREAKPOINT } from "../../constant";
 
-export const CustomerLayout = () => {
+export const CustomerTemplate = () => {
   const [widthScreen, setWidthScreen] = useState(window.innerWidth || 0);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export const CustomerLayout = () => {
           <MenuMobile />
         ) : (
           <header className="max-w-7xl m-auto ">
-            <Header />
+            <HeaderCustomer />
           </header>
         )}
       </>
@@ -33,6 +33,6 @@ export const CustomerLayout = () => {
       <Footer />
     </>
   );
-};
+}
 
-export default CustomerLayout;
+export default CustomerTemplate

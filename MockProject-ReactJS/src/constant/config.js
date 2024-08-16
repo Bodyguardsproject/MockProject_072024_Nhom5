@@ -12,4 +12,5 @@ export const PATH = {
   CREATEACCOUNT:"create-account",
   ABOUT_US: "about-us",
   JOBS: "jobs",
+  CUSTOMERQUOTE: "customerquote"
 };
