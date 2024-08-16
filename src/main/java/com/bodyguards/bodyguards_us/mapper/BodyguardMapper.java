@@ -16,10 +16,6 @@ public interface BodyguardMapper {
     @Mapping(source = "user.gender", target = "gender")
     @Mapping(source = "user.avatar", target = "avatar")
     @Mapping(source = "user.phone", target = "phone")
-    @Mapping(source = "experience", target = "experience")
-    @Mapping(source = "availabilityStatus", target = "availabilityStatus")
-    @Mapping(source = "rating", target = "rating")
-    @Mapping(source = "hourlyRate", target = "hourlyRate")
     BodyguardResponse toDTO(Bodyguard bodyguard);
 
 }
