@@ -13,11 +13,11 @@ import lombok.Data;
 public class CreateAccountRequest {
 
 	@NotBlank
-	@NotNull @Size(min = 5, max = 50)
+	@NotNull @Size(min = 1, max = 50)
 	private String firstName;
 
 	@NotBlank
-	@NotNull @Size(min = 5, max = 50)
+	@NotNull @Size(min = 1, max = 50)
 	private String lastName;
 
 	@NotBlank

@@ -6,17 +6,24 @@
 
 package com.bodyguards.bodyguards_us.service.impl;
 
+import com.aventrix.jnanoid.jnanoid.NanoIdUtils;
 import com.bodyguards.bodyguards_us.dto.*;
+import com.bodyguards.bodyguards_us.entity.PasswordResetRequest;
+import com.bodyguards.bodyguards_us.entity.PasswordResetToken;
 import com.bodyguards.bodyguards_us.entity.Role;
 import com.bodyguards.bodyguards_us.entity.User;
 import com.bodyguards.bodyguards_us.enums.ErrorCode;
 import com.bodyguards.bodyguards_us.enums.UserRole;
 import com.bodyguards.bodyguards_us.exception.ApiException;
 import com.bodyguards.bodyguards_us.mapper.UserMapper;
+import com.bodyguards.bodyguards_us.repository.PasswordResetRequestRepository;
+import com.bodyguards.bodyguards_us.repository.PasswordResetTokenRepository;
 import com.bodyguards.bodyguards_us.repository.RoleRepository;
 import com.bodyguards.bodyguards_us.repository.UserRepository;
 import com.bodyguards.bodyguards_us.service.AuthService;
 import com.bodyguards.bodyguards_us.service.JwtService;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -35,6 +42,8 @@ public class AuthServiceImpl implements AuthService {
 	private final RoleRepository roleRepository;
 	private final JwtService jwtService;
 	private final PasswordEncoder passwordEncoder;
+	private final PasswordResetTokenRepository passwordResetTokenRepository;
+	private final PasswordResetRequestRepository passwordResetRequestRepository;
 
 	@Override
 	public AuthenticationResponse register(CreateAccountRequest request) {
@@ -96,6 +105,74 @@ public class AuthServiceImpl implements AuthService {
 				.tokens(tokenResponse)
 				.user(userResponse)
 				.build();
+	}
+
+	@Override
+	public String forgotPassword(ForgotPasswordRequest request) {
+
+		User user = userRepository
+				.findByEmail(request.getEmail())
+				.orElseThrow(() -> new ApiException(ErrorCode.USER_NOT_FOUND));
+
+		LocalDateTime startDate = LocalDateTime.now().truncatedTo(ChronoUnit.DAYS);
+		LocalDateTime endDate = startDate.plusDays(1).minusNanos(1);
+
+		int numberOfRequestToday =
+				passwordResetRequestRepository.countByUserIdAndRequestTimeBetween(user.getIdUser(), startDate, endDate);
+
+		if (numberOfRequestToday >= 5) {
+			throw new ApiException(ErrorCode.TO_MANY_RESET_PASSWORD);
+		}
+
+		userRepository.save(user);
+
+		String plainToken = NanoIdUtils.randomNanoId();
+
+		PasswordResetRequest passwordResetRequest = PasswordResetRequest.builder()
+				.requestTime(LocalDateTime.now())
+				.userId(user.getIdUser())
+				.build();
+
+		PasswordResetToken passwordResetToken = PasswordResetToken.builder()
+				.userId(user.getIdUser())
+				.token(plainToken)
+				.isUsed(false)
+				.expiredAt(LocalDateTime.now().plusMinutes(5))
+				.build();
+
+		passwordResetRequestRepository.save(passwordResetRequest);
+		passwordResetTokenRepository.save(passwordResetToken);
+
+		// TODO: send mail to user
+		System.out.println("token " + plainToken);
+
+		return "Send forgot password link successfully";
+	}
+
+	@Override
+	public String updatePassword(UpdatePasswordRequest request) {
+		String token = request.getToken();
+
+		PasswordResetToken passwordResetToken = passwordResetTokenRepository
+				.findByToken(token)
+				.orElseThrow(() -> new ApiException(ErrorCode.INVALID_RESET_PASSWORD_TOKEN));
+
+		if (LocalDateTime.now().isAfter(passwordResetToken.getExpiredAt()) || passwordResetToken.isUsed()) {
+			throw new ApiException(ErrorCode.INVALID_RESET_PASSWORD_TOKEN);
+		}
+
+		passwordResetToken.setUsed(true);
+
+		User user = userRepository
+				.findById(passwordResetToken.getUserId())
+				.orElseThrow(() -> new ApiException(ErrorCode.USER_NOT_FOUND));
+
+		user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+
+		passwordResetTokenRepository.save(passwordResetToken);
+		userRepository.save(user);
+
+		return "Your password has been updated. Please login again";
 	}
 
 	@Override
