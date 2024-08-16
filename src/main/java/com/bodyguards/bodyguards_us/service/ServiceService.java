@@ -7,20 +7,15 @@ import java.util.Optional;
 
 public interface ServiceService {
 
-    List<ServiceResponse> getAllServices();
-
-    Optional<ServiceResponse> getServiceById(Long idService);
-
-    ServiceResponse createService(ServiceRequest serviceRequest);
-
-    Optional<ServiceResponse> replaceService(Long id, ServiceRequest serviceRequest);
-
-    Optional<ServiceResponse> partialUpdateService(Long id, ServiceRequest serviceRequest);
-
-    void deleteService(Long id);
-
 	List<ServiceResponse> getAllServices();
 
 	Optional<ServiceResponse> getServiceById(Long idService);
 
+	ServiceResponse createService(ServiceRequest serviceRequest);
+
+	Optional<ServiceResponse> replaceService(Long id, ServiceRequest serviceRequest);
+
+	Optional<ServiceResponse> partialUpdateService(Long id, ServiceRequest serviceRequest);
+
+	void deleteService(Long id);
 }

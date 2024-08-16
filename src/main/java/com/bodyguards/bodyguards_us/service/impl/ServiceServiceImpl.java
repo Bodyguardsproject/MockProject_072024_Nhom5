@@ -29,15 +29,13 @@ public class ServiceServiceImpl implements ServiceService {
 		return services.stream().map(serviceMapper::toDTO).collect(Collectors.toList());
 	}
 
+	@Override
+	public Optional<ServiceResponse> getServiceById(Long idService) {
+		return serviceRepository.findByIdService(idService).map(serviceMapper::toDTO);
+	}
 
-    @Override
-    public Optional<ServiceResponse> getServiceById(Long idService) {
-        return serviceRepository.findByIdService(idService)
-                .map(serviceMapper::toDTO);
-    }
-
-    @Override
-    public ServiceResponse createService(ServiceRequest serviceRequest) {
+  @Override
+  public ServiceResponse createService(ServiceRequest serviceRequest) {
         //check if the service name already exists
         if (serviceRepository.findByName(serviceRequest.getName()).isPresent()) {
             throw new ApiException(ErrorCode.REQUEST_VALIDATION_FAILED);
@@ -48,48 +46,40 @@ public class ServiceServiceImpl implements ServiceService {
         return serviceMapper.toDTO(savedService);
     }
 
-    @Override
-    public Optional<ServiceResponse> replaceService(Long id, ServiceRequest serviceRequest) {
-        return serviceRepository.findByIdService(id)
-                .map(service -> {
-                    service.setName(serviceRequest.getName());
-                    service.setImage(serviceRequest.getImage());
-                    service.setDescription(serviceRequest.getDescription());
-                    serviceRepository.save(service);
-                    return serviceMapper.toDTO(service);
-                });
-    }
-
-    @Override
-    public Optional<ServiceResponse> partialUpdateService(Long id, ServiceRequest serviceRequest) {
-        return serviceRepository.findByIdService(id)
-                .map(service -> {
-                    if (serviceRequest.getName() != null) {
-                        service.setName(serviceRequest.getName());
-                    }
-                    if (serviceRequest.getImage() != null) {
-                        service.setImage(serviceRequest.getImage());
-                    }
-                    if (serviceRequest.getDescription() != null) {
-                        service.setDescription(serviceRequest.getDescription());
-                    }
-                    serviceRepository.save(service);
-                    return serviceMapper.toDTO(service);
-                });
-    }
-
-    @Override
-    public void deleteService(Long id) {
-        if (serviceRepository.existsById(id)) {
-            serviceRepository.deleteById(id);
-        } else {
-            throw new ApiException(ErrorCode.RESOURCE_NOT_FOUND);
-        }
-    }
-
 	@Override
-	public Optional<ServiceResponse> getServiceById(Long idService) {
-		return serviceRepository.findByIdService(idService).map(serviceMapper::toDTO);
+	public Optional<ServiceResponse> replaceService(Long id, ServiceRequest serviceRequest) {
+		return serviceRepository.findByIdService(id).map(service -> {
+			service.setName(serviceRequest.getName());
+			service.setImage(serviceRequest.getImage());
+			service.setDescription(serviceRequest.getDescription());
+			serviceRepository.save(service);
+			return serviceMapper.toDTO(service);
+		});
 	}
 
+	@Override
+	public Optional<ServiceResponse> partialUpdateService(Long id, ServiceRequest serviceRequest) {
+		return serviceRepository.findByIdService(id).map(service -> {
+			if (serviceRequest.getName() != null) {
+				service.setName(serviceRequest.getName());
+			}
+			if (serviceRequest.getImage() != null) {
+				service.setImage(serviceRequest.getImage());
+			}
+			if (serviceRequest.getDescription() != null) {
+				service.setDescription(serviceRequest.getDescription());
+			}
+			serviceRepository.save(service);
+			return serviceMapper.toDTO(service);
+		});
+	}
+
+	@Override
+	public void deleteService(Long id) {
+		if (serviceRepository.existsById(id)) {
+			serviceRepository.deleteById(id);
+		} else {
+			throw new ApiException(ErrorCode.RESOURCE_NOT_FOUND);
+		}
+	}
 }

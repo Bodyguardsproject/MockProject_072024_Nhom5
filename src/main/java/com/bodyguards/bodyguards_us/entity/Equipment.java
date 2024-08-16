@@ -6,7 +6,6 @@
 
 package com.bodyguards.bodyguards_us.entity;
 
-import com.bodyguards.bodyguards_us.enums.EquipmentStatus;
 import jakarta.persistence.*;
 import java.util.Date;
 import lombok.*;
@@ -35,6 +34,4 @@ public class Equipment extends BaseEntity {
 	private Date lastMaintain;
 
 	private Integer status;
-
-	private Integer delflag;
 }

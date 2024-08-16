@@ -14,8 +14,4 @@ public interface ServiceRepository extends JpaRepository<Services, Long> {
 
     boolean existsByIdService(Long idService);
 
-	Optional<Services> findByIdService(Long idService);
-
-	boolean existsByIdService(Long idService);
-
 }
