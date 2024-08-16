@@ -13,23 +13,11 @@ import {
   WorkSchedulePage,
 } from "../pages/public";
 
-<<<<<<< HEAD
 import { AdminHome ,} from "../pages/private";
 import { CustomerTemplate} from "../pages/customer"
 import {CreateAcount} from "../components/ComponentAdmin/index";
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
 import CustomerQuote from "../pages/customer/CustomerQuote";
-=======
-import { AdminHome } from "../pages/private";
-import { CreateAcount } from "../components/ComponentAdmin/index";
-import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
-import StaffProfile from "../pages/private/Staff/StaffProfile";
-import { BodyGuardsProfileTemplate } from "../components/templates";
-import WorkSchedule from "../pages/private/Supervisor/WorkSchedule";
-import { TimekeepingTemplate } from "../components/templates/TimekeepingTemplate";
-import TimeKeeping from "../pages/private/Supervisor/TimeKeeping";
-import DayOffRequest from "../pages/private/Supervisor/DayOffRequest";
->>>>>>> ff1f264d3f3fa01ea27aa371a8e9c607137276fe
 export const router = [
   {
     path: "/",
