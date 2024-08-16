@@ -26,7 +26,26 @@ export const CustomerLayout = () => {
         )}
       </>
 
+<<<<<<< HEAD
      
+=======
+      {/* <div className="max-w-7xl m-auto  bg-primary-color  h-[60px] mt-10">
+        <ul className="flex gap-2 items-center h-full px-10">
+          <li>
+            <Link to={"contract"} />
+            Contract
+          </li>
+          <li>
+            <Link to={"contracts"} />
+            Bodyguards
+          </li>
+          <li>
+            <Link to={"contracts"} />
+            Payment
+          </li>
+        </ul>
+      </div> */}
+>>>>>>> ff1f264d3f3fa01ea27aa371a8e9c607137276fe
       <div className="m-auto">
         <Outlet />
       </div>

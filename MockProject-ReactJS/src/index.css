@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rdp-dropdown {
+  @apply w-[100px] text-center;
+}
+.rdp-dropdown option {
+  @apply h-[20px] text-black;
+}
+.supervisor-table .ant-table-thead tr th {
+  @apply !bg-primary-color;
+}

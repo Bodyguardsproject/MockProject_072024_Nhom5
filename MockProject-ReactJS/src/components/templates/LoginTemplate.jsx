@@ -1,19 +1,37 @@
-import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import { Checkbox, Divider, Form, Input } from "antd";
+import { Checkbox, Divider, Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 
-export const LoginTemplate = () => { 
+export const LoginTemplate = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
+  //messLoginError
+  const showMessage = ({ type, message }) => {
+    messageApi.open({
+      type: type,
+      content: message,
+    });
+  };
+
   const onFinish = (values) => {
     console.log("Success:", values);
+    //call api
+
+    //error show showMessageEror
+
+    //
+
+    navigate("/");
   };
   const onFinishFailed = (errorInfo) => {
+    showMessage({ type: "error", message: "Incorrect username or password" });
     console.log("Failed:", errorInfo);
   };
+
   return (
     <div className="flex flex-col justify-center items-start sm:px-28 px-10 mb-5">
+      {contextHolder}
       <h1 className="font-semibold text-3xl">WelComeback!</h1>
       <h3 className="mt-2 mb-5  ">
         Enter your Credentials to access your account
