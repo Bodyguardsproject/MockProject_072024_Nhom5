@@ -40,6 +40,11 @@ public class ServiceServiceImpl implements ServiceService {
 
     @Override
     public ServiceResponse createService(ServiceRequest serviceRequest) {
+        //check if the service name already exists
+        if (serviceRepository.findByName(serviceRequest.getName()).isPresent()) {
+            throw new ApiException(ErrorCode.REQUEST_VALIDATION_FAILED);
+        }
+
         Services service = serviceMapper.toEntity(serviceRequest);
         Services savedService = serviceRepository.save(service);
         return serviceMapper.toDTO(savedService);

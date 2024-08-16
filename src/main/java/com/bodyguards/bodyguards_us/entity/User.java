@@ -50,6 +50,8 @@ public class User extends BaseEntity implements UserDetails {
 
 	private String address;
 
+	private String avatar;
+
 	private Date dateOfBirth;
 
 	@Enumerated(EnumType.STRING)

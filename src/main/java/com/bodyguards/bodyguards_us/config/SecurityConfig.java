@@ -45,7 +45,9 @@ public class SecurityConfig {
 						.requestMatchers(HttpMethod.GET, "/services/**")
 						.permitAll()
 						.requestMatchers("/services/**")
-						.access(hasRole(UserRole.STAFF.toString())) // Applies to POST, PUT, PATCH, DELETE
+						.hasRole(UserRole.STAFF.toString()) // Applies to POST, PUT, PATCH, DELETE
+						.requestMatchers(HttpMethod.GET, "/bodyguards/**")
+						.permitAll()
 						.requestMatchers("/test/admin")
 						.hasRole(UserRole.ADMIN.toString())
 						.requestMatchers("/test/bodyguard")

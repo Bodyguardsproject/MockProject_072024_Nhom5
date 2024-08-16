@@ -11,5 +11,7 @@ import java.util.Optional;
 public interface ServiceRepository extends JpaRepository<Services, Long> {
     Optional<Services> findByIdService(Long idService);
 
+    Optional<Services> findByName(String name);
+
     boolean existsByIdService(Long idService);
 }

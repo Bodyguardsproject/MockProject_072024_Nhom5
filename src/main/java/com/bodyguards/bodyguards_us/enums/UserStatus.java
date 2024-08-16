@@ -7,5 +7,6 @@
 package com.bodyguards.bodyguards_us.enums;
 
 public enum UserStatus {
-	USER_STATUS
+	//USER_STATUS
+	Active
 }
