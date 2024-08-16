@@ -6,8 +6,8 @@ import imageServices4 from "../../assets/servicesImage4.png";
 
 export const Services = () => {
   return (
-    <div className="bg-white-500 w-full">
-      <div className="w-full h-[230px] relative flex justify-center items-center">
+    <div className="bg-white-500 w-full top-[60px]">
+      <div className="w-full h-[240px] relative flex justify-center items-center">
         <img
           src="https://fastguardservice.com/wp-content/uploads/2024/01/fgs-header-jpg.webp"
           alt=""

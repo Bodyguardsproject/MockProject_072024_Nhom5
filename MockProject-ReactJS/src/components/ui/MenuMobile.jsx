@@ -140,6 +140,9 @@ const MenuMobile = () => {
           <Link to={PATH.JOBS} className="!text-primary-color">
             JOBS
           </Link>
+          <Link to={PATH.CUSTOMERQUOTE} className="!text-primary-color">
+            CUSTOMERQUOTER
+          </Link>
         </div>
       </Drawer>
     </header>

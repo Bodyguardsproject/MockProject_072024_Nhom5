@@ -13,15 +13,11 @@ import {
   WorkSchedulePage,
 } from "../pages/public";
 
-import { AdminHome } from "../pages/private";
-import { CreateAcount } from "../components/ComponentAdmin/index";
+import { AdminHome ,} from "../pages/private";
+import { CustomerTemplate} from "../pages/customer"
+import {CreateAcount} from "../components/ComponentAdmin/index";
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
-import StaffProfile from "../pages/private/Staff/StaffProfile";
-import { BodyGuardsProfileTemplate } from "../components/templates";
-import WorkSchedule from "../pages/private/Supervisor/WorkSchedule";
-import { TimekeepingTemplate } from "../components/templates/TimekeepingTemplate";
-import TimeKeeping from "../pages/private/Supervisor/TimeKeeping";
-import DayOffRequest from "../pages/private/Supervisor/DayOffRequest";
+import CustomerQuote from "../pages/customer/CustomerQuote";
 export const router = [
   {
     path: "/",
@@ -118,5 +114,36 @@ export const router = [
         element: <DayOffRequest />,
       },
     ],
+  },
+
+  {
+    path: "/customer",
+    element: <CustomerTemplate />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: PATH.BODYGUARDS,
+        element: <BodyGuardsCustomerPage />,
+      },
+      {
+        path: PATH.SERVICES,
+        element: <Services />,
+      },
+      {
+        path: PATH.ABOUT_US,
+        element: <AboutUs />,
+      },
+      {
+        path: PATH.JOBS,
+        element: <Jobspage />,
+      },
+      {
+        path: PATH.CUSTOMERQUOTE,
+        element: <CustomerQuote />,
+      },
+    ],  
   },
 ];
