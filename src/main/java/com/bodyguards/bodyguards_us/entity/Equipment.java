@@ -35,6 +35,4 @@ public class Equipment extends BaseEntity {
 	private Date lastMaintain;
 
 	private Integer status;
-
-	private Integer delflag;
 }

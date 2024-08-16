@@ -37,7 +37,7 @@ public class EquipmentServiceImpl implements EquipmentService {
         if (equipmentRepository.findByEquipmentName(request.getEquipmentName()).isPresent())
             throw new ApiException(ErrorCode.EQUIPMENT_ALREADY_EXISTED);
         Equipment equipment = equipmentMapper.toEquipment(request);
-        equipment.setDelflag(0);
+        equipment.setDelFlag(0);
         return equipmentRepository.save(equipment);
     }
 
@@ -53,7 +53,7 @@ public class EquipmentServiceImpl implements EquipmentService {
     @Override
     public void deleteEquipmentById(Long id) {
         Equipment equipment = equipmentRepository.findById(id).orElseThrow(() -> new RuntimeException("This equipment doesn't exsit"));
-        equipment.setDelflag(1);
+        equipment.setDelFlag(1);
         equipmentRepository.save(equipment);
     }
 }

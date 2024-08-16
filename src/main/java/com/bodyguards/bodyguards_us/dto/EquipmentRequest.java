@@ -23,11 +23,11 @@ public class EquipmentRequest {
     String description;
 
     @NotNull(message = "Date Add of Equipment is required")
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    @DateTimeFormat(pattern = "MMddyyyy")
     private Date dateAdded;
 
     @NotNull(message = "Last Maintain of Equipment is required")
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    @DateTimeFormat(pattern = "MMddyyyy")
     Date lastMaintain;
 
     @NotNull(message = "Quantity of Equipment is required")
