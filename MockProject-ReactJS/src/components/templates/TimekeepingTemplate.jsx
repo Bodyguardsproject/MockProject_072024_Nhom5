@@ -1,7 +1,10 @@
 import { Badge, Calendar } from "antd";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { PATH } from "../../constant";
 const getListData = (value) => {
   let listData = []; // Specify the type of listData
+
   switch (value.date()) {
     case 8:
       listData = [
@@ -95,8 +98,21 @@ export const TimekeepingTemplate = () => {
     if (info.type === "month") return monthCellRender(current);
     return info.originNode;
   };
+
+  const navigate = useNavigate();
   return (
     <div className=" max-w-7xl m-auto py-10">
+      <div className="grid grid-cols-2 pb-5">
+        <p
+          className="bg-black text-primary-color text-center text-xl font-semibold py-2 cursor-pointer"
+          onClick={() => navigate(`/${PATH.BODYGUARD_WORKSCHEDULE}`)}
+        >
+          Work schedule
+        </p>
+        <p className=" bg-primary-color text-center text-xl font-semibold py-2">
+          Time keeping
+        </p>
+      </div>
       <div className=" bg-global-color-primary font-bold rounded-lg flex justify-center gap-20 py-2">
         <div>
           <p className="text-center">200</p>
