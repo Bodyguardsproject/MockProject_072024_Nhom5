@@ -6,6 +6,7 @@
 
 package com.bodyguards.bodyguards_us.mapper;
 
+import com.bodyguards.bodyguards_us.dto.AddAccountRequest;
 import com.bodyguards.bodyguards_us.dto.CreateAccountRequest;
 import com.bodyguards.bodyguards_us.dto.UserResponse;
 import com.bodyguards.bodyguards_us.entity.User;
@@ -20,4 +21,7 @@ public interface UserMapper {
 	@Mapping(target = "fullName", expression = "java(user.getFirstName() + \" \" + user.getLastName())")
 	@Mapping(target = "id", source = "idUser")
 	UserResponse userToUserResponse(User user);
+
+	@Mapping(target = "roles", ignore = true)
+	User addAccountRequestToUser(AddAccountRequest createAccountRequest);
 }

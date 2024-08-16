@@ -9,7 +9,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface TrainingMapper {
 
-    Training toTraining(TrainingRequest request);
+	Training toTraining(TrainingRequest request);
 
-    void updateTraining(TrainingRequest request, @MappingTarget Training training);
+	void updateTraining(TrainingRequest request, @MappingTarget Training training);
 }

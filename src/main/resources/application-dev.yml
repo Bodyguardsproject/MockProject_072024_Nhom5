@@ -8,7 +8,7 @@ spring:
     database: sql_server
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -26,3 +26,6 @@ jwt:
 admin:
   email: admin@gmail.com
   password: 12345678
+
+upload:
+  path: "D:\Workspace\java\bodyguards_us\upload"

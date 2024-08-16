@@ -6,7 +6,6 @@
 
 package com.bodyguards.bodyguards_us.entity;
 
-import com.bodyguards.bodyguards_us.enums.EquipmentStatus;
 import jakarta.persistence.*;
 import java.util.Date;
 import lombok.*;

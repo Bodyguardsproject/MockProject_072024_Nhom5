@@ -6,6 +6,8 @@
 
 package com.bodyguards.bodyguards_us.config;
 
+import static org.springframework.security.authorization.AuthorityAuthorizationManager.hasRole;
+
 import com.bodyguards.bodyguards_us.enums.UserRole;
 import com.bodyguards.bodyguards_us.security.JwtAuthenticationConverter;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +23,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
-
-import static org.springframework.security.authorization.AuthorityAuthorizationManager.hasRole;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
@@ -42,12 +45,10 @@ public class SecurityConfig {
 				.authorizeHttpRequests(handler -> handler.requestMatchers(
 								"/docs", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**", "/auth/**")
 						.permitAll()
-
 						.requestMatchers(HttpMethod.GET, "/services/**")
 						.permitAll()
 						.requestMatchers("/services/**")
 						.access(hasRole(UserRole.STAFF.toString())) // Applies to POST, PUT, PATCH, DELETE
-
 						.requestMatchers("/test/admin")
 						.hasRole(UserRole.ADMIN.toString())
 						.requestMatchers("/test/bodyguard")
@@ -57,6 +58,18 @@ public class SecurityConfig {
 				.oauth2ResourceServer(oauth -> oauth.authenticationEntryPoint(authenticationEntryPoint)
 						.jwt(jwtConfig -> jwtConfig.jwtAuthenticationConverter(jwtAuthenticationConverter)))
 				.build();
+	}
+
+	@Bean
+	CorsConfigurationSource apiConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.addAllowedOrigin("*");
+		configuration.addAllowedMethod("*");
+		configuration.addAllowedHeader("*");
+		configuration.setAllowCredentials(true);
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
 	}
 
 	@Bean

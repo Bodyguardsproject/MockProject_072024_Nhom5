@@ -9,7 +9,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface EquipmentMapper {
 
-    public Equipment toEquipment(EquipmentRequest request);
+	public Equipment toEquipment(EquipmentRequest request);
 
-    void updateEquipment(EquipmentRequest request, @MappingTarget Equipment equipment);
+	void updateEquipment(EquipmentRequest request, @MappingTarget Equipment equipment);
 }

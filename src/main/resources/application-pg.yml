@@ -1,14 +1,14 @@
 spring:
   datasource:
-    url: jdbc:postgresql://roundhouse.proxy.rlwy.net:38103/railway
+    url: jdbc:postgresql://monorail.proxy.rlwy.net:56506/railway
     username: postgres
-    password: kRmGChQEapmYlwomPeLVQpBTCHuVzOfB
+    password: KAxxKkKKxgZRwvDMtvQJBHfDsAHStVSq
     driver-class-name: org.postgresql.Driver
   jpa:
     database: postgresql
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -16,13 +16,16 @@ spring:
 jwt:
   key:
     access-token:
-      private-key: D:\Inter_07_2024\access_token-20240812T082145Z-001\access_token\private_key.pem
-      public-key: D:\Inter_07_2024\access_token-20240812T082145Z-001\access_token\public_key.pem
+      private-key: D:\Workspace\java\bodyguard_us\certs\access_token\private_key.pem
+      public-key: D:\Workspace\java\bodyguard_us\certs\access_token\public_key.pem
       expireIn: 2 # hours
     refresh-token:
-      private-key: D:\Inter_07_2024\refresh_token-20240812T082129Z-001\refresh_token\private_key.pem
-      public-key: D:\Inter_07_2024\refresh_token-20240812T082129Z-001\refresh_token\public_key.pem
+      private-key: D:\Workspace\java\bodyguard_us\certs\refresh_token\private_key.pem
+      public-key: D:\Workspace\java\bodyguard_us\certs\refresh_token\public_key.pem
       expireIn: 120 # hour == 5 days
 admin:
   email: admin@gmail.com
   password: ABCabc123@
+
+upload:
+  path: D:\Workspace\java\bodyguards_us\upload
