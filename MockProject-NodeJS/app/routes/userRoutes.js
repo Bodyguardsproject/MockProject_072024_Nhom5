@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
+const authMiddleware = require('../middlewares/authMiddleware');
 
-// Route lấy danh sách khách hàng
-router.get('/customers', userController.getCustomers);
+// Route get list customer
+router.get('/customers', authMiddleware, userController.getCustomers);
 
 module.exports = router;

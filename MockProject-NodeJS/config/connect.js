@@ -11,13 +11,12 @@ const config = {
         trustServerCertificate: true
     }
 };
-
-// Tạo và lưu trữ đối tượng Promise của kết nối
+// Create and store the connection pool Promise object
 const poolPromise = new sql.ConnectionPool(config)
     .connect()
     .then(pool => {
         console.log('Connected to SQL Server');
-        return pool; // Trả về pool để sử dụng trong các truy vấn
+        return pool; // Return the pool to be used in queries
     })
     .catch(err => {
         console.error('Database connection failed:', err);
