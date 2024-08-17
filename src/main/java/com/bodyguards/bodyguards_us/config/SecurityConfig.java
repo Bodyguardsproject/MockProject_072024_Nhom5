@@ -42,30 +42,23 @@ public class SecurityConfig {
 				.exceptionHandling(config -> config.accessDeniedHandler(accessDeniedHandler)
 						.authenticationEntryPoint(authenticationEntryPoint))
 				.sessionManagement(config -> config.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				// spotless:off
-                .authorizeHttpRequests(handler -> handler.requestMatchers(
-                                // public routes
-                                "/docs",
-                                "/v3/api-docs/**",
-                                "/swagger-ui.html",
-                                "/swagger-ui/**",
-                                "/auth/**"
-                        )
-                        .permitAll()
-                        .requestMatchers(HttpMethod.GET,
-                                // public get method
-                                "/services/**",
-                                "/bodyguards/**"
-                        )
-                        .permitAll()
-                        .requestMatchers(
-                                // only staff
-                                "/services/**"
-                        )
-                        .hasRole(UserRole.STAFF.toString())
-                        .anyRequest()
-                        .authenticated())
-                // spotless:on
+				.authorizeHttpRequests(handler -> handler.requestMatchers(
+								"/docs", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**", "/auth/**")
+						.permitAll()
+						.requestMatchers(HttpMethod.GET, "/services/**")
+						.permitAll()
+						.requestMatchers("/services/**")
+						.hasRole(UserRole.STAFF.toString()) // Applies to POST, PUT, PATCH, DELETE
+						.requestMatchers(HttpMethod.GET, "/bodyguards/**")
+						.permitAll()
+						.requestMatchers(HttpMethod.GET, "/customers")
+						.permitAll()
+						.requestMatchers("/test/admin")
+						.hasRole(UserRole.ADMIN.toString())
+						.requestMatchers("/test/bodyguard")
+						.hasRole(UserRole.BODYGUARD.toString())
+						.anyRequest()
+						.authenticated())
 				.oauth2ResourceServer(oauth -> oauth.authenticationEntryPoint(authenticationEntryPoint)
 						.jwt(jwtConfig -> jwtConfig.jwtAuthenticationConverter(jwtAuthenticationConverter)))
 				.build();

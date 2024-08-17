@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:sqlserver://localhost:1433;trustServerCertificate=true
-    username: sa
-    password: password
+    url: jdbc:sqlserver://localhost:1433;trustServerCertificate=true;databaseName=bodyguard
+    username: NTTH
+    password: 123456789
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     database: sql_server
@@ -16,12 +16,12 @@ spring:
 jwt:
   key:
     access-token:
-      private-key: D:\Workspace\java\bodyguards_us\certs\access_token\private_key.pem
-      public-key: D:\Workspace\java\bodyguards_us\certs\access_token\public_key.pem
+      private-key: D:\Inter_07_2024\access_token-20240812T082145Z-001\access_token\private_key.pem
+      public-key: D:\Inter_07_2024\access_token-20240812T082145Z-001\access_token\public_key.pem
       expireIn: 2 # hours
     refresh-token:
-      private-key: D:\Workspace\java\bodyguards_us\certs\refresh_token\private_key.pem
-      public-key: D:\Workspace\java\bodyguards_us\certs\refresh_token\public_key.pem
+      private-key: D:\Inter_07_2024\refresh_token-20240812T082129Z-001\refresh_token\private_key.pem
+      public-key: D:\Inter_07_2024\refresh_token-20240812T082129Z-001\refresh_token\public_key.pem
       expireIn: 120 # hour == 5 days
 admin:
   email: admin@gmail.com

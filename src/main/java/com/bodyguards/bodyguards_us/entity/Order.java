@@ -53,13 +53,21 @@ public class Order extends BaseEntity {
 	@JsonIgnore
 	private List<OrderDate> orderDates;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Services services;
+
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "id_service")
+   private Services services;
+
 
 	@Enumerated(EnumType.STRING)
 	@Builder.Default
 	private OrderStatus status = OrderStatus.IN_PROGRESS;
 
-	@Column(length = 1000)
-	private String note;
+   @Column(length = 1000)
+   private String note;
+
+   @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+   private List<Contract> contracts;
+
+
 }

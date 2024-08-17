@@ -12,5 +12,6 @@ public enum UserRole {
 	MANAGER,
 	STAFF,
 	SUPERVISOR,
-	BODYGUARD
+	BODYGUARD,
+	CUSTOMER
 }
