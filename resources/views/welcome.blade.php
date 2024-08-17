@@ -921,17 +921,26 @@
                     @if (Route::has('login'))
                         <nav class="-mx-3 flex flex-1 justify-end">
                             @auth
-                                <a href="{{ url('/dashboard') }}"
-                                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
-                                    Dashboard
 
-                                </a>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button
-                                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
-                                     type="submit">Log Out</button>
-                                </form>
+                                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+
+                                <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                    <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                </button>
+
+                            @else
+                                <span class="inline-flex rounded-md">
+                                    <button type="button" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">
+                                        {{ Auth::user()->name }}
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button  type="submit" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]">Log Out</button>
+                                        </form>
+
+                                    </button>
+
+                                </span>
+                            @endif
 
                             @else
                                 <a href="{{ route('login') }}"
