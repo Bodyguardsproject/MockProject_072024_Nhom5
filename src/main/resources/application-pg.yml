@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://monorail.proxy.rlwy.net:56506/railway
+    url: jdbc:postgresql://autorack.proxy.rlwy.net:47985/railway
     username: postgres
-    password: KAxxKkKKxgZRwvDMtvQJBHfDsAHStVSq
+    password: EITkTQPThMKihQmtTDHxMiBrlkBAsKeb
     driver-class-name: org.postgresql.Driver
   jpa:
     database: postgresql
@@ -26,6 +26,5 @@ jwt:
 admin:
   email: admin@gmail.com
   password: ABCabc123@
-
 upload:
   path: D:\Workspace\java\bodyguards_us\upload
