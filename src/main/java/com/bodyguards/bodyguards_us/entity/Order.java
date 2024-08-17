@@ -55,6 +55,7 @@ public class Order extends BaseEntity {
     private List<OrderDate> orderDates;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_service")
     private Services services;
 
     @Enumerated(EnumType.STRING)
@@ -63,4 +64,8 @@ public class Order extends BaseEntity {
 
     @Column(length = 1000)
     private String note;
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    private List<Contract> contracts;
+
 }

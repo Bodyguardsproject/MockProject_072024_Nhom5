@@ -33,8 +33,8 @@ public class User extends BaseEntity implements UserDetails {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "tbl_user_has_role",
-			joinColumns = @JoinColumn(name = "id_role"),
-			inverseJoinColumns = @JoinColumn(name = "id_user"))
+			joinColumns = @JoinColumn(name = "id_user"),
+			inverseJoinColumns = @JoinColumn(name = "id_role"))
 	private List<Role> roles;
 
 	@OneToMany(fetch = FetchType.LAZY)
@@ -79,4 +79,8 @@ public class User extends BaseEntity implements UserDetails {
 	public String getUsername() {
 		return email;
 	}
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private List<Order> orders;
+
 }

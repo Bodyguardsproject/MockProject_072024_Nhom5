@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<CustomerResponse> getAllCustomers() {
         // Get all User with role 'CUSTOMER'
-        List<User> users = userRepository.findAllByRoleName(UserRole.CUSTOMER);
+        List<User> users = userRepository.findAllByRolesName(UserRole.CUSTOMER);
 
         // Convert the User list to the CustomerResponse list
         return users.stream()
