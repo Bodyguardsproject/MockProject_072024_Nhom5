@@ -137,16 +137,18 @@
     font-family: Poppins-Regular;
     font-size: 13px;
     line-height: 1.5;
-    color: #999999;
+    color: #ffc107;
     justify-content: left;
   }
 
   .txt2 {
     font-family: Poppins-Regular;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.5;
-    color: #666666;
+    color: #ffc107;
     justify-content: left;
+
+
   }
 
   .text-forgot{
@@ -195,6 +197,45 @@
     padding: 40px 130px 33px 95px;
   }
 
+
+
+
+  .custom-btn {
+    padding: 8px 15px; /* Giảm padding để nút nhỏ hơn */
+    font-size: 12px;   /* Giảm kích thước chữ của nút */
+    border-radius: 4px; /* Điều chỉnh góc của nút nếu cần */
+    border-radius: 50px;
+    text-align: center;
+    display: inline-block;
+}
+
+.btn-return {
+    background-color: #f2f2f2;
+    color: #333;
+    border: 1px solid #ccc;
+    text-decoration: none;
+}
+
+.btn-reset {
+    background-color: #57b846;
+    color: white;
+    border: none;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-group a,
+.button-group button {
+    flex: 1;
+    margin: 0 5px;
+    text-align: center;
+}
+
+
   /*------------------------------------------------------------------
   [  ]*/
   .login100-pic {
@@ -226,7 +267,7 @@
 
     width: 100%;
     display: block;
-    padding-bottom: 10px;
+    padding-bottom: 40px;
     padding-left: 10px;
   }
 
@@ -350,7 +391,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-top: 20px;
+    padding-top: 10px;
   }
 
   .login100-form-btn {
@@ -380,7 +421,8 @@
   }
 
   .login100-form-btn:hover {
-    background: #333333;
+    background: #ffc107;
+
   }
 
 

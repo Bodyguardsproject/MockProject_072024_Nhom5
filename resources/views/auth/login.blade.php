@@ -47,8 +47,9 @@
     </x-authentication-card>
 </x-guest-layout>
  --}}
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,6 +63,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('site/css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('site/css/main.css') }}">
 </head>
+
 <body>
     <div class="limiter">
         <div class="container-login100">
@@ -77,21 +79,22 @@
                         Enter your Credentials to access your account
                     </span>
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus>
+                        <input class="input100" type="email" name="email" placeholder="Email"
+                            value="{{ old('email') }}" required autofocus>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <div class="text-center  p-t-12">
+                    <div class="text-center  p-t-12 ">
                         @if (Route::has('password.request'))
                             <div class="text-forgot">
-                            <span class="txt1">
-                                Forgot
-                            </span>
-                            <a class="txt2" href="{{ route('password.request') }}">
-                                 Password?
-                            </a>
+                                <span class="txt2">
+                                    Forgot
+                                </span>
+                                <a class="txt2" href="{{ route('password.request') }}">
+                                    Password?
+                                </a>
                             </div>
                         @endif
                     </div>
@@ -105,7 +108,7 @@
                     <div class="wrap-input100">
                         <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember">
                         <label class="label-checkbox100" for="ckb1">
-                            Remember me
+                            Remember me for 30 days
                         </label>
                     </div>
                     <div class="container-login100-form-btn">
@@ -118,12 +121,12 @@
 
                     <div class="text-center p-t-40">
                         <div class="donthave">
-                        <p>Don't have an account?</p>
-                        <a class="txt2" href="{{ route('register') }}">
-                             Sign Up
-                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                        </a>
-                    </div>
+                            <span>Don't have an account?</span>
+                            <a class="txt2 ms-2  " href="{{ route('register') }}">
+                                Sign Up
+                                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
                 </form>
                 <div class="login100-pic js-tilt" data-tilt>
@@ -146,4 +149,5 @@
     </script>
     <script src="{{ asset('site/js/main.js') }}"></script>
 </body>
+
 </html>
