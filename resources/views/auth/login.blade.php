@@ -116,7 +116,7 @@
 
 
 
-                    <div class="text-center p-t-136">
+                    <div class="text-center p-t-40">
                         <div class="donthave">
                         <p>Don't have an account?</p>
                         <a class="txt2" href="{{ route('register') }}">
