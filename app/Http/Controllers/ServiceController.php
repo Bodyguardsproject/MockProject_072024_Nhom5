@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
@@ -26,9 +27,21 @@ class ServiceController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        Service::create($request->all());
+        $service = new Service();
+        $service->name = $request->name;
+        $service->description = $request->description;
+
+        // Xử lý tải lên ảnh
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->storeAs('public/images', $imageName);
+            $service->image = $imageName;
+        }
+
+        $service->save();
         return redirect()->route('services.index')->with('success', 'Service added successfully.');
     }
 
@@ -44,15 +57,32 @@ class ServiceController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $service->update($request->all());
+        $service->name = $request->name;
+        $service->description = $request->description;
+
+        // Xử lý cập nhật ảnh
+        if ($request->hasFile('image')) {
+            if ($service->image) {
+                Storage::delete('public/images/' . $service->image);
+            }
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->storeAs('public/images', $imageName);
+            $service->image = $imageName;
+        }
+
+        $service->save();
         return redirect()->route('services.index')->with('success', 'Service updated successfully.');
     }
 
     // Xóa dịch vụ
     public function destroy(Service $service)
     {
+        if ($service->image) {
+            Storage::delete('public/images/' . $service->image);
+        }
         $service->delete();
         return redirect()->route('services.index')->with('success', 'Service deleted successfully.');
     }

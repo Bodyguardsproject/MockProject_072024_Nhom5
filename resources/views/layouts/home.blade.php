@@ -62,7 +62,8 @@
                             <div class="d-flex mr-auto flex-column flex-lg-row align-items-center">
                                 <ul class="navbar-nav">
                                     <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
+                                        <a class="nav-link" href="{{ route('home') }}">Home <span
+                                                class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item {{ request()->routeIs('services') ? 'active' : '' }}">
                                         <a class="nav-link" href="{{ route('services') }}">Services</a>
@@ -139,14 +140,14 @@
     </div>
 
 
-    <h1>Home Page</h1>
+    @yield('welcome')
 
 
 
 
 
-     <!-- info section -->
-     <section class="info_section ">
+    <!-- info section -->
+    <section class="info_section ">
         <div class="container">
 
             <div class="info_bottom layout_padding2">

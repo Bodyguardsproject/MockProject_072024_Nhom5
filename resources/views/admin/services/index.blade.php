@@ -25,6 +25,7 @@
                             <tr>
                                 <th>Service Name</th>
                                 <th>Description</th>
+                                <th>Image</th> <!-- Cột ảnh -->
                                 <th class="action-column">Action</th>
                             </tr>
                         </thead>
@@ -33,6 +34,13 @@
                                 <tr>
                                     <td>{{ $service->name }}</td>
                                     <td>{{ $service->description }}</td>
+                                    <td>
+                                        @if($service->image)
+                                            <img src="{{ asset('storage/images/' . $service->image) }}" alt="{{ $service->name }}" style="width: 100px;">
+                                        @else
+                                            No Image
+                                        @endif
+                                    </td>
                                     <td class="table-action-buttons">
                                         <a href="{{ route('services.edit', $service) }}" class="btn btn-edit">Edit</a>
                                         <form action="{{ route('services.destroy', $service) }}" method="POST" style="display: inline;">

@@ -3859,16 +3859,20 @@ thead th {
     border-radius: 4px;
     color: #fff;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
     margin-left: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    font-size: 13px;
+
 
 }
 .logout-button i {
     margin-right: 150px;
+    font-size: 13px;
 
+    padding-top: 10px;
 
 }
 .logout-button:hover {
