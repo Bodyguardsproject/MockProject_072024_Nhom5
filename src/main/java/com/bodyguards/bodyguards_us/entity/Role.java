@@ -7,6 +7,7 @@
 package com.bodyguards.bodyguards_us.entity;
 
 import com.bodyguards.bodyguards_us.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 import lombok.*;
@@ -35,4 +36,8 @@ public class Role extends BaseEntity {
 	private UserRole name;
 
 	private String description;
+
+	@JsonIgnore
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
+	private List<User> users;
 }

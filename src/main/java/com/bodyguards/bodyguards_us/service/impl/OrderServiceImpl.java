@@ -17,39 +17,36 @@ import com.bodyguards.bodyguards_us.mapper.OrderMapper;
 import com.bodyguards.bodyguards_us.repository.OrderRepository;
 import com.bodyguards.bodyguards_us.repository.ServiceRepository;
 import com.bodyguards.bodyguards_us.service.OrderService;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
-    protected final OrderRepository orderRepository;
-    private final ServiceRepository serviceRepository;
-    private final OrderMapper orderMapper;
+	protected final OrderRepository orderRepository;
+	private final ServiceRepository serviceRepository;
+	private final OrderMapper orderMapper;
 
-    @Override
-    public String createOrder(CreateOrderRequest request, User user) {
+	@Override
+	public String createOrder(CreateOrderRequest request, User user) {
 
-        Services services = serviceRepository
-                .findByIdService(request.getServiceId())
-                .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND));
+		Services services = serviceRepository
+				.findByIdService(request.getServiceId())
+				.orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND));
 
-        Order order = orderMapper.createOrderRequestToOrder(request);
+		Order order = orderMapper.createOrderRequestToOrder(request);
 
-        order.setOrderDates(request.getOrderDates().stream().map(orderDate -> OrderDate.builder()
-                        .orderDate(orderDate)
-                        .order(order)
-                        .build())
-                .collect(Collectors.toList())
-        );
+		order.setOrderDates(request.getOrderDates().stream()
+				.map(orderDate ->
+						OrderDate.builder().orderDate(orderDate).order(order).build())
+				.collect(Collectors.toList()));
 
-        order.setServices(services);
-        order.setUser(user);
+		order.setServices(services);
+		order.setUser(user);
 
-        orderRepository.save(order);
+		orderRepository.save(order);
 
-        return "Create Order Successfully";
-    }
+		return "Create Order Successfully";
+	}
 }

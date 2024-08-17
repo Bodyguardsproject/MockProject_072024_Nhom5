@@ -9,28 +9,22 @@ package com.bodyguards.bodyguards_us.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
-
 import java.util.Date;
 import java.util.Set;
+import lombok.Data;
 
 @Data
 public class CreateOrderRequest {
 
-    @NotNull
-    @NotNull
-    private Long serviceId;
+	@NotNull @NotNull private Long serviceId;
 
-    @NotBlank
-    @NotNull
-    private String location;
+	@NotBlank
+	@NotNull private String location;
 
-    @NotNull
-    private int numberOfSecurityGuard;
+	@NotNull private int numberOfSecurityGuard;
 
-    @NotNull
-    @Size(min = 1)
-    private Set<Date> orderDates;
+	@NotNull @Size(min = 1)
+	private Set<Date> orderDates;
 
-    private String comment;
+	private String comment;
 }
