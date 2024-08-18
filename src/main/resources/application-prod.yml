@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:sqlserver://localhost:1433;trustServerCertificate=true;databaseName=bodyguard
     username: NTTH
-    password: 12345678
+    password: 123456789
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     database: sql_server

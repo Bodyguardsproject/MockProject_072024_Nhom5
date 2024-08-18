@@ -23,7 +23,8 @@ public class Contract extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idContract;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_order")
 	private Order order;
 
 	private String contractName;
@@ -44,3 +45,4 @@ public class Contract extends BaseEntity {
 	@OneToMany
 	private List<Feedback> feedbacks;
 }
+
