@@ -330,7 +330,7 @@ export const Home = () => {
         <div className="flex flex-wrap justify-center gap-10 items-center mt-10">
           <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
             <FaRegHandshake className="text-[250px] text-primary-color" />
-            <p className="">
+            <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">
                 {" "}
                 NO LONG TERM CONTRACT
@@ -338,33 +338,33 @@ export const Home = () => {
               Our security guard services are available on a “trial basis.” No
               long term commitment is required! Our security solutions are
               customized.
-            </p>
+            </div>
           </div>
           <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
             <FaMedal className="text-[250px] text-primary-color" />
-            <p className="">
+            <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">
                 {" "}
                 FULLY TRAINED SECURITY GUARDS
               </h2>{" "}
               Our security guards are trained to raise the standard of security
               guard services. solutions are customized.
-            </p>
+            </div>
           </div>
           <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
             <FaFileSignature className="text-[250px] text-primary-color" />
-            <p className="">
+            <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">
                 {" "}
                 FULLY LICENSED, INSURED & BONDED
               </h2>{" "}
               We carry the necessary insurance coverage for your protection; a
               robust policy for a giant coverage area.
-            </p>
+            </div>
           </div>
           <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
             <FaRegClock className="text-[300px] text-primary-color" />
-            <p className="">
+            <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">
                 {" "}
                 24/7 SECURITY GUARD SERVICES
@@ -372,11 +372,11 @@ export const Home = () => {
               We use Fast Guard App Service, which sends our security guard’s
               LIVE location and performance immediately to you. We also believe
               in communication & 24/7 availability to take your call.
-            </p>
+            </div>
           </div>
           <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
             <RiUserSettingsLine className="text-[250px] text-primary-color" />
-            <p className="">
+            <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">
                 {" "}
                 PROFESSIONAL OFFICE MANAGEMENT & STAFF
@@ -384,16 +384,16 @@ export const Home = () => {
               Fast Guard Service provides professional service to your
               satisfaction. Our work is always done in a timely manner and we
               are available 24/7 to meet your needs.
-            </p>
+            </div>
           </div>
           <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
             <FaRegCalendarCheck className="text-[250px] text-primary-color" />
-            <p className="">
+            <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">DEDICATION</h2>{" "}
               Our security guard services are available on a “trial basis.” No
               long term commitment is required! Our security solutions are
               customized.
-            </p>
+            </div>
           </div>
         </div>
       </div>
@@ -433,7 +433,7 @@ export const Home = () => {
             <h1>
               <b>Title</b>: Loss Prevention Specialist
             </h1>
-            <p
+            <div
               className="w-[600px]"
               style={{ width: isHidden ? "200px" : "600px" }}
             >
@@ -448,7 +448,7 @@ export const Home = () => {
                 are required. Prior experience in retail or security is helpful
                 but not essential.
               </p>
-            </p>
+            </div>
             <button className="bg-primary-color text-[#2c3e50] text-xl font-bold mt-2  w-[130px] h-[40px] rounded-lg">
               Apply
             </button>
@@ -464,7 +464,7 @@ export const Home = () => {
             <h1>
               <b>Title</b>:Security Officer
             </h1>
-            <p
+            <div
               className="w-[600px]"
               style={{ width: isHidden ? "200px" : "600px" }}
             >
@@ -479,7 +479,7 @@ export const Home = () => {
                 handle emergencies are essential. Previous experience in
                 security is advantageous but not required.
               </p>
-            </p>
+            </div>
             <button className="bg-primary-color text-[#2c3e50] text-xl font-bold mt-2  w-[130px] h-[40px] rounded-lg">
               Apply
             </button>
@@ -495,22 +495,22 @@ export const Home = () => {
             <h1>
               <b>Title</b>: Event Security Coordinator
             </h1>
-            <p
+            <div
               className="w-[600px]"
               style={{ width: isHidden ? "200px" : "600px" }}
             >
               <b>Description:</b>
               As an Event Security Coordinator, you will oversee security
               operations for events and large gatherings. Your role includes
-             
               <p style={{ display: isHidden ? "none" : "block" }}>
-              coordinating with vendors, managing security staff, and ensuring the safety of attendees. Key tasks involve
-                conducting risk assessments, developing security plans, and
-                responding to emergencies. Excellent organizational skills,
-                experience in event management or security, and the ability to
-                work under pressure are crucial.
+                coordinating with vendors, managing security staff, and ensuring
+                the safety of attendees. Key tasks involve conducting risk
+                assessments, developing security plans, and responding to
+                emergencies. Excellent organizational skills, experience in
+                event management or security, and the ability to work under
+                pressure are crucial.
               </p>
-            </p>
+            </div>
             <button className="bg-primary-color text-[#2c3e50] text-xl font-bold mt-2  w-[130px] h-[40px] rounded-lg">
               Apply
             </button>
