@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:sqlserver://localhost:1433;trustServerCertificate=true;databaseName=bodyguard
     username: NTTH
-    password: 123456789
+    password: boiduongvan1234
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     database: sql_server
@@ -28,4 +28,4 @@ admin:
   password: 12345678
 
 upload:
-  path: D:\Workspace\java\bodyguards_us\upload
+  path: D:/Workspace/java/bodyguards_us/upload
