@@ -1,10 +1,12 @@
 const { poolPromise, sql } = require('../../config/connect');
 
 class User{
-    constructor({ id_user, email, password }) {
+    constructor({ id_user, email, password, status, role_id}) {
         this.id_user = id_user;
         this.username = email;
         this.password = password;
+        this.status = status;
+        this.role_id = role_id;
     }
     static async getAll() {
         try {
@@ -13,7 +15,7 @@ class User{
                  'FROM tbl_user JOIN tbl_user_has_role ON tbl_user.id_user = tbl_user_has_role.user_id WHERE role_id = 4');
             return result.recordset;
         } catch (err) {
-            throw new Error(`Error fetching tbl_users: ${err.message}`);
+            throw new Error(`Error fetching tbl_user: ${err.message}`);
         }
     }
 
@@ -22,8 +24,9 @@ class User{
         const pool = await poolPromise;
         const result = await pool.request()
             .input('email', sql.VarChar, email)
-            .query('SELECT id_user, email, password FROM tbl_user WHERE email = @email');
-        return result.recordset.length ? new User(result.recordset[0]) : null;
+            .query('SELECT id_user, email, password, status, role_id FROM tbl_user JOIN tbl_user_has_role '+
+                'ON tbl_user.id_user = tbl_user_has_role.user_id WHERE email = @email');
+            return result.recordset.length ? new User(result.recordset[0]) : null;
         } catch (err) {
             throw new Error(`Error finding user by email: ${err.message}`);
         }
@@ -82,5 +85,20 @@ class User{
         }
     }
 
+    static async updatePassword(email, newPassword) {
+        try {
+            const pool = await poolPromise;
+            await pool.request()
+                .input('email', sql.VarChar, email)
+                .input('password', sql.VarChar, newPassword)
+                .query(`
+                    UPDATE tbl_user
+                    SET password = @password
+                    WHERE email = @email;
+                `);
+        } catch (err) {
+            throw new Error(`Error updating password: ${err.message}`);
+        }
+    }
 }
 module.exports = User;
