@@ -2,12 +2,14 @@ package com.bodyguards.bodyguards_us.controller;
 
 import com.bodyguards.bodyguards_us.dto.ApiResponse;
 import com.bodyguards.bodyguards_us.dto.TrainingRequest;
+import com.bodyguards.bodyguards_us.entity.User;
 import com.bodyguards.bodyguards_us.service.TrainingService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,10 +27,16 @@ public class TrainingController {
 
 	@GetMapping("")
 //	@PreAuthorize("hasAnyRole('MANAGER')")
-	public ResponseEntity<ApiResponse<?>> getFilterTraining(@RequestParam(required = false) Long id,
-														  @RequestParam(required = false) Integer month,
-														  @RequestParam(required = false) Integer year) {
-		return ResponseEntity.ok(ApiResponse.success(trainingService.getFilterTrainings(id, month, year)));
+	public ResponseEntity<ApiResponse<?>> getTrainingById(@RequestParam(required = false) Long id) {
+		return ResponseEntity.ok(ApiResponse.success(trainingService.getTrainingById(id)));
+	}
+
+	@GetMapping("/user")
+//	@PreAuthorize("hasAnyRole('MANAGER')")
+	public ResponseEntity<ApiResponse<?>> getTrainingByMonth(@RequestParam(required = true) Integer month,
+															@RequestParam(required = false) Integer year,
+															@AuthenticationPrincipal User user) {
+		return ResponseEntity.ok(ApiResponse.success(trainingService.getTrainingByMonth(month, year, user)));
 	}
 
 	@PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

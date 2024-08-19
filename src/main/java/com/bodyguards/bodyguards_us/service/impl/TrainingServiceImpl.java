@@ -47,15 +47,15 @@ public class TrainingServiceImpl implements TrainingService {
 	}
 
 	@Override
-	public List<?> getFilterTrainings(Long id, Integer month, Integer year) {
-		List<Training> trainings = new ArrayList<>();
-		if (id!=null)
-			trainings.add(trainingRepository.findById(id).orElseThrow(() -> new RuntimeException("This training doesn't exsit")));
-		else if (month!=null){
-			int actYear = year==null ? LocalDate.now().getYear() : year;
-			trainings = trainingRepository.getTrainingByMonthAndYear(month, actYear);
-		}
-		return trainings;
+	public Training getTrainingById(Long id) {
+		return trainingRepository.findById(id).orElseThrow(() -> new RuntimeException("This training doesn't exsit"));
+	}
+
+	@Override
+	public List<Training> getTrainingByMonth(Integer month, Integer year, User user) {
+		int actYear = year==null? LocalDate.now().getYear() : year;
+		Bodyguard bodyguard = bodyguardRepository.findByUser(user);
+		return trainingRepository.getTrainingByMonthAndYear(month, actYear, bodyguard.getIdBodyguard());
 	}
 
 	@Override

@@ -10,8 +10,11 @@ import java.util.List;
 @Repository
 public interface TrainingRepository extends JpaRepository<Training, Long> {
 
-    @Query(value = "select * from tbl_training " +
-            "where (MONTH(date_start) = :month and YEAR(date_start) = :year) " +
-            "or (MONTH(date_end) = :month and YEAR(date_end) = :year)", nativeQuery = true)
-    List<Training> getTrainingByMonthAndYear(Integer month, Integer year);
+    @Query(value = "select tt.id_training as training_id, tt.*, tsg.id_bodyguard as bodyguard_id \n" +
+            "from tbl_training as tt \n" +
+            "inner join tbl_sg_has_training as tsg on tt.id_training = tsg.id_training\n" +
+            "where ((MONTH(date_start) = :month and YEAR(date_start) = :year) or\n" +
+            "(MONTH(date_end) = :month and YEAR(date_end) = :year))\n" +
+            "and tsg.id_bodyguard = :userId", nativeQuery = true)
+    List<Training> getTrainingByMonthAndYear(Integer month, Integer year, Long userId);
 }
