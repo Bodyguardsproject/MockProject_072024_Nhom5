@@ -20,12 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/roles")
 @RequiredArgsConstructor
 public class RoleController {
-	private final RoleService roleService;
+    private final RoleService roleService;
 
-	@GetMapping()
-	@PreAuthorize("hasAnyRole('ADMIN')")
-	public ResponseEntity<ApiResponse<?>> getAllRole() {
-		ApiResponse<?> response = ApiResponse.success(roleService.getAllRole());
-		return new ResponseEntity<>(response, HttpStatus.OK);
-	}
+    @GetMapping()
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    public ResponseEntity<ApiResponse<?>> getAllRole() {
+        ApiResponse<?> response = ApiResponse.success(roleService.getAllRole());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }
