@@ -32,54 +32,67 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-	private final AccessDeniedHandler accessDeniedHandler;
-	private final AuthenticationEntryPoint authenticationEntryPoint;
-	private final JwtAuthenticationConverter jwtAuthenticationConverter;
+    private final AccessDeniedHandler accessDeniedHandler;
+    private final AuthenticationEntryPoint authenticationEntryPoint;
+    private final JwtAuthenticationConverter jwtAuthenticationConverter;
 
-	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		return http.csrf(AbstractHttpConfigurer::disable)
-				.exceptionHandling(config -> config.accessDeniedHandler(accessDeniedHandler)
-						.authenticationEntryPoint(authenticationEntryPoint))
-				.sessionManagement(config -> config.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.authorizeHttpRequests(handler -> handler.requestMatchers(
-								"/docs", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**", "/auth/**")
-						.permitAll()
-						.requestMatchers(HttpMethod.GET, "/services/**")
-						.permitAll()
-						.requestMatchers("/services/**")
-						.hasRole(UserRole.STAFF.toString()) // Applies to POST, PUT, PATCH, DELETE
-						.requestMatchers(HttpMethod.GET, "/bodyguards/**")
-						.permitAll()
-						.requestMatchers(HttpMethod.GET, "/customers")
-						.hasRole(UserRole.STAFF.toString())
-						.requestMatchers( "/staff/**")
-						.hasRole(UserRole.STAFF.toString())
-						.requestMatchers("/test/admin")
-						.hasRole(UserRole.ADMIN.toString())
-						.requestMatchers("/test/bodyguard")
-						.hasRole(UserRole.BODYGUARD.toString())
-						.anyRequest()
-						.authenticated())
-				.oauth2ResourceServer(oauth -> oauth.authenticationEntryPoint(authenticationEntryPoint)
-						.jwt(jwtConfig -> jwtConfig.jwtAuthenticationConverter(jwtAuthenticationConverter)))
-				.build();
-	}
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf(AbstractHttpConfigurer::disable)
+                .cors(cors -> cors.configurationSource(apiConfigurationSource()))
+                .exceptionHandling(
+                        config -> config
+                                .accessDeniedHandler(accessDeniedHandler)
+                                .authenticationEntryPoint(authenticationEntryPoint))
+                .sessionManagement(
+                        config -> config
+                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+                .authorizeHttpRequests(
+                        handler -> handler
+                                .requestMatchers(
+                                        "/docs",
+                                        "/v3/api-docs/**",
+                                        "/swagger-ui.html",
+                                        "/swagger-ui/**",
+                                        "/auth/**"
+                                )
+                                .permitAll()
+                                .requestMatchers(
+                                        HttpMethod.GET, "/services/**", "/bodyguards/**"
+                                ).permitAll()
+                                .requestMatchers(
+                                        "/services/**"
+                                ).hasRole(UserRole.STAFF.toString())
+                                .requestMatchers(
+                                        HttpMethod.GET, "/customers"
+                                ).hasRole(UserRole.STAFF.toString())
+                                .requestMatchers(
+                                        "/staff/**"
+                                ).hasRole(UserRole.STAFF.toString())
+                                .anyRequest()
+                                .authenticated()
+                )
+                .oauth2ResourceServer(oauth -> oauth.authenticationEntryPoint(authenticationEntryPoint)
+                        .jwt(jwtConfig -> jwtConfig.jwtAuthenticationConverter(jwtAuthenticationConverter)))
+                .build();
+    }
 
-	@Bean
-	CorsConfigurationSource apiConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.addAllowedOrigin("*");
-		configuration.addAllowedMethod("*");
-		configuration.addAllowedHeader("*");
-		configuration.setAllowCredentials(true);
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", configuration);
-		return source;
-	}
+    @Bean
+    CorsConfigurationSource apiConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOrigin("*");
+        configuration.addAllowedMethod("*");
+        configuration.addAllowedHeader("*");
+        configuration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder(10);
-	}
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(10);
+    }
 }
