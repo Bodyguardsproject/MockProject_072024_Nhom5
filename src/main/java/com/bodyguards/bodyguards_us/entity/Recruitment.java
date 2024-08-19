@@ -33,4 +33,7 @@ public class Recruitment extends BaseEntity {
 
 	@ManyToMany
 	private List<Services> services;
+
+	@OneToMany(mappedBy = "recruitment")
+	private List<ApplyRecruitment> applyRecruitments;
 }
