@@ -9,12 +9,12 @@ server:
 
 spring:
   profiles:
-    active: pg
+    active: dev
     default: dev
   application:
     name: bodyguards-us
   datasource:
-    url: jdbc:sqlserver://${DB_HOST}:${DB_PORT};databaseName=${DB_NAME}U
+    url: jdbc:sqlserver://${DB_HOST}:${DB_PORT};databaseName=${DB_NAME}
     username: ${DB_USER}
     password: ${DB_PASSWORD}
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
