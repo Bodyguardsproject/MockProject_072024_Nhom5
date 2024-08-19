@@ -13,11 +13,19 @@ import {
   WorkSchedulePage,
 } from "../pages/public";
 
-import { AdminHome ,} from "../pages/private";
-import { CustomerTemplate} from "../pages/customer"
-import {CreateAcount} from "../components/ComponentAdmin/index";
+import { AdminHome } from "../pages/private";
+import { CustomerTemplate } from "../pages/customer";
+import { CreateAcount } from "../components/ComponentAdmin/index";
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
 import CustomerQuote from "../pages/customer/CustomerQuote";
+import {
+  BodyGuardsProfileTemplate,
+  TimekeepingTemplate,
+} from "../components/templates";
+import StaffProfile from "../pages/private/Staff/StaffProfile";
+import WorkSchedule from "../pages/private/Supervisor/WorkSchedule";
+import TimeKeeping from "../pages/private/Supervisor/TimeKeeping";
+import DayOffRequest from "../pages/private/Supervisor/DayOffRequest";
 export const router = [
   {
     path: "/",
@@ -144,6 +152,6 @@ export const router = [
         path: PATH.CUSTOMERQUOTE,
         element: <CustomerQuote />,
       },
-    ],  
+    ],
   },
 ];
