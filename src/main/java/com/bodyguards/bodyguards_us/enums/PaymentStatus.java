@@ -7,7 +7,7 @@
 package com.bodyguards.bodyguards_us.enums;
 
 public enum PaymentStatus {
-    IN_PROGRESS,
-    COMPLETED,
-    CANCELLED
+	IN_PROGRESS,
+	COMPLETED,
+	CANCELLED
 }

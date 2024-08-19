@@ -10,5 +10,5 @@ import com.bodyguards.bodyguards_us.dto.ContractRequest;
 import com.bodyguards.bodyguards_us.dto.ContractResponse;
 
 public interface ContractService {
-    ContractResponse createContract(ContractRequest request);
+	ContractResponse createContract(ContractRequest request);
 }

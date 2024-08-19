@@ -6,14 +6,13 @@ import java.util.List;
 
 public interface ApplyRecruitmentService {
 
-    List<String> getAllRecruitmentNames();
+	List<String> getAllRecruitmentNames();
 
-    List<ApplyRecruitmentResponse> getApplicantsByRecruitment(Long recruitmentId);
+	List<ApplyRecruitmentResponse> getApplicantsByRecruitment(Long recruitmentId);
 
-    ApplyRecruitmentDetailResponse getApplicantDetails(Long applicantId);
+	ApplyRecruitmentDetailResponse getApplicantDetails(Long applicantId);
 
-    void updateApplicantStatus(Long applicantId, String status);
+	void updateApplicantStatus(Long applicantId, String status);
 
-    List<ApplyRecruitmentResponse> searchApplicantsByName(Long recruitmentId, String name);
-
+	List<ApplyRecruitmentResponse> searchApplicantsByName(Long recruitmentId, String name);
 }

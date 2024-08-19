@@ -4,7 +4,6 @@
  *  @created 8/19/2024 3:38 PM
  * */
 
-
 package com.bodyguards.bodyguards_us.controller;
 
 import com.bodyguards.bodyguards_us.dto.ApiResponse;
@@ -24,15 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/contracts")
 @RequiredArgsConstructor
 public class ContractController {
-    private final ContractService contractService;
+	private final ContractService contractService;
 
-    @PostMapping("")
-    @PreAuthorize("hasAnyRole('MANAGER')")
-    public ResponseEntity<ApiResponse<?>> createContract(
-            @RequestBody @Valid ContractRequest request
-    ) {
-        ApiResponse<?> response = ApiResponse.success(contractService.createContract(request));
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
-
+	@PostMapping("")
+	@PreAuthorize("hasAnyRole('MANAGER')")
+	public ResponseEntity<ApiResponse<?>> createContract(@RequestBody @Valid ContractRequest request) {
+		ApiResponse<?> response = ApiResponse.success(contractService.createContract(request));
+		return new ResponseEntity<>(response, HttpStatus.CREATED);
+	}
 }

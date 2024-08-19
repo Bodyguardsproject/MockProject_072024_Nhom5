@@ -82,5 +82,4 @@ public class User extends BaseEntity implements UserDetails {
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Order> orders;
-
 }

@@ -12,5 +12,5 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface ContractMapper {
-    ContractResponse toContractResponse(Contract contract);
+	ContractResponse toContractResponse(Contract contract);
 }

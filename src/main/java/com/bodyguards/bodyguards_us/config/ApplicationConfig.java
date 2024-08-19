@@ -14,6 +14,8 @@ import com.bodyguards.bodyguards_us.exception.ApiException;
 import com.bodyguards.bodyguards_us.repository.RoleRepository;
 import com.bodyguards.bodyguards_us.repository.UserRepository;
 import com.bodyguards.bodyguards_us.security.AdminAccountConfigProperties;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,55 +24,52 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Configuration
 @RequiredArgsConstructor
 @Slf4j
 @EnableConfigurationProperties({AdminAccountConfigProperties.class})
 public class ApplicationConfig implements CommandLineRunner {
 
-    private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
-    private final AdminAccountConfigProperties adminAccountConfigProperties;
-    private final PasswordEncoder passwordEncoder;
+	private final UserRepository userRepository;
+	private final RoleRepository roleRepository;
+	private final AdminAccountConfigProperties adminAccountConfigProperties;
+	private final PasswordEncoder passwordEncoder;
 
-    @Value("${spring.profiles.active}")
-    private String activeProfile;
+	@Value("${spring.profiles.active}")
+	private String activeProfile;
 
-    private void initAdminAccount() {
-        String adminEmail = adminAccountConfigProperties.email();
-        String adminPassword = adminAccountConfigProperties.password();
-        Role adminRole = roleRepository
-                .findByName(UserRole.ADMIN)
-                .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND));
+	private void initAdminAccount() {
+		String adminEmail = adminAccountConfigProperties.email();
+		String adminPassword = adminAccountConfigProperties.password();
+		Role adminRole = roleRepository
+				.findByName(UserRole.ADMIN)
+				.orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND));
 
-        if (userRepository.existsByEmail(adminEmail)) return;
+		if (userRepository.existsByEmail(adminEmail)) return;
 
-        User user = User.builder()
-                .email(adminEmail)
-                .password(passwordEncoder.encode(adminPassword))
-                .roles(List.of(adminRole))
-                .build();
-        userRepository.save(user);
+		User user = User.builder()
+				.email(adminEmail)
+				.password(passwordEncoder.encode(adminPassword))
+				.roles(List.of(adminRole))
+				.build();
+		userRepository.save(user);
 
-        if (!activeProfile.equals("prod")) {
-            log.info(
-                    "Initial admin account with email: {} and password: {} (only development)",
-                    adminEmail,
-                    adminPassword);
-        }
-    }
+		if (!activeProfile.equals("prod")) {
+			log.info(
+					"Initial admin account with email: {} and password: {} (only development)",
+					adminEmail,
+					adminPassword);
+		}
+	}
 
-    @Override
-    public void run(String... args) throws Exception {
-        if (roleRepository.existsByName(UserRole.ADMIN)) return;
-        List<Role> roles = new ArrayList<>();
-        for (UserRole role : UserRole.values()) {
-            roles.add(Role.builder().name(role).description(role.name()).build());
-        }
-        roleRepository.saveAll(roles);
-        initAdminAccount();
-    }
+	@Override
+	public void run(String... args) throws Exception {
+		if (roleRepository.existsByName(UserRole.ADMIN)) return;
+		List<Role> roles = new ArrayList<>();
+		for (UserRole role : UserRole.values()) {
+			roles.add(Role.builder().name(role).description(role.name()).build());
+		}
+		roleRepository.saveAll(roles);
+		initAdminAccount();
+	}
 }

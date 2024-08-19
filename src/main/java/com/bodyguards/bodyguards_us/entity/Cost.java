@@ -18,22 +18,22 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "tbl_cost")
 public class Cost extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCost;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idCost;
 
-    @ManyToOne
-    @JoinColumn(name = "id_contract")
-    private Contract contract;
+	@ManyToOne
+	@JoinColumn(name = "id_contract")
+	private Contract contract;
 
-    private String costName;
+	private String costName;
 
-    private String description;
+	private String description;
 
-    @Enumerated(EnumType.STRING)
-    private CostType costType;
+	@Enumerated(EnumType.STRING)
+	private CostType costType;
 
-    private Double cost;
+	private Double cost;
 
-    private String status;
+	private String status;
 }

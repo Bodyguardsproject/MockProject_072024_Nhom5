@@ -7,6 +7,6 @@
 package com.bodyguards.bodyguards_us.enums;
 
 public enum CostType {
-    EQUIPMENT,
-    SERVICE
+	EQUIPMENT,
+	SERVICE
 }
