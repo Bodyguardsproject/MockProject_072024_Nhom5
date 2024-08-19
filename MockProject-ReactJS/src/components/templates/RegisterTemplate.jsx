@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { Checkbox, Divider, Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { authServices } from "../../services/authService";
 
 export const RegisterTemplate = () => {
   //message
@@ -15,18 +16,34 @@ export const RegisterTemplate = () => {
       content: "Successful registration",
     });
   };
+  const showMessage = ({ type, message }) => {
+    messageApi.open({
+      type: type,
+      content: message,
+    });
+  };
 
-  const onFinish = (values) => {
-    success();
+  const onFinish = async (values) => {
     console.log("Success:", values);
     //call api
+    const { name } = values;
+    var fullName = name.split(" "),
+      firstName = fullName[0],
+      lastName = fullName[fullName.length - 1];
+    try {
+      const res = await authServices.register({
+        ...values,
+        firstName,
+        lastName,
+      });
+      console.log(res);
+      showMessage({ type: "success", message: "Successful registration 1" });
+      navigate("/auth/login");
+    } catch (error) {
+      showMessage({ type: "error", message: "Something wrong !" });
+    }
+  };
 
-    //redirect
-    navigate("/auth/login");
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
   return (
     <div className="flex flex-col justify-center items-start sm:px-28 px-10 mb-5 ">
       {contextHolder}
@@ -36,7 +53,6 @@ export const RegisterTemplate = () => {
         name="register"
         layout="vertical"
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
         style={{ width: "100%" }}
       >
@@ -58,10 +74,11 @@ export const RegisterTemplate = () => {
           name="phone_number"
           rules={[
             { required: true, message: "Please input your phone number!" },
-            { len: 10, message: "Number must be at least 10 characters long!" },
             {
-              pattern: /^[0-9]+$/,
-              message: "Phone number must only contain digits from 0 to 9!",
+              pattern:
+                /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
+              message:
+                "Please enter correct phone number format! Example: (624) 174-3179",
             },
           ]}
         >

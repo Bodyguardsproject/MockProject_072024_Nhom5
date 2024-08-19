@@ -2,13 +2,19 @@ import { Divider, Form, Input } from "antd";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PATH } from "../../constant";
+import { authServices } from "../../services/authService";
 
 export const ForgotPasswordTemplate = () => {
   const navigate = useNavigate();
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log("Success:", values);
-    navigate(`/auth/${PATH.RESETPASSWORD}`);
+    try {
+      const res = await authServices.forgotPassword(values);
+      navigate(`/auth/${PATH.RESETPASSWORD}`);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

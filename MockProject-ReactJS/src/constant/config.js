@@ -12,6 +12,7 @@ export const PATH = {
   CREATEACCOUNT: "create-account",
   ABOUT_US: "about-us",
   JOBS: "jobs",
+
   CUSTOMERQUOTE: "customerquote",
 
   UPLOADCV: "uploadcv",
@@ -23,4 +24,5 @@ export const PATH = {
   SUPERVISOR_WORKSCHEDULE: "workschedule",
   SUPERVISOR_TIMEKEEPING: "timekeeping",
   SUPERVISOR_DAYOFFREQUEST: "dayoffrequest",
+
 };

@@ -2,6 +2,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { Checkbox, Divider, Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { authServices } from "../../services/authService";
 
 export const LoginTemplate = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -14,19 +15,17 @@ export const LoginTemplate = () => {
     });
   };
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log("Success:", values);
     //call api
-
-    //error show showMessageEror
-
-    //
-
-    navigate("/");
-  };
-  const onFinishFailed = (errorInfo) => {
-    showMessage({ type: "error", message: "Incorrect username or password" });
-    console.log("Failed:", errorInfo);
+    try {
+      const res = await authServices.login(values);
+      navigate("/");
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+      showMessage({ type: "error", message: "Incorrect username or password" });
+    }
   };
 
   return (
@@ -43,7 +42,6 @@ export const LoginTemplate = () => {
         }}
         layout="vertical"
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
         style={{ width: "100%" }}
       >

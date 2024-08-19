@@ -13,9 +13,9 @@ import {
   WorkSchedulePage,
 } from "../pages/public";
 
-import { AdminHome ,} from "../pages/private";
-import { CustomerTemplate} from "../pages/customer"
-import {CreateAcount} from "../components/ComponentAdmin/index";
+import { AdminHome } from "../pages/private";
+import { CustomerTemplate } from "../pages/customer";
+import { CreateAcount } from "../components/ComponentAdmin/index";
 import BodyGuardsCustomerPage from "../pages/public/BodyGuardsCustomer";
 import CustomerQuote from "../pages/customer/CustomerQuote";
 import { TimekeepingTemplate } from "../components/templates/TimekeepingTemplate";
@@ -150,6 +150,6 @@ export const router = [
         path: PATH.CUSTOMERQUOTE,
         element: <CustomerQuote />,
       },
-    ],  
+    ],
   },
 ];
