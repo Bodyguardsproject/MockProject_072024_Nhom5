@@ -7,8 +7,9 @@
 package com.bodyguards.bodyguards_us.entity;
 
 import jakarta.persistence.*;
-import java.util.List;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -19,22 +20,22 @@ import lombok.*;
 @Table(name = "tbl_bodyguard")
 public class Bodyguard extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long IdBodyguard;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idBodyguard;
 
-	@OneToOne()
-	@JoinColumn(name = "id_user", nullable = false, unique = true)
-	private User user;
+    @OneToOne()
+    @JoinColumn(name = "id_user", nullable = false, unique = true)
+    private User user;
 
-	@ManyToMany
-	private List<Training> trainings;
+    @ManyToMany
+    private List<Training> trainings;
 
-	private int experience;
+    private int experience;
 
-	private String availabilityStatus;
+    private String availabilityStatus;
 
-	private Double rating;
+    private Double rating;
 
-	private Double hourlyRate;
+    private Double hourlyRate;
 }

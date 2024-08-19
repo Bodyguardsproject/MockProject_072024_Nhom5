@@ -8,8 +8,9 @@ package com.bodyguards.bodyguards_us.entity;
 
 import com.bodyguards.bodyguards_us.enums.ContractStatus;
 import jakarta.persistence.*;
-import java.util.List;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -19,30 +20,34 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "tbl_contract")
 public class Contract extends BaseEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idContract;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idContract;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_order")
-	private Order order;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_order")
+    private Order order;
 
-	private String contractName;
+    private String contractName;
 
-	private String contractFile;
+    private String contractFile;
 
-	@Enumerated(EnumType.STRING)
-	private ContractStatus contractStatus;
+    @Enumerated(EnumType.STRING)
+    private ContractStatus contractStatus;
 
-	private Long totalAmount;
+    private Long totalAmount;
 
-	@OneToMany(mappedBy = "contract", fetch = FetchType.LAZY)
-	private List<Payment> payments;
+    @OneToMany(mappedBy = "contract", fetch = FetchType.LAZY)
+    private List<Payment> payments;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contract")
-	private List<Cost> costs;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contract")
+    private List<Cost> costs;
 
-	@OneToMany
-	private List<Feedback> feedbacks;
+    private Double serviceCost;
+
+    private Double equipmentCost;
+
+    @OneToMany
+    private List<Feedback> feedbacks;
 }
 

@@ -7,5 +7,8 @@
 package com.bodyguards.bodyguards_us.enums;
 
 public enum ContractStatus {
-	PENDING
+    PENDING,
+    IN_PROGRESS,
+    COMPLETED,
+    CANCELLED
 }

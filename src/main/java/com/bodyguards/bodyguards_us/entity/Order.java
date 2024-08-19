@@ -9,8 +9,9 @@ package com.bodyguards.bodyguards_us.entity;
 import com.bodyguards.bodyguards_us.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import java.util.List;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -20,54 +21,60 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "tbl_order")
 public class Order extends BaseEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idOrder;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idOrder;
 
-	@ManyToOne
-	@JoinColumn(name = "id_user")
-	private User user;
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private User user;
 
-	@ManyToMany
-	@JoinTable(
-			name = "tbl_order_has_equipment",
-			joinColumns = @JoinColumn(name = "id_order"),
-			inverseJoinColumns = @JoinColumn(name = "id_equipment"))
-	private List<Equipment> equipments;
+    @ManyToMany
+    @JoinTable(
+            name = "tbl_order_has_equipment",
+            joinColumns = @JoinColumn(name = "id_order"),
+            inverseJoinColumns = @JoinColumn(name = "id_equipment"))
+    private List<Equipment> equipments;
 
-	@ManyToOne
-	@JoinColumn(name = "id_supervisor")
-	private User supervisor;
+    @ManyToMany
+    @JoinTable(
+            name = "tbl_order_has_bodyguards",
+            joinColumns = @JoinColumn(name = "id_order"),
+            inverseJoinColumns = @JoinColumn(name = "id_bodyguard"))
+    private List<Bodyguard> bodyguards;
 
-	private String levelOfProtection;
+    @ManyToOne
+    @JoinColumn(name = "id_supervisor")
+    private Bodyguard supervisor;
 
-	private String location;
+    private String levelOfProtection;
 
-	private String travelSchedule;
+    private String location;
 
-	private Integer numberOfSecurityGuard;
+    private String travelSchedule;
 
-	private Long totalAmount;
+    private Integer numberOfSecurityGuard;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY)
-	@JsonIgnore
-	private List<OrderDate> orderDates;
+    private Long totalAmount;
 
-
-   @ManyToOne(fetch = FetchType.LAZY)
-   @JoinColumn(name = "id_service")
-   private Services services;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<OrderDate> orderDates;
 
 
-	@Enumerated(EnumType.STRING)
-	@Builder.Default
-	private OrderStatus status = OrderStatus.IN_PROGRESS;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_service")
+    private Services services;
 
-   @Column(length = 1000)
-   private String note;
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private OrderStatus status = OrderStatus.IN_PROGRESS;
 
-   @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-   private List<Contract> contracts;
+    @Column(length = 1000)
+    private String note;
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    private List<Contract> contracts;
 
 
 }
