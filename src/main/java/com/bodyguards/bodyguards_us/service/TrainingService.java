@@ -8,7 +8,7 @@ public interface TrainingService {
 
 	public List<Training> getAllTrainings();
 
-	public Training getTrainingById(Long id);
+	public List<?> getFilterTrainings (Long id,Integer month, Integer year);
 
 	public Training updateTraining(Long id, TrainingRequest request);
 

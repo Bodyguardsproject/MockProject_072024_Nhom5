@@ -18,32 +18,34 @@ public class TrainingController {
 	TrainingService trainingService;
 
 	@GetMapping("/all")
-	@PreAuthorize("hasAnyRole('MANAGER')")
+//	@PreAuthorize("hasAnyRole('MANAGER')")
 	public ResponseEntity<ApiResponse<?>> getTrainings() {
 		return ResponseEntity.ok(ApiResponse.success(trainingService.getAllTrainings()));
 	}
 
 	@GetMapping("")
-	@PreAuthorize("hasAnyRole('MANAGER')")
-	public ResponseEntity<ApiResponse<?>> getTrainingById(@RequestParam Long id) {
-		return ResponseEntity.ok(ApiResponse.success(trainingService.getTrainingById(id)));
+//	@PreAuthorize("hasAnyRole('MANAGER')")
+	public ResponseEntity<ApiResponse<?>> getFilterTraining(@RequestParam(required = false) Long id,
+														  @RequestParam(required = false) Integer month,
+														  @RequestParam(required = false) Integer year) {
+		return ResponseEntity.ok(ApiResponse.success(trainingService.getFilterTrainings(id, month, year)));
 	}
 
 	@PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	@PreAuthorize("hasAnyRole('MANAGER')")
+//	@PreAuthorize("hasAnyRole('MANAGER')")
 	public ResponseEntity<ApiResponse<?>> createNewTraining(@ModelAttribute @Valid TrainingRequest request) {
 		return ResponseEntity.ok(ApiResponse.success(trainingService.updateTraining(null, request)));
 	}
 
 	@PutMapping(value = "/update", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	@PreAuthorize("hasAnyRole('MANAGER')")
+//	@PreAuthorize("hasAnyRole('MANAGER')")
 	public ResponseEntity<ApiResponse<?>> updateTraining(
 			@RequestParam Long id, @ModelAttribute @Valid TrainingRequest request) {
 		return ResponseEntity.ok(ApiResponse.success(trainingService.updateTraining(id, request)));
 	}
 
 	@DeleteMapping("/delete")
-	@PreAuthorize("hasAnyRole('MANAGER')")
+//	@PreAuthorize("hasAnyRole('MANAGER')")
 	public ResponseEntity<ApiResponse<?>> deleteTraining(@RequestParam Long id) {
 		trainingService.deleteTraining(id);
 		return ResponseEntity.ok(ApiResponse.success("Delete training Successfully"));
