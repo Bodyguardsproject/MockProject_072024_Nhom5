@@ -52,7 +52,7 @@ public class SecurityConfig {
 						.requestMatchers(HttpMethod.GET, "/bodyguards/**")
 						.permitAll()
 						.requestMatchers(HttpMethod.GET, "/customers")
-						.permitAll()
+						.hasRole(UserRole.STAFF.toString())
 						.requestMatchers( "/staff/**")
 						.hasRole(UserRole.STAFF.toString())
 						.requestMatchers( "/supervisor/dayoffrequests/**")
