@@ -38,27 +38,6 @@ public class ApplicationConfig implements CommandLineRunner {
 	@Value("${spring.profiles.active}")
 	private String activeProfile;
 
-	private void initRoleDevelopment() {
-		if (roleRepository.existsByName(UserRole.ADMIN)) return;
-
-		log.info("Create all role only development");
-		List<Role> roles = new ArrayList<>();
-		for (UserRole role : UserRole.values()) {
-			roles.add(Role.builder().name(role).description(role.name()).build());
-		}
-		roleRepository.saveAll(roles);
-	}
-
-	private void initRoleProduction() {
-		if (roleRepository.existsByName(UserRole.ADMIN)) return;
-		log.info("Create admin role");
-
-		Role role =
-				Role.builder().name(UserRole.ADMIN).description("System admin").build();
-
-		roleRepository.save(role);
-	}
-
 	private void initAdminAccount() {
 		String adminEmail = adminAccountConfigProperties.email();
 		String adminPassword = adminAccountConfigProperties.password();
@@ -85,8 +64,12 @@ public class ApplicationConfig implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		if (activeProfile.equals("prod")) initRoleProduction();
-		else initRoleDevelopment();
+		if (roleRepository.existsByName(UserRole.ADMIN)) return;
+		List<Role> roles = new ArrayList<>();
+		for (UserRole role : UserRole.values()) {
+			roles.add(Role.builder().name(role).description(role.name()).build());
+		}
+		roleRepository.saveAll(roles);
 		initAdminAccount();
 	}
 }

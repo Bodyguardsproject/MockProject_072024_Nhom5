@@ -35,9 +35,16 @@ public class Order extends BaseEntity {
 			inverseJoinColumns = @JoinColumn(name = "id_equipment"))
 	private List<Equipment> equipments;
 
+	@ManyToMany
+	@JoinTable(
+			name = "tbl_order_has_bodyguards",
+			joinColumns = @JoinColumn(name = "id_order"),
+			inverseJoinColumns = @JoinColumn(name = "id_bodyguard"))
+	private List<Bodyguard> bodyguards;
+
 	@ManyToOne
 	@JoinColumn(name = "id_supervisor")
-	private User supervisor;
+	private Bodyguard supervisor;
 
 	private String levelOfProtection;
 
@@ -53,21 +60,17 @@ public class Order extends BaseEntity {
 	@JsonIgnore
 	private List<OrderDate> orderDates;
 
-
-   @ManyToOne(fetch = FetchType.LAZY)
-   @JoinColumn(name = "id_service")
-   private Services services;
-
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_service")
+	private Services services;
 
 	@Enumerated(EnumType.STRING)
 	@Builder.Default
 	private OrderStatus status = OrderStatus.IN_PROGRESS;
 
-   @Column(length = 1000)
-   private String note;
+	@Column(length = 1000)
+	private String note;
 
-   @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-   private List<Contract> contracts;
-
-
+	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+	private List<Contract> contracts;
 }

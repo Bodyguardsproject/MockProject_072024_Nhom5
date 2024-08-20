@@ -8,17 +8,16 @@ package com.bodyguards.bodyguards_us.controller;
 
 import com.bodyguards.bodyguards_us.dto.ApiResponse;
 import com.bodyguards.bodyguards_us.dto.CreateOrderRequest;
+import com.bodyguards.bodyguards_us.dto.OrderUpdateRequest;
 import com.bodyguards.bodyguards_us.entity.User;
 import com.bodyguards.bodyguards_us.service.OrderService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/orders")
@@ -32,5 +31,20 @@ public class OrderController {
 			@RequestBody @Valid CreateOrderRequest request, @AuthenticationPrincipal User user) {
 		ApiResponse<?> response = ApiResponse.success(orderService.createOrder(request, user));
 		return new ResponseEntity<>(response, HttpStatus.CREATED);
+	}
+
+	@GetMapping()
+//	@PreAuthorize("hasAnyRole('STAFF')")
+	public ResponseEntity<ApiResponse<?>> getAllOrders() {
+		ApiResponse<?> response = ApiResponse.success(orderService.getAllOrders());
+		return ResponseEntity.ok(response);
+	}
+
+	@PutMapping("update")
+//	@PreAuthorize("hasAnyRole('STAFF')")
+	public ResponseEntity<ApiResponse<?>> updateOrder(@RequestParam Long id, @RequestBody @Valid OrderUpdateRequest request) {
+		orderService.updateStatusOrder(id, request.getStatus());
+		ApiResponse<?> response = ApiResponse.success("Update status of order successfully");
+		return ResponseEntity.ok(response);
 	}
 }

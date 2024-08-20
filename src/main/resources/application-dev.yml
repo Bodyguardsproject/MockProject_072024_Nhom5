@@ -28,4 +28,4 @@ admin:
   password: 12345678
 
 upload:
-  path: "D:/Workspace/java/bodyguards_us/upload"
+  path: "D:\Workspace\java\bodyguards_us\upload"

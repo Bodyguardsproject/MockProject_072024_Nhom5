@@ -10,8 +10,8 @@ import com.bodyguards.bodyguards_us.dto.AddAccountRequest;
 import com.bodyguards.bodyguards_us.dto.CreateAccountRequest;
 import com.bodyguards.bodyguards_us.dto.CustomerResponse;
 import com.bodyguards.bodyguards_us.dto.UserResponse;
-import com.bodyguards.bodyguards_us.entity.User;
 import com.bodyguards.bodyguards_us.entity.Cost;
+import com.bodyguards.bodyguards_us.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

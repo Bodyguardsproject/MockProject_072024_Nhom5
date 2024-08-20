@@ -27,7 +27,10 @@ public enum ErrorCode {
 	INVALID_RESET_PASSWORD_TOKEN(1009, "Invalid reset password token", HttpStatus.FORBIDDEN),
 	EQUIPMENT_ALREADY_EXISTED(1010, "Equipment already existed", HttpStatus.BAD_REQUEST),
 	APPLICANT_NOT_FOUND(1011, "Applicant not found", HttpStatus.NOT_FOUND),
-	INVALID_APPLICANT_STATUS(1012, "Invalid applicant status", HttpStatus.BAD_REQUEST);
+	INVALID_APPLICANT_STATUS(1012, "Invalid applicant status", HttpStatus.BAD_REQUEST),
+	ORDER_NOT_FOUND(1013, "Order not found", HttpStatus.NOT_FOUND),
+	SERVICE_NOT_FOUND(1014, "Service not found", HttpStatus.NOT_FOUND),
+	EQUIPMENT_NOT_FOUND(1015, "Equipment not found", HttpStatus.NOT_FOUND);
 
 	private final String message;
 	private final HttpStatus status;

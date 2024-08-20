@@ -13,6 +13,8 @@ import com.bodyguards.bodyguards_us.repository.TrainingRepository;
 import com.bodyguards.bodyguards_us.repository.UserRepository;
 import com.bodyguards.bodyguards_us.service.FileService;
 import com.bodyguards.bodyguards_us.service.TrainingService;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +48,14 @@ public class TrainingServiceImpl implements TrainingService {
 
 	@Override
 	public Training getTrainingById(Long id) {
-		Training training =
-				trainingRepository.findById(id).orElseThrow(() -> new RuntimeException("This training doesn't exsit"));
-		return training;
+		return trainingRepository.findById(id).orElseThrow(() -> new RuntimeException("This training doesn't exsit"));
+	}
+
+	@Override
+	public List<Training> getTrainingByMonth(Integer month, Integer year, User user) {
+		int actYear = year==null? LocalDate.now().getYear() : year;
+		Bodyguard bodyguard = bodyguardRepository.findByUser(user);
+		return trainingRepository.getTrainingByMonthAndYear(month, actYear, bodyguard.getIdBodyguard());
 	}
 
 	@Override
