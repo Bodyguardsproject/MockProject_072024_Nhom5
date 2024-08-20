@@ -4,7 +4,7 @@ import {
   TableAccount,
   TableStaff,
   TableBodyguard,
-  CreateAcount
+  CreateAcount,
 } from "../../components/ComponentAdmin/index";
 
 export const AdminAccounts = () => {

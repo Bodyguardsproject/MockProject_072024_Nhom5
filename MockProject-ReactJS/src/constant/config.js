@@ -13,6 +13,8 @@ export const PATH = {
   ABOUT_US: "about-us",
   JOBS: "jobs",
 
+  CUSTOMERQUOTE: "customerquote",
+
   UPLOADCV: "uploadcv",
 
   CUSTOMER: "customer",
@@ -25,4 +27,5 @@ export const PATH = {
   SUPERVISOR_WORKSCHEDULE: "workschedule",
   SUPERVISOR_TIMEKEEPING: "timekeeping",
   SUPERVISOR_DAYOFFREQUEST: "dayoffrequest",
+
 };

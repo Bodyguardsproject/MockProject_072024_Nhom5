@@ -13,3 +13,5 @@ export * from "./BodyGuardsProfileTemplate";
 export * from "./UpLoadCVTemplate.jsx";
 //
 export * from "./WorkScheduleTemplate.jsx";
+export * from "./TimekeepingTemplate";
+export * from "./BodyGuardsProfileTemplate";
