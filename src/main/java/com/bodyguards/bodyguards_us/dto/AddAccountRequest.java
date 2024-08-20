@@ -47,4 +47,6 @@ public class AddAccountRequest {
 	@NotNull @Size(min = 5, max = 100)
 	@Pattern(regexp = "^\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}$", message = "Invalid US phone format")
 	private String phone;
+
+	private int experience;
 }

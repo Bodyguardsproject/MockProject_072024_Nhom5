@@ -7,10 +7,9 @@
 package com.bodyguards.bodyguards_us.repository;
 
 import com.bodyguards.bodyguards_us.entity.User;
+import com.bodyguards.bodyguards_us.enums.UserRole;
 import java.util.List;
 import java.util.Optional;
-
-import com.bodyguards.bodyguards_us.enums.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

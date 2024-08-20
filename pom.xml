@@ -30,6 +30,7 @@
         <java.version>21</java.version>
         <spotless.version>2.43.0</spotless.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+        <maven.compiler.release>21</maven.compiler.release>
     </properties>
     <dependencies>
 
@@ -121,6 +122,12 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>me.paulschwarz</groupId>
+            <artifactId>spring-dotenv</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
         <!--        TESTING -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -133,7 +140,6 @@
             <artifactId>commons-fileupload</artifactId>
             <version>1.5</version>
         </dependency>
-
 
     </dependencies>
 

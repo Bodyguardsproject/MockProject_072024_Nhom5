@@ -6,6 +6,7 @@
 
 package com.bodyguards.bodyguards_us.entity;
 
+import com.bodyguards.bodyguards_us.enums.CostType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,7 +30,8 @@ public class Cost extends BaseEntity {
 
 	private String description;
 
-	private String costType;
+	@Enumerated(EnumType.STRING)
+	private CostType costType;
 
 	private Double cost;
 
