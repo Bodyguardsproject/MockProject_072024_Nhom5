@@ -7,8 +7,7 @@
 package com.bodyguards.bodyguards_us.enums;
 
 public enum DayOffStatus {
-	//DayOffStatus
-	PENDING,
-	ACCEPTED,
-	DENIED
+	APPROVAL,
+	IN_PROGRESS,
+	DENY
 }

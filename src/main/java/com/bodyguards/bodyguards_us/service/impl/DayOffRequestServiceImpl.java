@@ -34,7 +34,7 @@ public class DayOffRequestServiceImpl implements DayOffRequestService {
     public void acceptDayOffRequest(Long idDayOff) {
         DayOffRequest dayOffRequest = dayOffRequestRepository.findById(idDayOff)
                 .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND));
-        dayOffRequest.setStatus(DayOffStatus.ACCEPTED);
+        dayOffRequest.setStatus(DayOffStatus.APPROVAL);
         dayOffRequestRepository.save(dayOffRequest);
     }
 
@@ -42,7 +42,7 @@ public class DayOffRequestServiceImpl implements DayOffRequestService {
     public void denyDayOffRequest(Long idDayOff) {
         DayOffRequest dayOffRequest = dayOffRequestRepository.findById(idDayOff)
                 .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND));
-        dayOffRequest.setStatus(DayOffStatus.DENIED);
+        dayOffRequest.setStatus(DayOffStatus.DENY);
         dayOffRequestRepository.save(dayOffRequest);
     }
 }
