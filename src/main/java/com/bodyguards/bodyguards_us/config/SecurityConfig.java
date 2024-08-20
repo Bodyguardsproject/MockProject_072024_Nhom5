@@ -55,6 +55,8 @@ public class SecurityConfig {
 						.permitAll()
 						.requestMatchers( "/staff/**")
 						.hasRole(UserRole.STAFF.toString())
+						.requestMatchers( "/supervisor/dayoffrequests/**")
+						.hasRole(UserRole.SUPERVISOR.toString())
 						.requestMatchers("/test/admin")
 						.hasRole(UserRole.ADMIN.toString())
 						.requestMatchers("/test/bodyguard")
