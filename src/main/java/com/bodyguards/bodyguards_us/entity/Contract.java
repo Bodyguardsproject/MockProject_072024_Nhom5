@@ -42,7 +42,10 @@ public class Contract extends BaseEntity {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contract")
 	private List<Cost> costs;
 
+	private Double serviceCost;
+
+	private Double equipmentCost;
+
 	@OneToMany
 	private List<Feedback> feedbacks;
 }
-

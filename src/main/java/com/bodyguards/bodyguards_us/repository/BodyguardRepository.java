@@ -1,6 +1,7 @@
 package com.bodyguards.bodyguards_us.repository;
 
 import com.bodyguards.bodyguards_us.entity.Bodyguard;
+import java.util.List;
 import java.util.Optional;
 
 import com.bodyguards.bodyguards_us.entity.User;
@@ -11,5 +12,9 @@ import org.springframework.stereotype.Repository;
 public interface BodyguardRepository extends JpaRepository<Bodyguard, Long> {
 	Optional<Bodyguard> findById(Long id);
 
+
 	Bodyguard findByUser(User user);
+
+	List<Bodyguard> findByIdBodyguardIn(List<Long> ids);
+
 }

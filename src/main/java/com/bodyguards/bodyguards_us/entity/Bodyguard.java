@@ -21,7 +21,7 @@ public class Bodyguard extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long IdBodyguard;
+	private Long idBodyguard;
 
 	@OneToOne()
 	@JoinColumn(name = "id_user", nullable = false, unique = true)
