@@ -36,5 +36,5 @@ public class DayOffRequest extends BaseEntity {
 	private String reason;
 
 	@Enumerated(EnumType.STRING)
-	private DayOffStatus status;
+	private DayOffStatus status = DayOffStatus.IN_PROGRESS;
 }

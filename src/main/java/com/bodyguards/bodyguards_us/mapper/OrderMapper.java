@@ -7,6 +7,7 @@
 package com.bodyguards.bodyguards_us.mapper;
 
 import com.bodyguards.bodyguards_us.dto.CreateOrderRequest;
+import com.bodyguards.bodyguards_us.dto.OrderResponse;
 import com.bodyguards.bodyguards_us.entity.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -17,4 +18,6 @@ public interface OrderMapper {
 	@Mapping(source = "comment", target = "note")
 	@Mapping(target = "orderDates", ignore = true)
 	Order createOrderRequestToOrder(CreateOrderRequest request);
+
+	OrderResponse toOrderResponse(Order order);
 }
