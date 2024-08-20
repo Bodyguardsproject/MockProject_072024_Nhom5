@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerResponse {
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String serviceType;
-    private Long contractCount;
-    private Double totalCost;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String serviceType;
+	private Long contractCount;
+	private Double totalCost;
 }

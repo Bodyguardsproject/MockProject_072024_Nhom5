@@ -8,9 +8,8 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface CustomerMapper {
 
-    @Mapping(target = "firstName", source = "user.firstName")
-    @Mapping(target = "lastName", source = "user.lastName")
-    @Mapping(target = "address", source = "user.address")
-    CustomerResponse toResponse(User user);
-
+	@Mapping(target = "firstName", source = "user.firstName")
+	@Mapping(target = "lastName", source = "user.lastName")
+	@Mapping(target = "address", source = "user.address")
+	CustomerResponse toResponse(User user);
 }

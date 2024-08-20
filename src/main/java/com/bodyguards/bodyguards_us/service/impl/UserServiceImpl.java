@@ -1,11 +1,14 @@
 package com.bodyguards.bodyguards_us.service.impl;
 
 import com.bodyguards.bodyguards_us.dto.AddAccountRequest;
+import com.bodyguards.bodyguards_us.entity.Bodyguard;
 import com.bodyguards.bodyguards_us.entity.Role;
 import com.bodyguards.bodyguards_us.entity.User;
 import com.bodyguards.bodyguards_us.enums.ErrorCode;
+import com.bodyguards.bodyguards_us.enums.UserRole;
 import com.bodyguards.bodyguards_us.exception.ApiException;
 import com.bodyguards.bodyguards_us.mapper.UserMapper;
+import com.bodyguards.bodyguards_us.repository.BodyguardRepository;
 import com.bodyguards.bodyguards_us.repository.RoleRepository;
 import com.bodyguards.bodyguards_us.repository.UserRepository;
 import com.bodyguards.bodyguards_us.service.UserService;
@@ -22,6 +25,7 @@ public class UserServiceImpl implements UserService {
 	private final RoleRepository roleRepository;
 	private final UserMapper userMapper;
 	private final PasswordEncoder passwordEncoder;
+	private final BodyguardRepository bodyguardRepository;
 
 	@Override
 	public List<User> findByEmailContaining(String email) {
@@ -42,7 +46,15 @@ public class UserServiceImpl implements UserService {
 
 		user.setRoles(roles);
 
-		userRepository.save(user);
+		User newUser = userRepository.save(user);
+
+		if (request.getRoles().contains(UserRole.SUPERVISOR)
+				|| request.getRoles().contains(UserRole.BODYGUARD)) {
+			Bodyguard bodyguard =
+					Bodyguard.builder().experience(request.getExperience()).build();
+			bodyguard.setUser(newUser);
+			bodyguardRepository.save(bodyguard);
+		}
 
 		return "Create account successfully!";
 	}

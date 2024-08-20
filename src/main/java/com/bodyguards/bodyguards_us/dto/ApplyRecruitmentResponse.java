@@ -8,9 +8,9 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class ApplyRecruitmentResponse {
-    private Long idApply;
-    private String firstName;
-    private String lastName;
-    private String status;
-    private String recruitmentName;
+	private Long idApply;
+	private String firstName;
+	private String lastName;
+	private String status;
+	private String recruitmentName;
 }
