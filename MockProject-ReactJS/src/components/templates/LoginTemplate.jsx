@@ -61,7 +61,7 @@ export const LoginTemplate = () => {
           rules={[
             {
               type: "email",
-              message: "The input is not valid E-mail!",
+              message: "Invalid input Email!",
             },
             {
               required: true,
@@ -113,7 +113,7 @@ export const LoginTemplate = () => {
         </button>
       </div>
       <div className="w-full mt-5 font-semibold">
-        <p className="text-center">
+        <p className="text-center text-[14px]">
           Don't have an account?{" "}
           <Link to="/auth/register" className="text-[#D2A52E]">
             Sign Up

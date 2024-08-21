@@ -40,14 +40,17 @@ export const RegisterTemplate = () => {
       showMessage({ type: "success", message: "Successful registration" });
       navigate("/auth/login");
     } catch (error) {
-      showMessage({ type: "error", message: "Something wrong !" });
+      showMessage({
+        type: "error",
+        message: error.response.data.errors || "Something wrong !",
+      });
     }
   };
 
   return (
     <div className="flex flex-col justify-center items-start sm:px-28 px-10 mb-5 ">
       {contextHolder}
-      <h1 className="font-semibold text-3xl mb-5">Get Started Now</h1>
+      <h1 className="font-semibold text-[32px] mb-5">Get Started Now</h1>
 
       <Form
         name="register"
@@ -62,6 +65,10 @@ export const RegisterTemplate = () => {
           required={true}
           rules={[
             {
+              max: 50,
+              message: "Please Maximum 50 character!",
+            },
+            {
               required: true,
               message: "Please input your name!",
             },
@@ -74,6 +81,10 @@ export const RegisterTemplate = () => {
           name="phone"
           rules={[
             { required: true, message: "Please input your phone number!" },
+            {
+              max: 15,
+              message: "Please Maximum 15 character!",
+            },
             {
               pattern:
                 /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
@@ -91,7 +102,11 @@ export const RegisterTemplate = () => {
           rules={[
             {
               type: "email",
-              message: "The input is not valid E-mail!",
+              message: "Invalid input Email!",
+            },
+            {
+              max: 50,
+              message: "Please Maximum 50 character!",
             },
             {
               required: true,
@@ -105,7 +120,13 @@ export const RegisterTemplate = () => {
         <Form.Item
           label={<span className="font-semibold">Address</span>}
           name="address"
-          rules={[{ required: true, message: "Please input your Address!" }]}
+          rules={[
+            { required: true, message: "Please input your Address!" },
+            {
+              max: 50,
+              message: "Please Maximum 50 character!",
+            },
+          ]}
         >
           <Input placeholder="Enter your address!" />
         </Form.Item>
@@ -115,7 +136,11 @@ export const RegisterTemplate = () => {
           name="password"
           rules={[
             { required: true, message: "Please enter your password!" },
-            { min: 6, message: "Password must be at least 6 characters long!" },
+            { min: 8, message: "Password must be at least 8 characters long!" },
+            {
+              max: 30,
+              message: "Please Maximum 30 character password!",
+            },
             {
               pattern: /^(?=.*[A-Z])|(?=.*[!@#$%^&*])/,
               message:
@@ -134,6 +159,10 @@ export const RegisterTemplate = () => {
               required: true,
               message: "Please confirm your password!",
             },
+            {
+              max: 30,
+              message: "Please Maximum 30 character confirm password!",
+            },
             ({ getFieldValue }) => ({
               validator(_, value) {
                 if (!value || getFieldValue("password") === value) {
@@ -150,10 +179,20 @@ export const RegisterTemplate = () => {
         <Form.Item
           name="agreement"
           valuePropName="checked"
+          // rules={[
+          //   {
+          //     required: true,
+          //     message: "You must accept our Terms & Policy!",
+          //   },
+          // ]}
           rules={[
             {
-              required: true,
-              message: "You need to read and agree to the agreement!",
+              validator: (_, value) =>
+                value
+                  ? Promise.resolve()
+                  : Promise.reject(
+                      new Error("You must accept our Terms & Policy!")
+                    ),
             },
           ]}
         >
@@ -183,7 +222,7 @@ export const RegisterTemplate = () => {
         </button>
       </div>
       <div className="w-full mt-5 font-semibold">
-        <p className="text-center">
+        <p className="text-center text-[14px]">
           Have an account?{" "}
           <Link to={"/auth/login"} className="text-[#D2A52E]">
             Sign In

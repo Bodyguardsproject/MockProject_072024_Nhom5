@@ -91,7 +91,7 @@ export const CreateAcount = () => {
           rules={[
             {
               type: "email",
-              message: "The input is not valid E-mail!",
+              message: "Invalid input Email!",
             },
             {
               required: true,
@@ -247,7 +247,7 @@ export const CreateAcount = () => {
             <Button icon={<UploadOutlined />}>Click to upload</Button>
           </Upload>
         </Form.Item>
-          <p className="font-semibold">Experience</p>
+        <p className="font-semibold">Experience</p>
         <Radio.Group onChange={onChange} value={value}>
           <Space direction="vertical">
             <Radio value={1}>Under 1 year</Radio>
