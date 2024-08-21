@@ -1,4 +1,6 @@
 import React from "react";
+import BannerAllNav from "../ui/BannerAllNav";
+import BannerHomeLayout from "../ui/BannerHomeLayout";
 
 export const BodyGuardsTemplate = () => {
   const dataBodyGuards = [
@@ -29,7 +31,9 @@ export const BodyGuardsTemplate = () => {
   ];
 
   return (
-    <div id="content " className=" max-w-7xl m-auto">
+    <div id="content " className="m-auto">
+       <BannerAllNav/>
+       <BannerHomeLayout contentH3={"Body guards"} />
       {dataBodyGuards.map((info, index) => {
         return (
           <div key={index} className=" mt-5 p-5">
