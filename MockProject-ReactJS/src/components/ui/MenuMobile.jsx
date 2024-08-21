@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { BiMessageRoundedDots } from "react-icons/bi";
 import { Divider, Drawer, Popover } from "antd";
@@ -9,11 +9,14 @@ import {
   IoMdNotificationsOutline,
 } from "react-icons/io";
 import { Link } from "react-router-dom";
-
-import { PATH } from "../../constant";
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
 import { FaCircleUser, FaRegCircleUser } from "react-icons/fa6";
 import { MdOutlineIndeterminateCheckBox } from "react-icons/md";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+
+import { PATH } from "../../constant";
+
 const MenuMobile = () => {
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
@@ -22,16 +25,34 @@ const MenuMobile = () => {
   const onClose = () => {
     setOpen(false);
   };
+
+  const [tokenExist, setTokenExits] = useState(false);
+  const [decoded, setDecoded] = useState(undefined);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setDecoded(decodedToken);
+      setTokenExits(true);
+    } else {
+      setTokenExits(false);
+    }
+  }, [tokenExist]);
+
   const content = (
     <div className="flex mx-1 flex-col text-[16px] gap-2 ">
       <div className="flex my-2 items-center gap-2">
         <FaCircleUser className="text-3xl" />
         <div>
-          <p>Username</p>
+          <p>{decoded !== undefined ? decoded.email : "Username"}</p>
           <p>Bodyguards</p>
         </div>
       </div>
-      <Link to={"/"} className="px-2 flex  gap-2 items-center   ">
+      <Link
+        to={`/user/${PATH.PROFILE_BODYGUARD}`}
+        className="px-2 flex  gap-2 items-center   "
+      >
         <FaRegCircleUser className="text-black text-xl hover:text-white duration-300" />
         <span className="text-black hover:text-white duration-300">
           My profile
@@ -50,7 +71,10 @@ const MenuMobile = () => {
         </span>
       </Link>
       <Divider style={{ borderColor: "rgb(82 82 91)", margin: "0" }}></Divider>{" "}
-      <Link to={"/"} className="px-2 flex  gap-2 items-center ">
+      <Link
+        to={`/${PATH.BODYGUARD_WORKSCHEDULE}`}
+        className="px-2 flex  gap-2 items-center "
+      >
         <FaCalendarAlt className="text-black text-xl hover:text-white duration-300" />
 
         <span className="text-black hover:text-white duration-300">
@@ -65,7 +89,14 @@ const MenuMobile = () => {
         </span>
       </Link>
       <Divider style={{ borderColor: "rgb(82 82 91)", margin: "0" }}></Divider>{" "}
-      <Link to={"/"} className="px-2 flex  gap-2 items-center  ">
+      <Link
+        to={"/"}
+        onClick={() => {
+          Cookies.remove("token");
+          setTokenExits(false);
+        }}
+        className="px-2 flex  gap-2 items-center  "
+      >
         <IoIosLogOut className="text-black text-xl hover:text-white duration-300" />
         <span className="text-black hover:text-white duration-300">
           Log out
@@ -94,17 +125,27 @@ const MenuMobile = () => {
             <BiMessageRoundedDots />
             <span>Get A Quote</span>
           </div>
-          <Popover
-            content={content}
-            placement="bottomRight"
-            trigger="click"
-            color="#E3C472"
-            arrow={false}
-          >
-            <button className="p-2">
-              <FaUser className="text-2xl" />
-            </button>
-          </Popover>
+
+          {tokenExist === false ? (
+            <Link
+              to={`/auth/${PATH.LOGIN}`}
+              className="px-4 py-2 hover:bg-black hover:text-primary-color transition-all cursor-pointer"
+            >
+              Login
+            </Link>
+          ) : (
+            <Popover
+              content={content}
+              placement="bottomRight"
+              trigger="click"
+              color="#E3C472"
+              arrow={false}
+            >
+              <button className="p-2">
+                <FaUser className="text-2xl" />
+              </button>
+            </Popover>
+          )}
         </div>
       </div>
       <Drawer

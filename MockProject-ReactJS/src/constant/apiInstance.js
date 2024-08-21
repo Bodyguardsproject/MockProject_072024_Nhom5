@@ -8,7 +8,7 @@ export const apiInstance = (config) => {
       ...config,
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer" + " ",
+        // Authorization: "Bearer" + " ",
       },
     };
   });
