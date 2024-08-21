@@ -58,7 +58,7 @@ export const ForgotPasswordTemplate = () => {
           rules={[
             {
               type: "email",
-              message: "The input is not valid E-mail!",
+              message: "Invalid input Email!",
             },
             {
               required: true,
@@ -88,7 +88,10 @@ export const ForgotPasswordTemplate = () => {
       </div>
 
       <div className="w-full mt-5 font-semibold">
-        <p className="text-center" onClick={() => navigate("/auth/register")}>
+        <p
+          className="text-center text-[14px]"
+          onClick={() => navigate("/auth/register")}
+        >
           Don't have an account? {"  "}
           <Link to={"/auth/register"} className="text-[#D2A52E]">
             Sign Up

@@ -103,7 +103,7 @@ export const UpLoadCVTemplate = () => {
                 rules={[
                   {
                     type: "email",
-                    message: "The input is not valid E-mail!",
+                    message: "Invalid input Email!",
                   },
                   {
                     required: true,
