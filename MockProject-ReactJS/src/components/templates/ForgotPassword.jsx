@@ -1,19 +1,32 @@
-import { Divider, Form, Input } from "antd";
+import { Divider, Form, Input, message } from "antd";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import { PATH } from "../../constant";
 import { authServices } from "../../services/authService";
 
 export const ForgotPasswordTemplate = () => {
   const navigate = useNavigate();
 
+  const [messageApi, contextHolder] = message.useMessage();
+  const showMessage = ({ type, message }) => {
+    messageApi.open({
+      type: type,
+      content: message,
+    });
+  };
+
   const onFinish = async (values) => {
     console.log("Success:", values);
     try {
-      const res = await authServices.forgotPassword(values);
+      await authServices.forgotPassword(values);
       navigate(`/auth/${PATH.RESETPASSWORD}`);
     } catch (error) {
       console.log(error);
+      showMessage({
+        type: "error",
+        message: error.response.data.errors || "Something wrong!",
+      });
     }
   };
   const onFinishFailed = (errorInfo) => {
@@ -21,6 +34,7 @@ export const ForgotPasswordTemplate = () => {
   };
   return (
     <div className="flex flex-col justify-center items-start sm:px-28 px-10 mb-5">
+      {contextHolder}
       <h1 className="font-semibold text-3xl">Reset your password</h1>
       <h3 className="mt-2 mb-10">
         If the account exist, we will email you instructions to reset the

@@ -37,7 +37,7 @@ export const RegisterTemplate = () => {
         lastName,
       });
       console.log(res);
-      showMessage({ type: "success", message: "Successful registration 1" });
+      showMessage({ type: "success", message: "Successful registration" });
       navigate("/auth/login");
     } catch (error) {
       showMessage({ type: "error", message: "Something wrong !" });
@@ -71,7 +71,7 @@ export const RegisterTemplate = () => {
         </Form.Item>
         <Form.Item
           label={<span className="font-semibold">Phone number</span>}
-          name="phone_number"
+          name="phone"
           rules={[
             { required: true, message: "Please input your phone number!" },
             {

@@ -1,7 +1,10 @@
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
 import { Checkbox, Divider, Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+
 import { authServices } from "../../services/authService";
 
 export const LoginTemplate = () => {
@@ -18,10 +21,16 @@ export const LoginTemplate = () => {
   const onFinish = async (values) => {
     console.log("Success:", values);
     //call api
+
     try {
       const res = await authServices.login(values);
-      navigate("/");
-      console.log(res);
+
+      Cookies.set("token", res.data.data.tokens.accessToken, { expires: 7 });
+
+      const decoded = jwtDecode(res.data.data.tokens.accessToken);
+      decoded.scope[0].role === "ROLE_USER"
+        ? navigate("/")
+        : navigate("/admin");
     } catch (error) {
       console.log(error);
       showMessage({ type: "error", message: "Incorrect username or password" });
@@ -78,7 +87,7 @@ export const LoginTemplate = () => {
           <Input.Password placeholder="Enter your password" />
         </Form.Item>
 
-        <Form.Item name="remember" valuePropName="checked">
+        <Form.Item valuePropName="checked">
           <Checkbox>Remember me</Checkbox>
         </Form.Item>
 
