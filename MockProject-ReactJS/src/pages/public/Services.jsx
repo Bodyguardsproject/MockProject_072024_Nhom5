@@ -3,21 +3,16 @@ import imageServices from "../../assets/servicesImage.png";
 import imageServices2 from "../../assets/servicesImage2.png";
 import imageServices3 from "../../assets/servicesImage3.png";
 import imageServices4 from "../../assets/servicesImage4.png";
+import { Link } from "react-router-dom";
+import BannerAllNav from "../../components/ui/BannerAllNav";
+import BannerHomeLayout from "../../components/ui/BannerHomeLayout";
 
 export const Services = () => {
   return (
-    <div className="bg-white-500 w-full top-[60px]">
-      <div className="w-full h-[240px] relative flex justify-center items-center">
-        <img
-          src="https://fastguardservice.com/wp-content/uploads/2024/01/fgs-header-jpg.webp"
-          alt=""
-          className="object-center"
-        />
-        <p className="text-primary-color font-bold text-6xl absolute uppercase">
-          SERVICES
-        </p>
-      </div>
-      <div className="w-full p-4">
+    <div className="bg-white-500 w-full top-[60px]">    
+      <BannerAllNav/>
+      <BannerHomeLayout contentH3={"Service"} />
+      <div className="w-full ">
         <div className="w-full flex justify-center gap-10 items-center">
           <div className="relative">
             <img

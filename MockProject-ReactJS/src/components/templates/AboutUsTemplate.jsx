@@ -2,6 +2,7 @@ import { Divider } from "antd";
 import React from "react";
 import styled from "styled-components";
 import BannerHomeLayout from "../ui/BannerHomeLayout";
+import BannerAllNav from "../ui/BannerAllNav";
 
 export const AboutUsTemplate = () => {
   const content = [
@@ -27,7 +28,8 @@ export const AboutUsTemplate = () => {
     },
   ];
   return (
-    <div className="py-5 ">
+    <div className="">
+      <BannerAllNav/>
       <BannerHomeLayout contentH3={"About Us"} />
       <div className=" flex flex-col  p-5  sm:pt-10 gap-5  items-center sm:max-w-7xl m-auto sm:flex-row">
         <div className="h-[300px] w-[300px]  rounded-[10px] overflow-hidden ">
