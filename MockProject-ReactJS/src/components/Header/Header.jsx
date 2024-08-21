@@ -101,7 +101,7 @@ export default function Header() {
     </div>
   );
   return (
-    <div className="h-[60px] bg-primary-color flex items-center justify-between pr-2">
+    <div className="h-[60px]  max-w-7xl m-auto flex items-center justify-between pr-2">
       <Link
         to={"/"}
         className={`h-full w-[200px] bg-no-repeat bg-contain `}

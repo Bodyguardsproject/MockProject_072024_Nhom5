@@ -20,13 +20,12 @@ export const CustomerLayout = () => {
         {widthScreen && widthScreen <= BREAKPOINT ? (
           <MenuMobile />
         ) : (
-          <header className="max-w-7xl m-auto ">
+          <header className=" h-[60px] bg-primary-color ">
             <Header />
           </header>
         )}
       </>
 
-     
       <div className="m-auto">
         <Outlet />
       </div>
