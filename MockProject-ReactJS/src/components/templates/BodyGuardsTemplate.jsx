@@ -31,12 +31,12 @@ export const BodyGuardsTemplate = () => {
   ];
 
   return (
-    <div id="content " className="m-auto">
-       <BannerAllNav/>
-       <BannerHomeLayout contentH3={"Body guards"} />
+    <div id="content " className="m-auto ">
+      <BannerAllNav />
+      <BannerHomeLayout contentH3={"Body guards"} />
       {dataBodyGuards.map((info, index) => {
         return (
-          <div key={index} className=" mt-5 p-5">
+          <div key={index} className=" mt-5 p-5 max-w-7xl m-auto">
             <div className=" grid grid-cols-2 gap-10">
               <div className=" flex flex-col justify-start py-5 rounded-lg">
                 <img
@@ -48,7 +48,7 @@ export const BodyGuardsTemplate = () => {
                   <p className="font-semibold text-xl">{info.role} </p>
                 </div>
               </div>
-              <div className=" py-20 ">
+              <div className={index % 2 !== 0 ? "py-20 -order-1 " : "py-20"}>
                 <p>Name:{info.name}</p>
                 <p>Email:{info.email}</p>
               </div>
