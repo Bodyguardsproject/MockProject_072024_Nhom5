@@ -19,6 +19,7 @@ export const PATH = {
 
   CUSTOMER: "customer",
   CUSTOMERQUOTE: "customerquote",
+  CUSTOMERCONTRACT: "customercontract",
 
   PROFILE_STAFF: "profile/staff",
   PROFILE_BODYGUARD: "profile/bodyguard",

@@ -5,6 +5,8 @@ import { PATH } from "../../constant";
 import { FaUser, FaCircleUser, FaFileContract  } from "react-icons/fa6";
 import { SlArrowDown } from "react-icons/sl";
 import { IoIosLogOut } from "react-icons/io";
+import { FaRegUserCircle } from "react-icons/fa";
+import { Divider, Popover } from "antd";
 
 const options = [
   { name: "Home", path: PATH.HOME },
@@ -16,11 +18,42 @@ const options = [
 ];
 
 export const HeaderCustomer  = () => {
-    const [showMenu, setShowMenu] = useState(false);
+
+    const content = (
+      <div className="flex mx-3 flex-col text-[16px] gap-2 ">
+        <div className="flex my-2 items-center gap-2">
+          <FaCircleUser className="text-3xl" />
+          <div>
+            <p>Username</p>
+            <p>Customer</p>
+          </div>
+        </div>
+        <Link
+          to={`/customer/${PATH.PROFILE_BODYGUARD}`}
+          className="px-2 flex  gap-2 items-center   "
+        >
+          <FaRegUserCircle className="text-black text-xl hover:text-white duration-300" />
+          <span className="text-black hover:text-white duration-300">
+            My profile
+          </span>
+        </Link>
+        <Divider style={{ borderColor: "rgb(82 82 91)", margin: "0" }}></Divider>{" "}
+        <Link to={`/customer/${PATH.CUSTOMERCONTRACT}`} className="px-2 flex  gap-2 items-center ">
+          <FaFileContract className="text-black text-xl hover:text-white duration-300" />
   
-    const handleToggleMenu = () => {
-      setShowMenu(!showMenu);
-    };
+          <span className="text-black hover:text-white duration-300">
+            Contract
+          </span>
+        </Link>
+        <Divider style={{ borderColor: "rgb(82 82 91)", margin: "0" }}></Divider>{" "}
+        <Link to={"/"} className="px-2 flex  gap-2 items-center  ">
+          <IoIosLogOut className="text-black text-xl hover:text-white duration-300" />
+          <span className="text-black hover:text-white duration-300">
+            Log out
+          </span>
+        </Link>
+      </div>
+    );
 
   return (
     <div className="h-[60px] bg-primary-color flex items-center justify-between">
@@ -40,27 +73,19 @@ export const HeaderCustomer  = () => {
             </Link>
           );
         })}
-        <div onClick={handleToggleMenu} className="relative flex justify-between items-center px-4 py-3 hover:bg-black hover:text-primary-color transition-all cursor-pointer z-50">
+        <div>
+        <Popover
+          content={content}
+          placement="bottomRight"
+          trigger="hover"
+          color="#E3C472"
+          arrow={false}
+        >
+          <button className="flex justify-between items-center px-4 py-3 z-50">
             <FaUser />
-            <div className="text-[10px] pl-2">
-                <SlArrowDown />
-            </div> 
-            {showMenu && (
-              <div className="absolute w-[150px] right-0 top-[50px] text-global-color-text bg-amber-100 p-4">
-                <a href="#" className=" inline-flex items-center box-border space-x-2 py-1.5 hover:text-primary-color hover:bg-black hover:min-w-[120px]">
-                  <FaCircleUser />
-                  <span>My profile</span>
-                </a>
-                <a href="#" className="inline-flex items-center box-border space-x-2 py-1.5 hover:text-primary-color hover:bg-black hover:min-w-[120px]">
-                  <FaFileContract />
-                  <span>Contract</span>
-                </a>
-                <a href="#" className="inline-flex items-center box-border space-x-2 py-1.5 hover:text-primary-color hover:bg-black hover:min-w-[120px]">
-                  <IoIosLogOut />
-                  <span>Log out</span>
-                </a>
-            </div>
-            )}   
+            <SlArrowDown className="text-[20px] pl-2" />
+          </button>
+        </Popover>
         </div>
       </div>
     </div>
