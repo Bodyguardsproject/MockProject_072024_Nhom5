@@ -18,24 +18,22 @@ import { RiUserSettingsLine } from "react-icons/ri";
 import {} from "react-icons/fa6";
 const securityServices = [
   {
-    value: "Personal Security",
-    label: "Personal Security",
     url: "https://fastguardservice.com/wp-content/uploads/2023/12/Personal-Security.png",
   },
   {
-    label: "Event Security",
-    value: "Event Security",
     url: "https://fastguardservice.com/wp-content/uploads/2023/12/Event-Security.png",
   },
   {
-    label: "Asset Security",
-    value: "Asset Security",
     url: "https://fastguardservice.com/wp-content/uploads/2023/12/Security-Services.png",
   },
   {
-    label: "Escort Security",
-    value: "Escort Security",
-    url: "https://fastguardservice.com/wp-content/uploads/2024/01/Untitled-design-1-jpg.webp",
+    url: "https://fastguardservice.com/wp-content/uploads/2023/12/Consultation.png",
+  },
+  {
+    url: "https://fastguardservice.com/wp-content/uploads/2023/12/fast-guard-app.png",
+  },
+  {
+    url: "https://fastguardservice.com/wp-content/uploads/2023/12/Fire.png",
   },
 ];
 const schema = z.object({
@@ -89,19 +87,6 @@ const data = [
 ];
 
 export const Home = () => {
-  const [isHidden, setIsHidden] = useState(window.innerWidth < 600);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsHidden(window.innerWidth < 600);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listener when component unmounts
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
   const {
     register,
     handleSubmit,
@@ -133,24 +118,18 @@ export const Home = () => {
       >
         <div className="bg-black/50 pb-6  w-full h-[600px] top-0 px-[5%]">
           <div className="flex gap-4">
-            <div className="basis-[70%] ">
-              <div
-                className="flex items-center justify-center flex-col  "
-                style={{
-                  marginTop: isHidden ? "100px" : "200px",
-                  textAlign: isHidden ? "center" : "center",
-                }}
-              >
-                <h1 className="text-white text-3xl md:text-4xl">
+            <div className="md:basis-[70%] xs:basic-[100%]  ">
+              <div className="flex items-center justify-center flex-col xs:flex xs:justify-center xs:items-center  md:mt-[40px]">
+                <h1 className="text-white mt-10  xs:text-[20px]  md:text-4xl md:font-bold">
                   Security Guard Services
                 </h1>
-                <h2 className="bg-primary-color text-4xl md:text-5xl px-2 py-1 rounded-sm my-4">
+                <h2 className="bg-primary-color  px-2 py-1 rounded-sm my-4  xs:text-[24px] md:text-4xl md:font-bold">
                   FAST GUARD SERVICE
                 </h2>
-                <h1 className="text-primary-color text-3xl md:text-4xl">
+                <h1 className="text-primary-color   xs:text-[20px] md:text-4xl  md:font-bold">
                   Security Guard Company
                 </h1>
-                <p className="text-white text-base w-full">
+                <p className="text-white w-full xs:w-full xs:text-[16px]  md:text-2xl  md:font-bold">
                   Fast Guard Service A national Security Guard Company offering
                   top-tier security solutions Nationwide, including armed and
                   unarmed guards, event security, fire watch, and High-Risk
@@ -161,10 +140,7 @@ export const Home = () => {
                 </p>
               </div>
             </div>
-            <div
-              className="basis-[30%] "
-              style={{ display: isHidden ? "none" : "block" }}
-            >
+            <div className="md:basis-[30%] md:block xs:basis-[0%] xs:hidden">
               <div className="px-2 mt-2 py-2 rounded-lg shadow-yellow bg-black/40">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
@@ -299,36 +275,33 @@ export const Home = () => {
       </div>
 
       <div>
-        <h2 className="text-center text-[42px] text-[#2c3e50] font-bold flex items-center justify-center mt-12 uppercase">
+        <h2 className="text-center  text-[#2c3e50] font-bold flex items-center justify-center mt-12 uppercase md:text-[42px] xs:text-[30px]">
           Security Services
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-[40px] px-5 md:px-20 mt-8">
+        <div className="grid gap-y-[40px] mt-8 xs:grid-cols-1 sm:grid-cols-2   md:grid-cols-3 ">
           {securityServices.map((el, idx) => {
             return (
-              <div key={idx} className=" w-[500px] mx-auto rounded-lg relative">
+              <div
+                key={idx}
+                className=" mx-auto rounded-lg relative  w-[500px] xs:w-[380px]"
+              >
                 <div
                   className={`w-full h-[250px]  bg-no-repeat bg-cover bg-center rounded-lg `}
                   style={{
                     backgroundImage: `url(${el.url})`,
                   }}
                 ></div>
-                <div className=" bg-[#7f8c8d] bg-opacity-40 text-center px-3 py-2 w-full absolute bottom-0 hover:bg-primary-color hover:text-white cursor-pointer">
-                  <div className="flex justify-center items-center gap-2 hover:text-white">
-                    <RiArrowRightDoubleLine className="text-4xl text-white   " />
-                    <p className="text-3xl  text-white">{el.label}</p>
-                  </div>
-                </div>
               </div>
             );
           })}
         </div>
       </div>
       <div className="flex justify-center items-center mt-20 flex-col">
-        <h2 className="text-[42px] text-[#2c3e50] font-bold md:flex justify-center items-center ">
+        <h2 className=" text-[#2c3e50] font-bold  xs:flex xs:justify-center xs:items-center xs:text-[20px]  md:flex justify-center items-center md:text-[42px] ">
           WHY CHOOSE FASTGUARD
         </h2>
         <div className="flex flex-wrap justify-center gap-10 items-center mt-10">
-          <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
+          <div className=" p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black xs:w-[400px] xs:h-[160px] md:w-[530px] md:h-[142px]">
             <FaRegHandshake className="text-[250px] text-primary-color" />
             <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">
@@ -340,7 +313,7 @@ export const Home = () => {
               customized.
             </div>
           </div>
-          <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
+          <div className=" p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black xs:w-[400px] xs:h-[160px] md:w-[530px] md:h-[142px]">
             <FaMedal className="text-[250px] text-primary-color" />
             <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">
@@ -351,7 +324,7 @@ export const Home = () => {
               guard services. solutions are customized.
             </div>
           </div>
-          <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
+          <div className=" p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black xs:w-[400px] xs:h-[160px] md:w-[530px] md:h-[142px]">
             <FaFileSignature className="text-[250px] text-primary-color" />
             <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">
@@ -362,7 +335,7 @@ export const Home = () => {
               robust policy for a giant coverage area.
             </div>
           </div>
-          <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
+          <div className=" p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black  xs:w-[400px] xs:h-[160px] md:w-[530px] md:h-[142px]">
             <FaRegClock className="text-[300px] text-primary-color" />
             <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">
@@ -374,7 +347,7 @@ export const Home = () => {
               in communication & 24/7 availability to take your call.
             </div>
           </div>
-          <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
+          <div className=" p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black  xs:w-[400px] xs:h-[160px] md:w-[530px] md:h-[142px]">
             <RiUserSettingsLine className="text-[250px] text-primary-color" />
             <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">
@@ -386,7 +359,7 @@ export const Home = () => {
               are available 24/7 to meet your needs.
             </div>
           </div>
-          <div className="w-[530px] h-[142px] p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black">
+          <div className=" p-2 flex gap-6 justify-center items-center  bg-white shadow-lg shadow-black xs:w-[400px] xs:h-[160px] md:w-[530px] md:h-[142px]">
             <FaRegCalendarCheck className="text-[250px] text-primary-color" />
             <div className="">
               <h2 className="text-[#2c3e50] font-bold text-xl">DEDICATION</h2>{" "}
@@ -399,7 +372,9 @@ export const Home = () => {
       </div>
 
       <div className="mt-20 flex flex-col justify-center items-center ">
-        <h2 className="text-[42px] text-[#2c3e50] font-bold ">BODYGUARDS</h2>
+        <h2 className=" text-[#2c3e50] font-bold xs:text-[20px] md:text-[42px]  ">
+          BODYGUARDS
+        </h2>
         <div className="flex-col md:flex-row flex mt-8 gap-4">
           {data.map((item, idx) => (
             <div key={idx} className="basis-1/3">
@@ -422,96 +397,80 @@ export const Home = () => {
       </div>
 
       <div className="flex flex-col justify-center items-center mt-20 mb-2">
-        <h2 className="text-[42px] text-[#2c3e50] font-bold ">JOB</h2>
+        <h2 className=" text-[#2c3e50] font-bold   xs:text-[32px] md:text-[42px] ">
+          JOB
+        </h2>
         <div className="flex  justify-center items-center gap-4">
           <img
-            className="w-[400px] h-[220px] object-cover rounded-lg"
+            className="object-cover rounded-lg xs:w-[200px] xs:h-[200px] md:w-[400px] md:h-[220px]"
             src="https://onmilwaukee.com/images/articles/lo/losspreventionagent/losspreventionagent_fullsize_story1.jpg"
             alt=""
           />
           <div>
-            <h1>
+            <h1 className="xs:text-[12px]">
               <b>Title</b>: Loss Prevention Specialist
             </h1>
-            <div
-              className="w-[600px]"
-              style={{ width: isHidden ? "200px" : "600px" }}
-            >
+            <div className="xs:w-[200px] xs:text-[10px]  md:w-[600px]  md:text-[18px]">
               <b>Description:</b>
               As a Loss Prevention Specialist, you will focus on minimizing
-              theft and fraud within retail environments....
-              <p style={{ display: isHidden ? "none" : "block" }}>
-                Duties include monitoring store surveillance, conducting
-                investigations into suspicious activities, and implementing loss
-                prevention strategies. Strong observational skills, attention to
-                detail, and the ability to handle confrontations diplomatically
-                are required. Prior experience in retail or security is helpful
-                but not essential.
-              </p>
+              theft and fraud within retail environmentsDuties include
+              monitoring store surveillance, conducting investigations into
+              suspicious activities, and implementing loss prevention
+              strategies. Strong observational skills, attention to detail, and
+              the ability to handle confrontations diplomatically are required.
+              Prior experience in retail or security is helpful but not
+              essential.
             </div>
-            <button className="bg-primary-color text-[#2c3e50] text-xl font-bold mt-2  w-[130px] h-[40px] rounded-lg">
+            <button className="bg-primary-color text-[#2c3e50]  font-bold  rounded-lg xs:w-[90px] xs:h-[26px] xs:text-[12px] md:w-[130px] md:h-[40px] md:text-xl">
               Apply
             </button>
           </div>
         </div>
         <div className="flex justify-center items-center gap-4 my-4">
           <img
-            className="w-[400px] h-[220px] object-cover rounded-lg"
+            className="object-cover rounded-lg  xs:w-[200px] xs:h-[200px] md:w-[400px] md:h-[220px]"
             src="https://media.istockphoto.com/id/1618446911/photo/radio-man-and-a-security-guard-or-safety-officer-outdoor-on-a-city-road-for-communication.webp?b=1&s=170667a&w=0&k=20&c=CUGorRs8FB0BmtP227y-hyfjl-RRlUjEkLWdbyebE-0="
             alt=""
           />
           <div>
-            <h1>
+            <h1 className="xs:text-[12px]">
               <b>Title</b>:Security Officer
             </h1>
-            <div
-              className="w-[600px]"
-              style={{ width: isHidden ? "200px" : "600px" }}
-            >
+            <div className="xs:w-[200px] xs:text-[10px]  md:w-[600px]  md:text-[18px]">
               <b>Description:</b>
               As a Security Officer, you will be responsible for maintaining a
               secure environment by overseeing surveillance systems, conducting
-              <p style={{ display: isHidden ? "none" : "block" }}>
-                regular patrols, and managing access to the facility Your role
-                includes responding to incidents, enforcing safety protocols,
-                and assisting staff and visitors as needed. Strong attention to
-                detail, effective communication skills, and the ability to
-                handle emergencies are essential. Previous experience in
-                security is advantageous but not required.
-              </p>
+              regular patrols, and managing access to the facility Your role
+              includes responding to incidents, enforcing safety protocols, and
+              assisting staff and visitors as needed. Strong attention to
+              detail, effective communication skills, and the ability to handle
+              emergencies are essential.
             </div>
-            <button className="bg-primary-color text-[#2c3e50] text-xl font-bold mt-2  w-[130px] h-[40px] rounded-lg">
+            <button className="bg-primary-color text-[#2c3e50] font-bold  rounded-lg xs:w-[90px] xs:h-[26px] xs:text-[12px] md:w-[130px] md:h-[40px] md:text-xl">
               Apply
             </button>
           </div>
         </div>
         <div className="flex justify-center items-center gap-4">
           <img
-            className="w-[400px] h-[220px] object-cover rounded-lg"
+            className=" object-cover rounded-lg  xs:w-[200px] xs:h-[200px] md:w-[400px] md:h-[220px]"
             src="https://www.shutterstock.com/image-photo/security-guards-protecting-business-convention-260nw-2352621839.jpg"
             alt=""
           />
           <div>
-            <h1>
+            <h1 className="xs:text-[12px]">
               <b>Title</b>: Event Security Coordinator
             </h1>
-            <div
-              className="w-[600px]"
-              style={{ width: isHidden ? "200px" : "600px" }}
-            >
+            <div className="xs:w-[200px] xs:text-[10px]  md:w-[600px]  md:text-[18px]">
               <b>Description:</b>
               As an Event Security Coordinator, you will oversee security
               operations for events and large gatherings. Your role includes
-              <p style={{ display: isHidden ? "none" : "block" }}>
-                coordinating with vendors, managing security staff, and ensuring
-                the safety of attendees. Key tasks involve conducting risk
-                assessments, developing security plans, and responding to
-                emergencies. Excellent organizational skills, experience in
-                event management or security, and the ability to work under
-                pressure are crucial.
-              </p>
+              coordinating with vendors, managing security staff, and ensuring
+              the safety of attendees. Key tasks involve conducting risk
+              assessments, developing security plans, and responding to
+              emergencies
             </div>
-            <button className="bg-primary-color text-[#2c3e50] text-xl font-bold mt-2  w-[130px] h-[40px] rounded-lg">
+            <button className="bg-primary-color text-[#2c3e50] font-bold  rounded-lg xs:w-[90px] xs:h-[26px] xs:text-[12px] md:w-[130px] md:h-[40px] md:text-xl">
               Apply
             </button>
           </div>

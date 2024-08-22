@@ -31,6 +31,10 @@ export default {
       animation: {
         fadeIn: "fadeIn 0.2s linear",
       },
+      screens: {
+        'xs': '375px', // Thêm breakpoint mới
+       
+      },
     },
     fontFamily: {
       main: ["Poppins", "sans-serif"],
