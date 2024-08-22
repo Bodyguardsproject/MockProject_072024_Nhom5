@@ -33,14 +33,17 @@ export const LoginTemplate = () => {
         : navigate("/admin");
     } catch (error) {
       console.log(error);
-      showMessage({ type: "error", message: "Incorrect username or password" });
+      showMessage({
+        type: "error",
+        message: "Login failed. Incorrect email or password",
+      });
     }
   };
 
   return (
     <div className="flex flex-col justify-center items-start sm:px-28 px-10 mb-5">
       {contextHolder}
-      <h1 className="font-semibold text-3xl">WelComeback!</h1>
+      <h1 className="font-semibold text-[32px]">WelComeback!</h1>
       <h3 className="mt-2 mb-5  ">
         Enter your Credentials to access your account
       </h3>
@@ -64,6 +67,10 @@ export const LoginTemplate = () => {
               message: "Invalid input Email!",
             },
             {
+              max: 50,
+              message: "Please Maximum 50 character!",
+            },
+            {
               required: true,
               message: "Please input your E-mail!",
             },
@@ -82,9 +89,23 @@ export const LoginTemplate = () => {
         </div>
         <Form.Item
           name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[
+            { required: true, message: "Please input your password!" },
+            {
+              max: 30,
+              message: "Please Maximum 30 character!",
+            },
+            {
+              validator: (_, value) =>
+                !value.includes(" ")
+                  ? Promise.resolve()
+                  : Promise.reject(
+                      new Error("Password cannot include spaces!")
+                    ),
+            },
+          ]}
         >
-          <Input.Password placeholder="Enter your password" />
+          <Input.Password placeholder="Please enter your password!" />
         </Form.Item>
 
         <Form.Item valuePropName="checked">
