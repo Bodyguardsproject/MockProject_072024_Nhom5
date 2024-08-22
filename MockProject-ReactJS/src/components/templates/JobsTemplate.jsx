@@ -2,6 +2,7 @@ import React from "react";
 import BannerHomeLayout from "../ui/BannerHomeLayout";
 import styled from "styled-components";
 import { Divider } from "antd";
+import { Link } from "react-router-dom";
 
 export const JobsTemplate = () => {
   const expContent = [
@@ -76,6 +77,16 @@ export const JobsTemplate = () => {
             Thank you for your interest in Fast Guard Service. Below you will
             find our available opportunities
           </p>
+        </div>
+        <div className="bg-[#D2A52E] flex justify-between py-8 mt-5 px-10 items-center">
+          <h2 className=" text-xl font-semibold text-white">
+            ARE YOU READY TO JOIN OUR TEAM?
+          </h2>
+          <div className="bg-white p-2">
+            <Link to="/" className="text-[#D2A52E] font-semibold">
+              Apply Now!
+            </Link>
+          </div>
         </div>
       </div>
     </>
