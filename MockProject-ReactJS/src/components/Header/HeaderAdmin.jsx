@@ -34,9 +34,10 @@ export const HeaderAdmin = () => {
         <></>
         <Input
           size="large"
-          placeholder="large size"
+          placeholder="Search..."
           prefix={<IoSearch />}
           style={{border:"1px solid #3498db",margin:"auto",width:"500px",height:"35px"}}
+          maxLength={100}
         />
         <></>
       </div>

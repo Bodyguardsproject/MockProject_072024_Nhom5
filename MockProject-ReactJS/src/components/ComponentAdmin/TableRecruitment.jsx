@@ -14,7 +14,9 @@ export const TableRecruitment = () => {
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
               {'Apple MacBook Pro 17"'}
             </Table.Cell>
-            <Table.Cell>Sliver</Table.Cell>
+            <Table.Cell>
+              <a href="/" className="text-[#0984e3]">Link</a>
+            </Table.Cell>
 
             <Table.Cell className="flex gap-4">
               <span
@@ -23,7 +25,7 @@ export const TableRecruitment = () => {
                 }}
                 className="font-medium bg-background-button text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
-                Edit
+                Accept
               </span>
               <span
                 onClick={() => {
@@ -31,7 +33,7 @@ export const TableRecruitment = () => {
                 }}
                 className="font-medium bg-background-button-second normal-case text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
-                Delete
+                Denny
               </span>
             </Table.Cell>
           </Table.Row>
@@ -39,7 +41,9 @@ export const TableRecruitment = () => {
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
               Microsoft Surface Pro
             </Table.Cell>
-            <Table.Cell>White</Table.Cell>
+            <Table.Cell>
+              <a href="/" className="text-[#0984e3]">Link</a>
+            </Table.Cell>
 
             <Table.Cell className="flex gap-4">
               <span
@@ -48,7 +52,7 @@ export const TableRecruitment = () => {
                 }}
                 className="font-medium bg-background-button text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
-                Edit
+                Accept
               </span>
               <span
                 onClick={() => {
@@ -56,7 +60,7 @@ export const TableRecruitment = () => {
                 }}
                 className="font-medium bg-background-button-second normal-case text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
-                Delete
+                Denny
               </span>
             </Table.Cell>
           </Table.Row>
@@ -64,7 +68,9 @@ export const TableRecruitment = () => {
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
               Magic Mouse 2
             </Table.Cell>
-            <Table.Cell>Black</Table.Cell>
+            <Table.Cell>
+              <a href="/" className="text-[#0984e3]">Link</a>
+            </Table.Cell>
 
             <Table.Cell className="flex gap-4">
               <span
@@ -73,7 +79,7 @@ export const TableRecruitment = () => {
                 }}
                 className="font-medium bg-background-button text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
-                Edit
+                Accept
               </span>
               <span
                 onClick={() => {
@@ -81,7 +87,7 @@ export const TableRecruitment = () => {
                 }}
                 className="font-medium bg-background-button-second normal-case text-text-admin px-4 py-2 rounded-lg  cursor-pointer"
               >
-                Delete
+                Denny
               </span>
             </Table.Cell>
           </Table.Row>

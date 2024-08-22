@@ -15,8 +15,8 @@ import { ImPriceTag } from "react-icons/im";
 import { PiLightningFill, PiToolboxFill } from "react-icons/pi";
 import { FaFileContract } from "react-icons/fa6";
 import { AiFillSchedule } from "react-icons/ai";
-import { IoSettingsSharp } from "react-icons/io5";
 import SidebarProfile from "./SidebarProfile";
+import { IoMdNotifications } from "react-icons/io";
 
 export const SidebarAdmin = () => {
   const location = useLocation(); // Đảm bảo location được khai báo
@@ -32,7 +32,7 @@ export const SidebarAdmin = () => {
 
   return (
     <Sidebar className="">
-      <Sidebar.Items className="bg-primary-color h-full w-[258px] ml-[-14px] ">
+      <Sidebar.Items className="bg-primary-color h-screen w-[258px] ml-[-14px] ">
         <Sidebar.ItemGroup className="flex flex-col ">
           <Link to="?tab=dash">
             {/* Sử dụng tham số tab trong URL */}
@@ -141,7 +141,12 @@ export const SidebarAdmin = () => {
               <span>Equipment</span>
             </Sidebar.Item>
           </Link>
-
+          <Link to="?tab=notification">
+            {/* Sử dụng tham số tab trong URL */}
+            <Sidebar.Item active={tab === "notification" || !tab} icon={IoMdNotifications}>
+              <span>Notification</span>
+            </Sidebar.Item>
+          </Link>
           <SidebarProfile />
         </Sidebar.ItemGroup>
       </Sidebar.Items>

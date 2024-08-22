@@ -10,6 +10,7 @@ import {
   AdminDashBoard,
   AdminEquipment,
   AdminFeedbacks,
+  AdminNotification,
   AdminQuotes,
   AdminRecruitment,
   AdminSchedule,
@@ -51,7 +52,8 @@ export const AdminHome = () => {
       {tab === "feedbacks" && <AdminFeedbacks />}
       {tab === "recruitment" && <AdminRecruitment />}
       {tab === "equipment" && <AdminEquipment />}
-    
+      {tab === "notification" && <AdminNotification />}
+
     </div>
 
   </div>

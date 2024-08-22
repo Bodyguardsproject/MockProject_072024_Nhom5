@@ -18,4 +18,4 @@ export * from "./TableQuotes"
 export * from "./TableRecruitment"
 export * from "./TableEquipment"
 export * from "./EditAccount"
-
+export * from "./TableNotification"

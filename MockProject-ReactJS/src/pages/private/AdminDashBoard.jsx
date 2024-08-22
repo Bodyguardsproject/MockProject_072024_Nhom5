@@ -31,7 +31,7 @@ export const AdminDashBoard = () => {
         <Recruitment />
       </div>
       <div className="p-4 h-[200px]  flex gap-6 items-center">
-        <span className="tex-2xl font-bold">Revenue Report Over Time</span>
+        <span className="tex-2xl font-bold">Revenue Growth</span>
         <div className="flex justify-center items-center gap-4 cursor-pointer">
           <div className="flex justify-center items-center gap-2">
             <LuFilter />
