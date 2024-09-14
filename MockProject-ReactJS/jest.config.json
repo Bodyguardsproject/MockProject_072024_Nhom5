@@ -1,8 +1,11 @@
 {
-  "testEnvironment": "jest-environment-jsdom",
-  "setupFilesAfterEnv": ["<rootDir>/node_modules/@testing-library/jest-dom/extend-expect"],
+  "testEnvironment": "jsdom",
+  "setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"],
   "moduleNameMapper": {
-    "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/src/test/fileMock.js",
-    "\\.(css|less)$": "identity-obj-proxy"
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+     "\\.(jpg|jpeg|png|gif|svg)$": "<rootDir>/__mocks__/fileMock.js"
+  },
+  "transform": {
+    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
   }
 }
