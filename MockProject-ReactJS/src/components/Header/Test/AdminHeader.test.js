@@ -1,11 +1,9 @@
 /* eslint-disable no-undef */
-
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import HeaderAdmin from "../HeaderAdmin"; // Đường dẫn tới component của tui
+import HeaderAdmin from "../HeaderAdmin";
 import { BrowserRouter as Router } from "react-router-dom";
 
-// Mock window.matchMedia
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
@@ -24,8 +22,6 @@ describe("HeaderAdmin Component", () => {
         <HeaderAdmin />
       </Router>
     );
-
-    // Kiểm tra các icon và avatar
     expect(screen.getByTestId("logout-icon")).toBeInTheDocument();
     expect(screen.getByTestId("question-icon")).toBeInTheDocument();
     expect(screen.getByTestId("settings-icon")).toBeInTheDocument();
@@ -39,8 +35,6 @@ describe("HeaderAdmin Component", () => {
         <HeaderAdmin />
       </Router>
     );
-
-    // Kiểm tra input search
     const searchInput = screen.getByPlaceholderText(/search/i);
     expect(searchInput).toBeInTheDocument();
     expect(searchInput).toHaveAttribute("placeholder", "Search...");
