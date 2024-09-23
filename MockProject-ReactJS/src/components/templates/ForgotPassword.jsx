@@ -92,7 +92,7 @@ export const ForgotPasswordTemplate = () => {
           className="text-center text-[14px]"
           onClick={() => navigate("/auth/register")}
         >
-          Don't have an account? {"  "}
+          Do not have an account?
           <Link to={"/auth/register"} className="text-[#D2A52E]">
             Sign Up
           </Link>

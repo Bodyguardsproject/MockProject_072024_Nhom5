@@ -135,7 +135,7 @@ export const LoginTemplate = () => {
       </div>
       <div className="w-full mt-5 font-semibold">
         <p className="text-center text-[14px]">
-          Don't have an account?{" "}
+          Do not have an account?{" "}
           <Link to="/auth/register" className="text-[#D2A52E]">
             Sign Up
           </Link>
